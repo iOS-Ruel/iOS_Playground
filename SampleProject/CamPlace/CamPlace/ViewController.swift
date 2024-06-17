@@ -35,16 +35,18 @@ class ViewController: UIViewController {
     @objc func listButotnTapped() {
         let listVC = PlaceListViewController()
         
-        let customId = UISheetPresentationController.Detent.Identifier("large-minus-background-effect")
-        let customDetent = UISheetPresentationController.Detent.custom(identifier: customId) { context in
-            return context.maximumDetentValue - 0.1
-        }
-        listVC.largestUndimmedDetentIdentifier = .large
-        listVC.sheetPresentationController?.detents = [customDetent]
-//        listVC.sheetPresentationController?.selectedDetentIdentifier = .large
         
-        self.present(listVC, animated: true)
+        let customDetent = UISheetPresentationController.Detent.custom(identifier: .init("myCustomDetent")) { [weak self] context in
+            guard let self = self else { return 0.0 }
+            return self.view.frame.height - 150.0
+        }
+        
+        if let sheet = listVC.sheetPresentationController {
+            sheet.detents = [ customDetent ]
+        }
+        
+        present(listVC, animated: true)
     }
-
+    
 }
 
