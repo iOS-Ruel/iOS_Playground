@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		416FF04D2C1FC2C200CE8AF0 /* BookShelfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416FF04C2C1FC2C200CE8AF0 /* BookShelfApp.swift */; };
 		416FF04F2C1FC2C200CE8AF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416FF04E2C1FC2C200CE8AF0 /* ContentView.swift */; };
-		416FF0512C1FC2C300CE8AF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 416FF0502C1FC2C300CE8AF0 /* Assets.xcassets */; };
 		416FF0542C1FC2C300CE8AF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 416FF0532C1FC2C300CE8AF0 /* Preview Assets.xcassets */; };
+		416FF05D2C1FC36700CE8AF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 416FF05C2C1FC36700CE8AF0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		416FF0492C1FC2C200CE8AF0 /* BookShelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookShelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		416FF04C2C1FC2C200CE8AF0 /* BookShelfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfApp.swift; sourceTree = "<group>"; };
 		416FF04E2C1FC2C200CE8AF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		416FF0502C1FC2C300CE8AF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		416FF0532C1FC2C300CE8AF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		416FF05C2C1FC36700CE8AF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +53,7 @@
 			children = (
 				416FF04C2C1FC2C200CE8AF0 /* BookShelfApp.swift */,
 				416FF04E2C1FC2C200CE8AF0 /* ContentView.swift */,
-				416FF0502C1FC2C300CE8AF0 /* Assets.xcassets */,
+				416FF05C2C1FC36700CE8AF0 /* Assets.xcassets */,
 				416FF0522C1FC2C300CE8AF0 /* Preview Content */,
 			);
 			path = BookShelf;
@@ -126,7 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				416FF0542C1FC2C300CE8AF0 /* Preview Assets.xcassets in Resources */,
-				416FF0512C1FC2C300CE8AF0 /* Assets.xcassets in Resources */,
+				416FF05D2C1FC36700CE8AF0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
