@@ -13,36 +13,12 @@ struct ContentView: View {
     var body: some View {
         
         List(books, id: \.isbn) { book in
-            BookRow(book: book)
+            BookRowView(book: book)
         }
         .listStyle(.plain)
-        
-       
     }
 }
 
-struct BookRow: View {
-    var book: Book
-    
-    var body: some View {
-        HStack(alignment: .top){
-            Image(book.mediumCoverImageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 90)
-            
-            VStack(alignment: .leading) {
-                Text(book.title)
-                    .font(.headline)
-                Text("by \(book.author)")
-                    .font(.subheadline)
-                Text("\(book.pages) pages")
-                    .font(.subheadline)
-            }
-            Spacer()
-        }
-    }
-}
 
 //(traits: .sizeThatFitsLayout) : Selectable View에만 동작함
 #Preview(traits: .sizeThatFitsLayout) {
