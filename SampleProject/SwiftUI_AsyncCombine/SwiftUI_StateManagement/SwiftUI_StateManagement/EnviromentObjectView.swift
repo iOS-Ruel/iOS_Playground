@@ -26,10 +26,49 @@ struct EnviromentObjectView: View {
     @State var isSettingShown = false
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Form {
+                Section {
+                    Text("This is just some random data")
+                    Text("Let's assume this was the main screen of an app")
+                    Text("Tap the cog icon to go to the fake setting screen")
+                }
+            }
+            
+            HStack {
+                Text("Sign in as \(profile.name)")
+                    .foregroundStyle(Color(UIColor.systemBackground))
+                Spacer()
+            }
+            .padding(30)
+            .background(profile.favouriteColor)
+        }
+        .ignoresSafeArea(edges: .bottom)
+        .navigationTitle("@EnviromentObject")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: showSetting) {
+                    Image(systemName: "gearshape")
+                }
+            }
+        }
+        .sheet(isPresented: $isSettingShown) {
+            NavigationStack {
+                SettingScreen()
+            }
+            .environmentObject(profile)
+        }
+    }
+    
+    func showSetting() {
+        isSettingShown.toggle()
     }
 }
 
 #Preview {
-    EnviromentObjectView()
+    NavigationStack{
+        EnviromentObjectView()
+    }
+    
+        
 }

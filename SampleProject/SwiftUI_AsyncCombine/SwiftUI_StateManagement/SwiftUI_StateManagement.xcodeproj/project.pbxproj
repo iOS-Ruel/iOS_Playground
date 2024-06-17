@@ -13,6 +13,7 @@
 		416FF0912C1FEF7D00CE8AF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 416FF0902C1FEF7D00CE8AF0 /* Preview Assets.xcassets */; };
 		416FF0982C1FF22700CE8AF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416FF0972C1FF22700CE8AF0 /* ContentView.swift */; };
 		416FF09A2C1FF67E00CE8AF0 /* EnviromentObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416FF0992C1FF67E00CE8AF0 /* EnviromentObjectView.swift */; };
+		416FF09C2C1FFC4F00CE8AF0 /* SettingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416FF09B2C1FFC4F00CE8AF0 /* SettingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		416FF0902C1FEF7D00CE8AF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		416FF0972C1FF22700CE8AF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		416FF0992C1FF67E00CE8AF0 /* EnviromentObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnviromentObjectView.swift; sourceTree = "<group>"; };
+		416FF09B2C1FFC4F00CE8AF0 /* SettingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				416FF08F2C1FEF7D00CE8AF0 /* Preview Content */,
 				416FF0972C1FF22700CE8AF0 /* ContentView.swift */,
 				416FF0992C1FF67E00CE8AF0 /* EnviromentObjectView.swift */,
+				416FF09B2C1FFC4F00CE8AF0 /* SettingScreen.swift */,
 			);
 			path = SwiftUI_StateManagement;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				416FF09C2C1FFC4F00CE8AF0 /* SettingScreen.swift in Sources */,
 				416FF08C2C1FEF7C00CE8AF0 /* ParentView.swift in Sources */,
 				416FF08A2C1FEF7C00CE8AF0 /* SwiftUI_StateManagementApp.swift in Sources */,
 				416FF0982C1FF22700CE8AF0 /* ContentView.swift in Sources */,
