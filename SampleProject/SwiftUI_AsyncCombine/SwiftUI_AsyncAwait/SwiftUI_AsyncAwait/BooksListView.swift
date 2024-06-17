@@ -9,9 +9,9 @@ import SwiftUI
 import Combine
 
 private extension String {
-  func matches(_ searchTerm: String) -> Bool {
-    self.range(of: searchTerm, options: .caseInsensitive) != nil
-  }
+    func matches(_ searchTerm: String) -> Bool {
+        self.range(of: searchTerm, options: .caseInsensitive) != nil
+    }
 }
 
 private class BooksListViewModel: ObservableObject {
@@ -34,10 +34,12 @@ private class BooksListViewModel: ObservableObject {
     func fetchData() async {
         fetching = true
         books.removeAll()
+        
         do {
             try await Task.sleep(for: .seconds(2))
         } catch {
         }
+        
         books = Book.samples
         fetching = false
     }
@@ -70,25 +72,25 @@ struct BooksListView: View {
 
 
 private struct BookRowView: View {
-  var book: Book
-  
-  var body: some View {
-    HStack(alignment: .top) {
-      Image(book.mediumCoverImageName)
-        .resizable()
-        .aspectRatio(contentMode: .fit)
-        .frame(height: 90)
-      VStack(alignment: .leading) {
-        Text(book.title)
-          .font(.headline)
-        Text("by \(book.author)")
-          .font(.subheadline)
-        Text("\(book.pages) pages")
-          .font(.subheadline)
-      }
-      Spacer()
+    var book: Book
+    
+    var body: some View {
+        HStack(alignment: .top) {
+            Image(book.mediumCoverImageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 90)
+            VStack(alignment: .leading) {
+                Text(book.title)
+                    .font(.headline)
+                Text("by \(book.author)")
+                    .font(.subheadline)
+                Text("\(book.pages) pages")
+                    .font(.subheadline)
+            }
+            Spacer()
+        }
     }
-  }
 }
 
 #Preview {
