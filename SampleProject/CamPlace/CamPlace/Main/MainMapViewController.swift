@@ -41,7 +41,7 @@ class MainMapViewController: UIViewController {
     }()
     
     private lazy var currentPlaceButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("현재 위치에서 검색", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 12)
@@ -52,7 +52,7 @@ class MainMapViewController: UIViewController {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.gray.cgColor
         button.addTarget(self, action: #selector(currentButtonTapped), for: .touchUpInside)
-       return button
+        return button
     }()
     
     private var isFirstLocationUpdate = true
@@ -91,13 +91,14 @@ class MainMapViewController: UIViewController {
         ])
     }
     
+    //MARK: - Base UI Setup
     private func setupUI() {
         self.view.addSubview(listButton)
         NSLayoutConstraint.activate([
             listButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             listButton.heightAnchor.constraint(equalToConstant: 40),
             listButton.widthAnchor.constraint(equalToConstant: 120),
-            listButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, 
+            listButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
                                                constant: -30)
         ])
         
@@ -112,7 +113,7 @@ class MainMapViewController: UIViewController {
     
     private func addPinsToMap(_ items: [BasedItem]) {
         for item in items {
-            let coordinate = CLLocationCoordinate2D(latitude: Double(item.mapY) ?? 0.0, 
+            let coordinate = CLLocationCoordinate2D(latitude: Double(item.mapY) ?? 0.0,
                                                     longitude: Double(item.mapX) ?? 0.0)
             let annotation = CustomAnnotation(coordinate: coordinate, item: item)
             
@@ -130,28 +131,27 @@ class MainMapViewController: UIViewController {
     
     //MARK: Action Event
     @objc func listButotnTapped() {
-        let listVC = PlaceListViewController()
+        
+        let locationList = viewModel.locationList
+        //TODO: - 현재 나의 위치를 기준으로 목록리스트를 띄워줌 -> 리스트는 페이징 처리 X 현재 내위치 기준에서 있는 목록만 보여줄거임
+        let listVC = PlaceListViewController(locationList: locationList)
         
         let detentIdentifier = UISheetPresentationController.Detent.Identifier("customDetent")
         let customDetent = UISheetPresentationController.Detent.custom(identifier: detentIdentifier) { _ in
             let screenHeight = UIScreen.main.bounds.height
-            //87.7%이상은 현재 viewcontroller가 뒤로 밀리면서 작아짐
+            //87.89%이상은 현재 viewcontroller가 뒤로 밀리면서 작아짐
             return screenHeight * 0.878912
         }
-
+        
         if let sheet = listVC.sheetPresentationController {
             sheet.detents = [customDetent] // detent 설정
             sheet.preferredCornerRadius = 30 // 둥글기 수정
             // ✅ grabber를 보이지 않게 구현.(UI를 위해 이미지로 대체)
             // sheet.prefersGrabberVisible = false // 기본값
-
+            
             // ✅ 스크롤 상황에서 최대 detent까지 확장하는 여부 결정.
             // sheet.prefersScrollingExpandsWhenScrolledToEdge = true // 기본값
         }
-
-        // ✅ 기본값 automatic. 대부분의 뷰 컨트롤러의 경우 pageSheet 스타일에 매핑.
-        // sheetVC.modalPresentationStyle = .pageSheet
-        
         present(listVC, animated: true)
     }
     
@@ -212,7 +212,6 @@ extension MainMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let coordinate = view.annotation?.coordinate else { return }
         // setRegion(coordinate: coordinate)
-    
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -228,7 +227,7 @@ extension MainMapViewController: MKMapViewDelegate {
         let identifier = "CustomClusterAnnotationView"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomClusterAnnotationView
         if annotationView == nil {
-        annotationView = CustomClusterAnnotationView(annotation: cluster, reuseIdentifier: identifier)
+            annotationView = CustomClusterAnnotationView(annotation: cluster, reuseIdentifier: identifier)
         } else {
             annotationView?.annotation = cluster
         }

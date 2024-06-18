@@ -86,19 +86,18 @@
 		411B1A102C1D74C500CAA9A7 /* CamPlace */ = {
 			isa = PBXGroup;
 			children = (
-				415AF2592C20824F00C07CEA /* Extension */,
-				415AF2552C2081A400C07CEA /* CustomView */,
-				411B1A322C1D774600CAA9A7 /* Model */,
 				415AF2512C20665100C07CEA /* Main */,
-				411B1A252C1D74E000CAA9A7 /* App */,
 				411B1A152C1D74C500CAA9A7 /* ViewController.swift */,
-				411B1A1A2C1D74C700CAA9A7 /* Assets.xcassets */,
-				411B1A1C2C1D74C700CAA9A7 /* LaunchScreen.storyboard */,
-				411B1A1F2C1D74C700CAA9A7 /* Info.plist */,
 				411B1A262C1D74EF00CAA9A7 /* MainTabbarViewController.swift */,
 				411B1A3B2C1D809900CAA9A7 /* PlaceListViewController.swift */,
-				415AF2532C2066D300C07CEA /* Extension_Bundle.swift */,
 				415AF25C2C2086CE00C07CEA /* ImageLoader.swift */,
+				411B1A322C1D774600CAA9A7 /* Model */,
+				415AF2592C20824F00C07CEA /* Extension */,
+				415AF2552C2081A400C07CEA /* Custom */,
+				411B1A252C1D74E000CAA9A7 /* App */,
+				411B1A1C2C1D74C700CAA9A7 /* LaunchScreen.storyboard */,
+				411B1A1A2C1D74C700CAA9A7 /* Assets.xcassets */,
+				411B1A1F2C1D74C700CAA9A7 /* Info.plist */,
 			);
 			path = CamPlace;
 			sourceTree = "<group>";
@@ -135,12 +134,12 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		415AF2552C2081A400C07CEA /* CustomView */ = {
+		415AF2552C2081A400C07CEA /* Custom */ = {
 			isa = PBXGroup;
 			children = (
 				415AF2562C2081A900C07CEA /* Annotation */,
 			);
-			path = CustomView;
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		415AF2562C2081A900C07CEA /* Annotation */ = {
@@ -155,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				415AF25A2C2086BB00C07CEA /* Extension+UIImage.swift */,
+				415AF2532C2066D300C07CEA /* Extension_Bundle.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
