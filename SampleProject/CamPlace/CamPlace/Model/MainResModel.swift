@@ -7,7 +7,17 @@
 
 import Foundation
 
-protocol BasedItem: Codable {}
+protocol BasedItem: Codable {
+    var imageUrl: String { get }
+    var title: String { get }
+    var subTitle: String { get }
+    var mapX: String { get }
+    var mapY: String { get }
+}
+
+struct ApiResponse<T: BasedItem>: Codable {
+    let response: BasedRes<T>
+}
 
 struct BasedRes<T: BasedItem>: Codable {
     let header: BasedHeader

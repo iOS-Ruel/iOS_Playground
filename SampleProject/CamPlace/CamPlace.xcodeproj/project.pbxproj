@@ -23,6 +23,10 @@
 		411B1A382C1D776700CAA9A7 /* BasedSyncListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A372C1D776700CAA9A7 /* BasedSyncListModel.swift */; };
 		411B1A3A2C1D798D00CAA9A7 /* MainResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A392C1D798D00CAA9A7 /* MainResModel.swift */; };
 		411B1A3C2C1D809900CAA9A7 /* PlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A3B2C1D809900CAA9A7 /* PlaceListViewController.swift */; };
+		415AF2542C2066D300C07CEA /* Extension_Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF2532C2066D300C07CEA /* Extension_Bundle.swift */; };
+		415AF2582C2081F300C07CEA /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF2572C2081F300C07CEA /* CustomAnnotation.swift */; };
+		415AF25B2C2086BB00C07CEA /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF25A2C2086BB00C07CEA /* Extension+UIImage.swift */; };
+		415AF25D2C2086CE00C07CEA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF25C2C2086CE00C07CEA /* ImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,11 @@
 		411B1A372C1D776700CAA9A7 /* BasedSyncListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasedSyncListModel.swift; sourceTree = "<group>"; };
 		411B1A392C1D798D00CAA9A7 /* MainResModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainResModel.swift; sourceTree = "<group>"; };
 		411B1A3B2C1D809900CAA9A7 /* PlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewController.swift; sourceTree = "<group>"; };
+		415AF2522C20669700C07CEA /* API_KEY.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = API_KEY.xcconfig; sourceTree = "<group>"; };
+		415AF2532C2066D300C07CEA /* Extension_Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Bundle.swift; sourceTree = "<group>"; };
+		415AF2572C2081F300C07CEA /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		415AF25A2C2086BB00C07CEA /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
+		415AF25C2C2086CE00C07CEA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +69,7 @@
 		411B1A052C1D74C500CAA9A7 = {
 			isa = PBXGroup;
 			children = (
+				415AF2522C20669700C07CEA /* API_KEY.xcconfig */,
 				411B1A102C1D74C500CAA9A7 /* CamPlace */,
 				411B1A0F2C1D74C500CAA9A7 /* Products */,
 			);
@@ -76,17 +86,19 @@
 		411B1A102C1D74C500CAA9A7 /* CamPlace */ = {
 			isa = PBXGroup;
 			children = (
+				415AF2592C20824F00C07CEA /* Extension */,
+				415AF2552C2081A400C07CEA /* CustomView */,
+				411B1A322C1D774600CAA9A7 /* Model */,
+				415AF2512C20665100C07CEA /* Main */,
 				411B1A252C1D74E000CAA9A7 /* App */,
 				411B1A152C1D74C500CAA9A7 /* ViewController.swift */,
 				411B1A1A2C1D74C700CAA9A7 /* Assets.xcassets */,
 				411B1A1C2C1D74C700CAA9A7 /* LaunchScreen.storyboard */,
 				411B1A1F2C1D74C700CAA9A7 /* Info.plist */,
 				411B1A262C1D74EF00CAA9A7 /* MainTabbarViewController.swift */,
-				411B1A2A2C1D76E500CAA9A7 /* MainMapViewModel.swift */,
-				411B1A2C2C1D76EE00CAA9A7 /* MainMapViewService.swift */,
-				411B1A282C1D752A00CAA9A7 /* MainMapViewController.swift */,
-				411B1A322C1D774600CAA9A7 /* Model */,
 				411B1A3B2C1D809900CAA9A7 /* PlaceListViewController.swift */,
+				415AF2532C2066D300C07CEA /* Extension_Bundle.swift */,
+				415AF25C2C2086CE00C07CEA /* ImageLoader.swift */,
 			);
 			path = CamPlace;
 			sourceTree = "<group>";
@@ -111,6 +123,40 @@
 				411B1A392C1D798D00CAA9A7 /* MainResModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		415AF2512C20665100C07CEA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				411B1A2A2C1D76E500CAA9A7 /* MainMapViewModel.swift */,
+				411B1A2C2C1D76EE00CAA9A7 /* MainMapViewService.swift */,
+				411B1A282C1D752A00CAA9A7 /* MainMapViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		415AF2552C2081A400C07CEA /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				415AF2562C2081A900C07CEA /* Annotation */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		415AF2562C2081A900C07CEA /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				415AF2572C2081F300C07CEA /* CustomAnnotation.swift */,
+			);
+			path = Annotation;
+			sourceTree = "<group>";
+		};
+		415AF2592C20824F00C07CEA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				415AF25A2C2086BB00C07CEA /* Extension+UIImage.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,19 +229,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				415AF2542C2066D300C07CEA /* Extension_Bundle.swift in Sources */,
 				411B1A382C1D776700CAA9A7 /* BasedSyncListModel.swift in Sources */,
 				411B1A162C1D74C500CAA9A7 /* ViewController.swift in Sources */,
 				411B1A3C2C1D809900CAA9A7 /* PlaceListViewController.swift in Sources */,
 				411B1A2D2C1D76EE00CAA9A7 /* MainMapViewService.swift in Sources */,
 				411B1A362C1D775D00CAA9A7 /* ImageListModel.swift in Sources */,
 				411B1A272C1D74EF00CAA9A7 /* MainTabbarViewController.swift in Sources */,
+				415AF2582C2081F300C07CEA /* CustomAnnotation.swift in Sources */,
 				411B1A2F2C1D773A00CAA9A7 /* BasedListModel.swift in Sources */,
 				411B1A312C1D774400CAA9A7 /* LocationBasedListModel.swift in Sources */,
 				411B1A342C1D775500CAA9A7 /* SearchListModel.swift in Sources */,
 				411B1A2B2C1D76E500CAA9A7 /* MainMapViewModel.swift in Sources */,
 				411B1A122C1D74C500CAA9A7 /* AppDelegate.swift in Sources */,
 				411B1A3A2C1D798D00CAA9A7 /* MainResModel.swift in Sources */,
+				415AF25D2C2086CE00C07CEA /* ImageLoader.swift in Sources */,
 				411B1A142C1D74C500CAA9A7 /* SceneDelegate.swift in Sources */,
+				415AF25B2C2086BB00C07CEA /* Extension+UIImage.swift in Sources */,
 				411B1A292C1D752A00CAA9A7 /* MainMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +266,7 @@
 /* Begin XCBuildConfiguration section */
 		411B1A202C1D74C700CAA9A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 415AF2522C20669700C07CEA /* API_KEY.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -279,6 +330,7 @@
 		};
 		411B1A212C1D74C700CAA9A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 415AF2522C20669700C07CEA /* API_KEY.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -335,6 +387,7 @@
 		};
 		411B1A232C1D74C700CAA9A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 415AF2522C20669700C07CEA /* API_KEY.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -343,10 +396,12 @@
 				DEVELOPMENT_TEAM = 9UU59NTC96;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CamPlace/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "지도 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,6 +417,7 @@
 		};
 		411B1A242C1D74C700CAA9A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 415AF2522C20669700C07CEA /* API_KEY.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -370,10 +426,12 @@
 				DEVELOPMENT_TEAM = 9UU59NTC96;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CamPlace/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "지도 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

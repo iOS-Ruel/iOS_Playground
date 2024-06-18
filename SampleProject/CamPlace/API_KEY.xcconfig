@@ -1,0 +1,11 @@
+//
+//  API_KEY.xcconfig
+//  CamPlace
+//
+//  Created by Chung Wussup on 6/17/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+SERVICE_KEY = 5uyQuJMH%2FNR%2FnDrDpK8piq1ET7tUg1306jFCxKjT1wRtpfU5t1%2BWeBMzSrJE%2BCEq%2FLUlazCy3IYaglcaLl3CBA%3D%3D

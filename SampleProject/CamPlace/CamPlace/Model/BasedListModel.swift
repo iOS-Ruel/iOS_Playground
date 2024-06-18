@@ -7,9 +7,13 @@
 
 import Foundation
 
-struct BasedListItem: Codable {
+struct BasedListItem: BasedItem {
+    let imageUrl: String
+    var title: String
+    var subTitle: String
+    
     let contentId: String
-    let facltNm: String
+    
     let lineIntro: String
     let intro: String
     let allar: String
@@ -28,7 +32,7 @@ struct BasedListItem: Codable {
     let doNm: String
     let sigunguNm: String
     let zipcode: String
-    let addr1: String
+    
     let addr2: String
     let mapX: String
     let mapY: String
@@ -86,8 +90,16 @@ struct BasedListItem: Codable {
     let eqpmnLendCl: String
     let animalCmgCl: String
     let tourEraCl: String
-    let firstImageUrl: String
     let createdtime: String
     let modifiedtime: String
 
+    
+    enum CodingKeys: String, CodingKey {
+        case imageUrl = "firstImageUrl"
+        case title = "facltNm"
+        case subTitle = "addr1"
+        case contentId, lineIntro, intro, allar, insrncAt, trsagntNo, bizrno, facltDivNm, mangeDivNm, mgcDiv, manageSttus, hvofBgnde, hvofEnddle, featureNm, induty, lctCl, doNm, sigunguNm, zipcode, addr2, mapX, mapY, direction, tel, homepage, resveUrl, resveCl, manageNmpr, gnrlSiteCo, autoSiteCo, glampSiteCo, caravSiteCo, indvdlCaravSiteCo, sitedStnc, siteMg1Width, siteMg2Width, siteMg3Width, siteMg1Vrticl, siteMg2Vrticl, siteMg3Vrticl, siteMg1Co, siteMg2Co, siteMg3Co, siteBottomCl1, siteBottomCl2, siteBottomCl3, siteBottomCl4, siteBottomCl5, tooltip, glampInnerFclty, caravInnerFclty, prmisnDe, operPdCl, operDeCl, trlerAcmpnyAt, caravAcmpnyAt, toiletCo, swrmCo, wtrplCo, brazierCl, sbrsCl, sbrsEtc, posblFcltyCl, posblFcltyEtc, clturEventAt, clturEvent, exprnProgrmAt, exprnProgrm, extshrCo, frprvtWrppCo, frprvtSandCo, fireSensorCo, themaEnvrnCl, eqpmnLendCl, animalCmgCl, tourEraCl, createdtime, modifiedtime
+
+    }
 }
+
