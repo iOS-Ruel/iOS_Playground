@@ -20,8 +20,10 @@ class MainMapViewController: UIViewController {
         mv.translatesAutoresizingMaskIntoConstraints = false
         mv.preferredConfiguration = MKStandardMapConfiguration()
         mv.showsUserLocation = true
-        mv.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: "CustomAnnotationView")
-        mv.register(CustomClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: "CustomClusterAnnotationView")
+        mv.register(CustomAnnotationView.self, 
+                    forAnnotationViewWithReuseIdentifier: "CustomAnnotationView")
+        mv.register(CustomClusterAnnotationView.self, 
+                    forAnnotationViewWithReuseIdentifier: "CustomClusterAnnotationView")
         return mv
     }()
     
@@ -135,6 +137,9 @@ class MainMapViewController: UIViewController {
         let locationList = viewModel.locationList
         //TODO: - 현재 나의 위치를 기준으로 목록리스트를 띄워줌 -> 리스트는 페이징 처리 X 현재 내위치 기준에서 있는 목록만 보여줄거임
         let listVC = PlaceListViewController(locationList: locationList)
+        let vc = UINavigationController(rootViewController: listVC)
+        listVC.delegate = self
+        
         
         let detentIdentifier = UISheetPresentationController.Detent.Identifier("customDetent")
         let customDetent = UISheetPresentationController.Detent.custom(identifier: detentIdentifier) { _ in
@@ -143,7 +148,7 @@ class MainMapViewController: UIViewController {
             return screenHeight * 0.878912
         }
         
-        if let sheet = listVC.sheetPresentationController {
+        if let sheet = vc.sheetPresentationController {
             sheet.detents = [customDetent] // detent 설정
             sheet.preferredCornerRadius = 30 // 둥글기 수정
             // ✅ grabber를 보이지 않게 구현.(UI를 위해 이미지로 대체)
@@ -152,7 +157,7 @@ class MainMapViewController: UIViewController {
             // ✅ 스크롤 상황에서 최대 detent까지 확장하는 여부 결정.
             // sheet.prefersScrollingExpandsWhenScrolledToEdge = true // 기본값
         }
-        present(listVC, animated: true)
+        present(vc, animated: true)
     }
     
     @objc func currentButtonTapped() {
@@ -196,6 +201,14 @@ extension MainMapViewController: CLLocationManagerDelegate {
     }
 }
 
+extension MainMapViewController: PlaceListDelegate {
+    func pushDetailView() {
+        let vc = ViewController()
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
 
 //MARK: - MKMapViewDelegate
 extension MainMapViewController: MKMapViewDelegate {
@@ -204,14 +217,55 @@ extension MainMapViewController: MKMapViewDelegate {
         setRegion(coordinate: coordinate)
     }
     
+    /// coordinate를 기준으로 Region 설정 후 해당위치로 이동시킴(가로세로 1000미터 영역으로 설정함)
     private func setRegion(coordinate: CLLocationCoordinate2D) {
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(region, animated: true)
     }
     
+    private func closestAnnotation(to coordinate: CLLocationCoordinate2D, in annotations: [MKAnnotation]) -> MKAnnotation? {
+        var closestAnnotation: MKAnnotation?
+        var closestDistance: CLLocationDistance = CLLocationDistanceMax
+        
+        let targetLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        
+        for annotation in annotations {
+            let annotationLocation = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+            let distance = targetLocation.distance(from: annotationLocation)
+            
+            if distance < closestDistance {
+                closestDistance = distance
+                closestAnnotation = annotation
+            }
+        }
+        
+        return closestAnnotation
+    }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let coordinate = view.annotation?.coordinate else { return }
-        // setRegion(coordinate: coordinate)
+        
+        if let clusterAnnotation = view.annotation as? MKClusterAnnotation {
+            
+            guard let closestAnnotation = closestAnnotation(to: clusterAnnotation.coordinate,
+                                                            in: clusterAnnotation.memberAnnotations) else { return }
+            
+            let closestCoordinate = closestAnnotation.coordinate
+            setRegion(coordinate: closestCoordinate)
+            
+            // 가장 가까운 어노테이션을 선택하여 callout 표시
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                mapView.selectAnnotation(closestAnnotation, animated: true)
+            }
+        } else {
+            guard let coordinate = view.annotation?.coordinate else { return }
+            // 선택된 주석(annotation)이 클러스터가 아닌 경우 처리
+            setRegion(coordinate: coordinate)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                if let annotation = view.annotation {
+                    mapView.selectAnnotation(annotation, animated: true)
+                }
+            }
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

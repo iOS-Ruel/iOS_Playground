@@ -49,7 +49,6 @@ class CustomAnnotationView: MKMarkerAnnotationView {
                     let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
                     self.image = circularImage
                 }
-                
             }
             
         } else {
@@ -58,55 +57,55 @@ class CustomAnnotationView: MKMarkerAnnotationView {
     }
     
     private func setupCallout(for annotation: CustomAnnotation) {
-            // Callout의 왼쪽 뷰 설정 (예: 이미지)
-            let leftIconView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-            leftIconView.contentMode = .scaleAspectFill
-            leftIconView.layer.cornerRadius = 15
-            leftIconView.clipsToBounds = true
-            
-            if let url = annotation.item?.imageUrl, !url.isEmpty {
-                ImageLoader.loadImageFromUrl(url) { image in
-                    DispatchQueue.main.async {
-                        leftIconView.image = image
-                    }
+        // Callout의 왼쪽 뷰 설정 (예: 이미지)
+        let leftIconView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        leftIconView.contentMode = .scaleAspectFill
+        leftIconView.layer.cornerRadius = 15
+        leftIconView.clipsToBounds = true
+        
+        if let url = annotation.item?.imageUrl, !url.isEmpty {
+            ImageLoader.loadImageFromUrl(url) { image in
+                DispatchQueue.main.async {
+                    leftIconView.image = image
                 }
-            } else {
-                leftIconView.image = UIImage(systemName: "questionmark")
             }
-            self.leftCalloutAccessoryView = leftIconView
-            
-            // Callout의 오른쪽 뷰 설정 (예: 상세 정보 버튼)
-            let rightButton = UIButton(type: .detailDisclosure)
-            self.rightCalloutAccessoryView = rightButton
-            
-            // Callout의 세부 정보 뷰 설정 (예: 사용자 정의 뷰)
-            let detailView = UIView()
-//            let titleLabel = UILabel()
-//            titleLabel.text = annotation.title
-//            titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-            
-            let subtitleLabel = UILabel()
-            subtitleLabel.text = annotation.subtitle
-            subtitleLabel.font = UIFont.systemFont(ofSize: 12)
-            
-//            detailView.addSubview(titleLabel)
-            detailView.addSubview(subtitleLabel)
-            
-//            titleLabel.translatesAutoresizingMaskIntoConstraints = false
-            subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-            
-            NSLayoutConstraint.activate([
-//                titleLabel.topAnchor.constraint(equalTo: detailView.topAnchor),
-//                titleLabel.leadingAnchor.constraint(equalTo: detailView.leadingAnchor),
-//                titleLabel.trailingAnchor.constraint(equalTo: detailView.trailingAnchor),
-                subtitleLabel.topAnchor.constraint(equalTo: detailView.topAnchor),
-                subtitleLabel.leadingAnchor.constraint(equalTo: detailView.leadingAnchor),
-                subtitleLabel.trailingAnchor.constraint(equalTo: detailView.trailingAnchor),
-                subtitleLabel.bottomAnchor.constraint(equalTo: detailView.bottomAnchor)
-            ])
-            
-            self.detailCalloutAccessoryView = detailView
+        } else {
+            leftIconView.image = UIImage(systemName: "questionmark")
         }
+        self.leftCalloutAccessoryView = leftIconView
+        
+        // Callout의 오른쪽 뷰 설정 (예: 상세 정보 버튼)
+        let rightButton = UIButton(type: .detailDisclosure)
+        self.rightCalloutAccessoryView = rightButton
+        
+        // Callout의 세부 정보 뷰 설정 (예: 사용자 정의 뷰)
+        let detailView = UIView()
+        //            let titleLabel = UILabel()
+        //            titleLabel.text = annotation.title
+        //            titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        let subtitleLabel = UILabel()
+        subtitleLabel.text = annotation.subtitle
+        subtitleLabel.font = UIFont.systemFont(ofSize: 12)
+        
+        //            detailView.addSubview(titleLabel)
+        detailView.addSubview(subtitleLabel)
+        
+        //            titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            //                titleLabel.topAnchor.constraint(equalTo: detailView.topAnchor),
+            //                titleLabel.leadingAnchor.constraint(equalTo: detailView.leadingAnchor),
+            //                titleLabel.trailingAnchor.constraint(equalTo: detailView.trailingAnchor),
+            subtitleLabel.topAnchor.constraint(equalTo: detailView.topAnchor),
+            subtitleLabel.leadingAnchor.constraint(equalTo: detailView.leadingAnchor),
+            subtitleLabel.trailingAnchor.constraint(equalTo: detailView.trailingAnchor),
+            subtitleLabel.bottomAnchor.constraint(equalTo: detailView.bottomAnchor)
+        ])
+        
+        self.detailCalloutAccessoryView = detailView
+    }
 }
 
 class CustomClusterAnnotationView: MKAnnotationView {
@@ -116,24 +115,28 @@ class CustomClusterAnnotationView: MKAnnotationView {
             updateClusterAppearance(for: cluster)
         }
     }
-    
+
     private func updateClusterAppearance(for cluster: MKClusterAnnotation) {
         var annotationImage: UIImage? = nil
         self.displayPriority = .required
         
         for member in cluster.memberAnnotations {
-            if let customAnnotation = member as? CustomAnnotation, let url = customAnnotation.item?.imageUrl, !url.isEmpty {
+            if let customAnnotation = member as? CustomAnnotation, 
+                let url = customAnnotation.item?.imageUrl, !url.isEmpty {
                 ImageLoader.loadImageFromUrl(url) { image in
-                    annotationImage = image
+                    DispatchQueue.main.async {
+                        let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
+                        let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, 
+                                                                        borderColor: .white)
+                        self.image = circularImage
+                    }
                 }
                 break
             }
         }
         
-        DispatchQueue.main.async {
-            if let image = annotationImage {
-                self.image = image.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
-            } else {
+        if annotationImage == nil {
+            DispatchQueue.main.async {
                 self.image = UIImage(systemName: "questionmark")?.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
             }
         }

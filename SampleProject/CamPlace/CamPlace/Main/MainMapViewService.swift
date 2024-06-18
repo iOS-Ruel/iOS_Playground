@@ -48,6 +48,7 @@ class MainMapViewService {
         
         var urlComponents = URLComponents(string: APIURL.locationBasedList.urlString)
         urlComponents?.queryItems = [
+            URLQueryItem(name: "numOfRows", value: "1000"),
             URLQueryItem(name: "MobileOS", value: "IOS"),
             URLQueryItem(name: "MobileApp", value: "TrekKo"),
             URLQueryItem(name: "serviceKey", value: apiKey),

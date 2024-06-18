@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     private lazy var listButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("목록 보기", for: .normal)
+        button.setTitle("닫기", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.setImage(UIImage(systemName: "list.bullet"), for: .normal)
         button.tintColor = .black
@@ -35,6 +35,7 @@ class ViewController: UIViewController {
     }
     
     @objc func listButotnTapped() {
+        self.dismiss(animated: false)
 //        let listVC = PlaceListViewController()
 //        
 //        

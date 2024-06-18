@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol PlaceListDelegate: AnyObject {
+    func pushDetailView()
+}
+
+
 class PlaceListViewController: UIViewController {
     @Published var locationList: [LocationBasedListModel]
+    weak var delegate: PlaceListDelegate?
     
     private lazy var listTableView: UITableView = {
        let tv = UITableView()
@@ -32,13 +38,14 @@ class PlaceListViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         view.backgroundColor = .blue
+        title = "목록"
     }
     
     private func setupUI() {
         view.addSubview(listTableView)
         
         NSLayoutConstraint.activate([
-            listTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 44),
+            listTableView.topAnchor.constraint(equalTo: view.topAnchor),
             listTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             listTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             listTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -58,6 +65,16 @@ extension PlaceListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell()
         cell.textLabel?.text = locationList[indexPath.row].title
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.delegate?.pushDetailView()
+        
+        let vc = ViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     
