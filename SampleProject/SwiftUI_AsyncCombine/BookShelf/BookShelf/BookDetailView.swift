@@ -30,6 +30,9 @@ struct BookDetailView: View {
             })
         }
         .navigationTitle(book.title)
+        .sheet(isPresented: $showEditBookView) {
+            BookEditView(book: $book)
+        }
     }
     
 }
