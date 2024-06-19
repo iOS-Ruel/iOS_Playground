@@ -56,7 +56,7 @@ class SignUpFormViewModel: ObservableObject {
         $username.debounce(for: 0.5, scheduler: RunLoop.main)
             .removeDuplicates()
             .flatMap { userName -> AnyPublisher<Bool, Never> in
-                self.authenticationService.checkUserNameAvailableWithClosure(userName: userName)
+                self.authenticationService.checkUserNameAvailable(userName: userName)
             }
             .receive(on: DispatchQueue.main)
             .share()
