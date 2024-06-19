@@ -15,7 +15,7 @@ struct ContentView: View {
         Form {
             Section {
                 TextField("Username", text: $viewModel.username)
-                    .textInputAutocapitalization(.none)
+                    .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
             } footer: {
                 Text(viewModel.usernameMessage)
