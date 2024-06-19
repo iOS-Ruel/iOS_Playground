@@ -7,20 +7,18 @@
 
 import UIKit
 
-protocol PlaceListDelegate: AnyObject {
-    func pushDetailView()
-}
-
-
 class PlaceListViewController: UIViewController {
     @Published var locationList: [LocationBasedListModel]
-    weak var delegate: PlaceListDelegate?
-    
+
     private lazy var listTableView: UITableView = {
-       let tv = UITableView()
+        let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.delegate = self
         tv.dataSource = self
+        tv.separatorStyle = .none
+        tv.rowHeight = UITableView.automaticDimension
+        tv.estimatedRowHeight = 100
+        tv.register(PlaceListTableViewCell.self, forCellReuseIdentifier: "PlaceListTableViewCell")
         return tv
     }()
     
@@ -52,8 +50,8 @@ class PlaceListViewController: UIViewController {
         ])
     }
     
-
-
+    
+    
 }
 
 extension PlaceListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -62,19 +60,21 @@ extension PlaceListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = locationList[indexPath.row].title
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceListTableViewCell", for: indexPath) as? PlaceListTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.setupCell(content: locationList[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.delegate?.pushDetailView()
-        
-        let vc = ViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false)
-//        self.navigationController?.pushViewController(vc, animated: true)
-        
+        let content = locationList[indexPath.row]
+        let viewModel = PlaceDetailViewModel(content: content)
+        let vc = PlaceDetailViewController(viewModel: viewModel)
+        let naviController = UINavigationController(rootViewController: vc)
+        naviController.modalPresentationStyle = .fullScreen
+        self.present(naviController, animated: false)
     }
     
     

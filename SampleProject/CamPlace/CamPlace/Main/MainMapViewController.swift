@@ -115,8 +115,8 @@ class MainMapViewController: UIViewController {
     
     private func addPinsToMap(_ items: [BasedItem]) {
         for item in items {
-            let coordinate = CLLocationCoordinate2D(latitude: Double(item.mapY) ?? 0.0,
-                                                    longitude: Double(item.mapX) ?? 0.0)
+            let coordinate = CLLocationCoordinate2D(latitude: Double(item.mapY ?? "") ?? 0.0,
+                                                    longitude: Double(item.mapX ?? "") ?? 0.0)
             let annotation = CustomAnnotation(coordinate: coordinate, item: item)
             
             mapView.addAnnotation(annotation)
@@ -138,8 +138,7 @@ class MainMapViewController: UIViewController {
         //TODO: - 현재 나의 위치를 기준으로 목록리스트를 띄워줌 -> 리스트는 페이징 처리 X 현재 내위치 기준에서 있는 목록만 보여줄거임
         let listVC = PlaceListViewController(locationList: locationList)
         let vc = UINavigationController(rootViewController: listVC)
-        listVC.delegate = self
-        
+            
         
         let detentIdentifier = UISheetPresentationController.Detent.Identifier("customDetent")
         let customDetent = UISheetPresentationController.Detent.custom(identifier: detentIdentifier) { _ in
@@ -198,14 +197,6 @@ extension MainMapViewController: CLLocationManagerDelegate {
         default:
             break
         }
-    }
-}
-
-extension MainMapViewController: PlaceListDelegate {
-    func pushDetailView() {
-        let vc = ViewController()
-        
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

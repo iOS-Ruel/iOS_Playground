@@ -76,7 +76,7 @@ class MainMapViewService {
                       httpResponse.statusCode == 200 else {
                     throw URLError(.badServerResponse)
                 }
-//                print("Debug: Received Data - \(String(data: data, encoding: .utf8) ?? "")")
+                print("Debug: Received Data - \(String(data: data, encoding: .utf8) ?? "")")
                 return data
             }
             .decode(type: ApiResponse<T>.self, decoder: JSONDecoder())

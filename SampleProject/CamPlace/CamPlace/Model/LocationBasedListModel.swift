@@ -8,9 +8,12 @@
 import Foundation
 
 struct LocationBasedListModel: BasedItem {
-    let imageUrl: String
-    let title: String
-    let subTitle: String
+    var imageUrl: String?
+    var title: String?
+    var subTitle: String?
+    var mapX: String?
+    var mapY: String?
+    
     
     let wtrplCo: String
     let brazierCl: String
@@ -62,8 +65,6 @@ struct LocationBasedListModel: BasedItem {
     let sigunguNm: String
     let zipcode: String
     let addr2: String
-    let mapX: String
-    let mapY: String
     let direction: String
     let tel: String
     let homepage: String

@@ -8,11 +8,11 @@
 import Foundation
 
 protocol BasedItem: Codable {
-    var imageUrl: String { get }
-    var title: String { get }
-    var subTitle: String { get }
-    var mapX: String { get }
-    var mapY: String { get }
+    var imageUrl: String? { get }
+    var title: String? { get }
+    var subTitle: String? { get }
+    var mapX: String? { get }
+    var mapY: String? { get }
 }
 
 struct ApiResponse<T: BasedItem>: Codable {

@@ -8,9 +8,11 @@
 import Foundation
 
 struct BasedListItem: BasedItem {
-    let imageUrl: String
-    var title: String
-    var subTitle: String
+    let imageUrl: String?
+    var title: String?
+    var subTitle: String?
+    let mapX: String?
+    let mapY: String?
     
     let contentId: String
     
@@ -34,8 +36,7 @@ struct BasedListItem: BasedItem {
     let zipcode: String
     
     let addr2: String
-    let mapX: String
-    let mapY: String
+    
     let direction: String
     let tel: String
     let homepage: String
