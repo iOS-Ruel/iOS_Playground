@@ -12,6 +12,7 @@
 		41B9F7952C2169170022FE8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B9F7942C2169170022FE8D /* Assets.xcassets */; };
 		41B9F7982C2169170022FE8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B9F7972C2169170022FE8D /* Preview Assets.xcassets */; };
 		41B9F79F2C21698F0022FE8D /* SignUpFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9F79E2C21698F0022FE8D /* SignUpFormViewModel.swift */; };
+		41BCB4312C225D8D00E817E6 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCB4302C225D8D00E817E6 /* AuthenticationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		41B9F7942C2169170022FE8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41B9F7972C2169170022FE8D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		41B9F79E2C21698F0022FE8D /* SignUpFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormViewModel.swift; sourceTree = "<group>"; };
+		41BCB4302C225D8D00E817E6 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				41B9F7922C2169150022FE8D /* ContentView.swift */,
 				41B9F7942C2169170022FE8D /* Assets.xcassets */,
 				41B9F7962C2169170022FE8D /* Preview Content */,
+				41BCB4302C225D8D00E817E6 /* AuthenticationService.swift */,
 			);
 			path = "SignUpForm+Combine";
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				41B9F7932C2169150022FE8D /* ContentView.swift in Sources */,
 				41B9F7912C2169150022FE8D /* SignUpForm_CombineApp.swift in Sources */,
 				41B9F79F2C21698F0022FE8D /* SignUpFormViewModel.swift in Sources */,
+				41BCB4312C225D8D00E817E6 /* AuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
