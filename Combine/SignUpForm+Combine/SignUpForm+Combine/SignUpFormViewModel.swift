@@ -17,7 +17,7 @@ class SignUpFormViewModel: ObservableObject {
     @Published var passwordMessage: String = ""
     @Published var isValid: Bool = false
     
-    @Published var isUserNameAvaliable: Bool = false
+//    @Published var isUserNameAvaliable: Bool = false
     
     private let authenticationService = AuthenticationService()
     private var cancelable: Set<AnyCancellable> = []
@@ -47,7 +47,7 @@ class SignUpFormViewModel: ObservableObject {
     }()
     
     private lazy var isFormValidPublisehr: AnyPublisher<Bool, Never> = {
-        Publishers.CombineLatest3(isUsernamLengthValidPublisher, isPasswordValidPublisher, isPasswordValidPublisher)
+        Publishers.CombineLatest3(isUsernamLengthValidPublisher, isUsernameAvailablePublisher, isPasswordValidPublisher)
             .map { $0 && $1 && $2 }
             .eraseToAnyPublisher()
     }()
