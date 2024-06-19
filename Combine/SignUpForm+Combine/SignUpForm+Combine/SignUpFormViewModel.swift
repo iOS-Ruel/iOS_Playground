@@ -29,7 +29,6 @@ class SignUpFormViewModel: ObservableObject {
     @Published var passwordMessage: String = ""
     @Published var isValid: Bool = false
     
-    //    @Published var isUserNameAvaliable: Bool = false
     
     private let authenticationService = AuthenticationService()
     private var cancelable: Set<AnyCancellable> = []
@@ -106,12 +105,6 @@ class SignUpFormViewModel: ObservableObject {
             }
             .assign(to: &$usernameMessage)
         
-        //        isUsernamLengthValidPublisher
-        //            .map {
-        //                $0 ? "" : "Username must be at least three chararcters!"
-        //            }
-        //            .assign(to: &$usernameMessage)
-        
         Publishers.CombineLatest(isPasswordEmptyPublisher, isPasswordMatchingPublisher)
             .map { isPsswordEmpty, isPasswordMatching in
                 if isPsswordEmpty {
@@ -124,19 +117,4 @@ class SignUpFormViewModel: ObservableObject {
             }
             .assign(to: &$passwordMessage)
     }
-    
-    
-    //    func checkUserNameAvailable(_ userName: String) {
-    //        authenticationService.checkUserNameAvailableWithClosure(userName: userName) { [weak self] result in
-    //            DispatchQueue.main.async {
-    //                switch result {
-    //                case .success(let isAvaliable):
-    //                    self?.isUserNameAvaliable = isAvaliable
-    //                case .failure(let error):
-    //                    print(error.localizedDescription)
-    //                    self?.isUserNameAvaliable = false
-    //                }
-    //            }
-    //        }
-    //    }
 }
