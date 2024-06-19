@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Combine
 
 struct ImageLoader {
     static func loadImageFromUrl(_ urlString: String, completion: @escaping (UIImage?) -> Void) {
@@ -23,4 +23,20 @@ struct ImageLoader {
             }
         }.resume()
     }
+    
+    static func loadImageFromUrl(_ urlString: String) -> AnyPublisher<UIImage?, Never> {
+         guard let url = URL(string: urlString) else {
+             return Just(UIImage(systemName: "questionmark"))
+                 .eraseToAnyPublisher()
+         }
+         
+         return URLSession.shared.dataTaskPublisher(for: url)
+             .map { data, response in
+                 return UIImage(data: data)
+             }
+             .catch { _ in
+                 Just(UIImage(systemName: "questionmark"))
+             }
+             .eraseToAnyPublisher()
+     }
 }
