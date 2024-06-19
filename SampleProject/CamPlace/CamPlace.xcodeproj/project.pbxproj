@@ -27,6 +27,7 @@
 		415AF2582C2081F300C07CEA /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF2572C2081F300C07CEA /* CustomAnnotation.swift */; };
 		415AF25B2C2086BB00C07CEA /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF25A2C2086BB00C07CEA /* Extension+UIImage.swift */; };
 		415AF25D2C2086CE00C07CEA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF25C2C2086CE00C07CEA /* ImageLoader.swift */; };
+		41BFBA752C21E1E00014CF89 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BFBA742C21E1E00014CF89 /* PlaceDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		415AF2572C2081F300C07CEA /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		415AF25A2C2086BB00C07CEA /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
 		415AF25C2C2086CE00C07CEA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		41BFBA742C21E1E00014CF89 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				411B1A1C2C1D74C700CAA9A7 /* LaunchScreen.storyboard */,
 				411B1A1A2C1D74C700CAA9A7 /* Assets.xcassets */,
 				411B1A1F2C1D74C700CAA9A7 /* Info.plist */,
+				41BFBA742C21E1E00014CF89 /* PlaceDetailViewController.swift */,
 			);
 			path = CamPlace;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			files = (
 				415AF2542C2066D300C07CEA /* Extension_Bundle.swift in Sources */,
 				411B1A382C1D776700CAA9A7 /* BasedSyncListModel.swift in Sources */,
+				41BFBA752C21E1E00014CF89 /* PlaceDetailViewController.swift in Sources */,
 				411B1A162C1D74C500CAA9A7 /* ViewController.swift in Sources */,
 				411B1A3C2C1D809900CAA9A7 /* PlaceListViewController.swift in Sources */,
 				411B1A2D2C1D76EE00CAA9A7 /* MainMapViewService.swift in Sources */,
