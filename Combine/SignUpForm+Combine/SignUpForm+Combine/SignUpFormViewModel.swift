@@ -52,19 +52,31 @@ class SignUpFormViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }()
      
-    
+    private lazy var isUsernameAvailablePublisher: AnyPublisher<Bool, Never> = {
+        $username.debounce(for: 0.5, scheduler: RunLoop.main)
+            .removeDuplicates()
+            .flatMap { userName -> AnyPublisher<Bool, Never> in
+                self.authenticationService.checkUserNameAvailableWithClosure(userName: userName)
+            }
+            .receive(on: DispatchQueue.main)
+            .share()
+            .print("share")
+            .eraseToAnyPublisher()
+    }()
     
     init() {
-        $username.debounce(for: 0.5, scheduler: DispatchQueue.main)
-            .sink { [weak self] userName in
-                self?.checkUserNameAvailable(userName)
-            }
-            .store(in: &cancelable)
+        
+        
+        
+//            .sink { [weak self] userName in
+//                self?.checkUserNameAvailable(userName)
+//            }
+//            .store(in: &cancelable)
         
         isFormValidPublisehr
             .assign(to: &$isValid)
         
-        Publishers.CombineLatest(isUsernamLengthValidPublisher, $isUserNameAvaliable)
+        Publishers.CombineLatest(isUsernamLengthValidPublisher, isUsernameAvailablePublisher)
             .map { isUserNameLengthValid, isUserNameAvaliable in
                 if !isUserNameLengthValid{
                     return "Username must be at least three chararcters!"
@@ -95,17 +107,17 @@ class SignUpFormViewModel: ObservableObject {
     }
     
     
-    func checkUserNameAvailable(_ userName: String) {
-        authenticationService.checkUserNameAvailableWithClosure(userName: userName) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let isAvaliable):
-                    self?.isUserNameAvaliable = isAvaliable
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    self?.isUserNameAvaliable = false
-                }
-            }
-        }
-    }
+//    func checkUserNameAvailable(_ userName: String) {
+//        authenticationService.checkUserNameAvailableWithClosure(userName: userName) { [weak self] result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let isAvaliable):
+//                    self?.isUserNameAvaliable = isAvaliable
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                    self?.isUserNameAvaliable = false
+//                }
+//            }
+//        }
+//    }
 }
