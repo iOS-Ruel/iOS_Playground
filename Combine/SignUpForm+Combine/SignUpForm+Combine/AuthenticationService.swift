@@ -21,7 +21,7 @@ enum NetworkError: Error {
 }
 
 class AuthenticationService {
-    func checkUserNameAvailablleWithClosure(userName: String, completion: @escaping(Result<Bool,NetworkError>) -> Void) {
+    func checkUserNameAvailableWithClosure(userName: String, completion: @escaping(Result<Bool,NetworkError>) -> Void) {
         let url = URL(string: "http://localhost:8080/isUserNameAvailable?userName=\(userName)")!
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -48,10 +48,6 @@ class AuthenticationService {
             } catch {
                 completion(.failure(.decodingError(error)))
             }
-            
-            
-            
-            
         }
         
         task.resume()

@@ -17,6 +17,11 @@ class SignUpFormViewModel: ObservableObject {
     @Published var passwordMessage: String = ""
     @Published var isValid: Bool = false
     
+    @Published var isUserNameAvaliable: Bool = false
+    
+    private let authenticationService = AuthenticationService()
+    private var cancelable: Set<AnyCancellable> = []
+    
     private lazy var isUsernamLengthValidPublisher: AnyPublisher<Bool, Never> = {
         $username
             .map { $0.count >= 3 }
@@ -50,6 +55,12 @@ class SignUpFormViewModel: ObservableObject {
     
     
     init() {
+        $username.debounce(for: 0.5, scheduler: DispatchQueue.main)
+            .sink { [weak self] userName in
+                self?.checkUserNameAvailable(userName)
+            }
+            .store(in: &cancelable)
+        
         isFormValidPublisehr
             .assign(to: &$isValid)
         
@@ -72,4 +83,18 @@ class SignUpFormViewModel: ObservableObject {
             .assign(to: &$passwordMessage)
     }
     
+    
+    func checkUserNameAvailable(_ userName: String) {
+        authenticationService.checkUserNameAvailableWithClosure(userName: userName) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let isAvaliable):
+                    self?.isUserNameAvaliable = isAvaliable
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self?.isUserNameAvaliable = false
+                }
+            }
+        }
+    }
 }
