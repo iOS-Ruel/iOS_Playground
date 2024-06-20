@@ -20,40 +20,21 @@ class MainMapViewController: UIViewController {
         mv.translatesAutoresizingMaskIntoConstraints = false
         mv.preferredConfiguration = MKStandardMapConfiguration()
         mv.showsUserLocation = true
-        mv.register(CustomAnnotationView.self, 
+        mv.register(CustomAnnotationView.self,
                     forAnnotationViewWithReuseIdentifier: "CustomAnnotationView")
-        mv.register(CustomClusterAnnotationView.self, 
+        mv.register(CustomClusterAnnotationView.self,
                     forAnnotationViewWithReuseIdentifier: "CustomClusterAnnotationView")
         return mv
     }()
     
     private lazy var listButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("목록 보기", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.setImage(UIImage(systemName: "list.bullet"), for: .normal)
-        button.tintColor = .black
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.gray.cgColor
-        button.addTarget(self, action: #selector(listButotnTapped), for: .touchUpInside)
+        let button = createButton(title: "목록 보기", image: "list.bullet", action: #selector(listButtonTapped))
         return button
     }()
     
     private lazy var currentPlaceButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("현재 위치에서 검색", for: .normal)
+        let button = createButton(title: "현재 위치에서 검색", image: nil, action: #selector(currentButtonTapped))
         button.titleLabel?.font = .systemFont(ofSize: 12)
-        button.setTitleColor(.black, for: .normal)
-        button.tintColor = .black
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.gray.cgColor
-        button.addTarget(self, action: #selector(currentButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -66,22 +47,14 @@ class MainMapViewController: UIViewController {
         setup()
     }
     
-    
     private func setup() {
         self.view.backgroundColor = .white
         setUpMapView()
         setupUI()
         setupLocationManager()
-        
-        viewModel.$locationList
-            .receive(on: RunLoop.main)
-            .sink {[weak self] lists in
-                self?.addPinsToMap(lists)
-            }
-            .store(in: &cancellables)
+        setupBindings()
     }
     
-    //MARK: - MapView Setup
     private func setUpMapView() {
         self.view.addSubview(mapView)
         mapView.delegate = self
@@ -93,7 +66,6 @@ class MainMapViewController: UIViewController {
         ])
     }
     
-    //MARK: - Base UI Setup
     private func setupUI() {
         self.view.addSubview(listButton)
         NSLayoutConstraint.activate([
@@ -113,48 +85,66 @@ class MainMapViewController: UIViewController {
         ])
     }
     
+    private func createButton(title: String, image: String?, action: Selector) -> UIButton {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        if let imageName = image {
+            button.setImage(UIImage(systemName: imageName), for: .normal)
+        }
+        button.tintColor = .black
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 15
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.gray.cgColor
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
+    }
+    
+    private func setupBindings() {
+        viewModel.$locationList
+            .receive(on: RunLoop.main)
+            .sink {[weak self] lists in
+                self?.addPinsToMap(lists)
+            }
+            .store(in: &cancellables)
+    }
+    
     private func addPinsToMap(_ items: [BasedItem]) {
         for item in items {
-            let coordinate = CLLocationCoordinate2D(latitude: Double(item.mapY ?? "") ?? 0.0,
-                                                    longitude: Double(item.mapX ?? "") ?? 0.0)
+            guard let latitude = Double(item.mapY ?? ""),
+                  let longitude = Double(item.mapX ?? "") else {
+                print("Invalid coordinates")
+                continue
+            }
+            let coordinate = CLLocationCoordinate2D(latitude: latitude,
+                                                    longitude: longitude)
             let annotation = CustomAnnotation(coordinate: coordinate, item: item)
-            
             mapView.addAnnotation(annotation)
         }
     }
     
-    //MARK: - LocationManager Setup
     private func setupLocationManager() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
     
-    
-    //MARK: Action Event
-    @objc func listButotnTapped() {
-        
+    @objc func listButtonTapped() {
         let locationList = viewModel.locationList
-        //TODO: - 현재 나의 위치를 기준으로 목록리스트를 띄워줌 -> 리스트는 페이징 처리 X 현재 내위치 기준에서 있는 목록만 보여줄거임
         let listVC = PlaceListViewController(locationList: locationList)
         let vc = UINavigationController(rootViewController: listVC)
-            
         
         let detentIdentifier = UISheetPresentationController.Detent.Identifier("customDetent")
         let customDetent = UISheetPresentationController.Detent.custom(identifier: detentIdentifier) { _ in
             let screenHeight = UIScreen.main.bounds.height
-            //87.89%이상은 현재 viewcontroller가 뒤로 밀리면서 작아짐
             return screenHeight * 0.878912
         }
         
         if let sheet = vc.sheetPresentationController {
-            sheet.detents = [customDetent] // detent 설정
-            sheet.preferredCornerRadius = 30 // 둥글기 수정
-            // ✅ grabber를 보이지 않게 구현.(UI를 위해 이미지로 대체)
-            // sheet.prefersGrabberVisible = false // 기본값
-            
-            // ✅ 스크롤 상황에서 최대 detent까지 확장하는 여부 결정.
-            // sheet.prefersScrollingExpandsWhenScrolledToEdge = true // 기본값
+            sheet.detents = [customDetent]
+            sheet.preferredCornerRadius = 30
         }
         present(vc, animated: true)
     }
@@ -167,8 +157,6 @@ class MainMapViewController: UIViewController {
     }
 }
 
-
-//MARK: - CLLocationManager Delegate
 extension MainMapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
@@ -180,7 +168,6 @@ extension MainMapViewController: CLLocationManagerDelegate {
             setRegion(coordinate: location.coordinate)
             isFirstLocationUpdate = false
         }
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -190,7 +177,6 @@ extension MainMapViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
-            print("Location Auth: Allow")
             locationManager.startUpdatingLocation()
         case .notDetermined, .denied, .restricted:
             print("Location Auth: Denied")
@@ -200,15 +186,18 @@ extension MainMapViewController: CLLocationManagerDelegate {
     }
 }
 
-
-//MARK: - MKMapViewDelegate
 extension MainMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        guard let coordinate = view.annotation?.coordinate else { return }
-        setRegion(coordinate: coordinate)
+        if let title = view.annotation?.title, let placeName = title {
+            if let content = viewModel.getLocationContent(title: placeName) {
+                let viewModel = PlaceDetailViewModel(content: content)
+                let vc = PlaceDetailViewController(viewModel: viewModel)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    
     }
     
-    /// coordinate를 기준으로 Region 설정 후 해당위치로 이동시킴(가로세로 1000미터 영역으로 설정함)
     private func setRegion(coordinate: CLLocationCoordinate2D) {
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(region, animated: true)
@@ -234,22 +223,18 @@ extension MainMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
         if let clusterAnnotation = view.annotation as? MKClusterAnnotation {
-            
             guard let closestAnnotation = closestAnnotation(to: clusterAnnotation.coordinate,
                                                             in: clusterAnnotation.memberAnnotations) else { return }
             
             let closestCoordinate = closestAnnotation.coordinate
             setRegion(coordinate: closestCoordinate)
             
-            // 가장 가까운 어노테이션을 선택하여 callout 표시
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 mapView.selectAnnotation(closestAnnotation, animated: true)
             }
         } else {
             guard let coordinate = view.annotation?.coordinate else { return }
-            // 선택된 주석(annotation)이 클러스터가 아닌 경우 처리
             setRegion(coordinate: coordinate)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 if let annotation = view.annotation {
@@ -258,6 +243,7 @@ extension MainMapViewController: MKMapViewDelegate {
             }
         }
     }
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let cluster = annotation as? MKClusterAnnotation {
@@ -303,5 +289,3 @@ extension MainMapViewController: MKMapViewDelegate {
         return annotationView
     }
 }
-
-

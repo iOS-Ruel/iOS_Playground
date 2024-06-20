@@ -28,6 +28,7 @@ class PlaceDetailViewController: UIViewController {
         tv.delegate = self
         tv.dataSource = self
         tv.separatorStyle = .none
+        tv.backgroundColor = .white
         tv.register(DetailImageTableViewCell.self, forCellReuseIdentifier: "DetailImageTableViewCell")
         tv.register(DetailMapTableViewCell.self, forCellReuseIdentifier: "DetailMapTableViewCell")
         tv.register(DetailInfoTableViewCell.self, forCellReuseIdentifier: "DetailInfoTableViewCell")
@@ -38,7 +39,7 @@ class PlaceDetailViewController: UIViewController {
     init(viewModel: PlaceDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = .white
+        
         title = viewModel.getContentTitle()
     }
     
@@ -51,13 +52,18 @@ class PlaceDetailViewController: UIViewController {
         setupNavi()
         setupUI()
         bindViewModel()
+        updateRightButtonVisibility()
     }
     
     private func setupNavi() {
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark")?.withTintColor(.black, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(dismissView))
     }
     
     private func setupUI(){
+        view.backgroundColor = .white
         view.addSubview(detailTV)
         NSLayoutConstraint.activate([
             detailTV.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -86,6 +92,13 @@ class PlaceDetailViewController: UIViewController {
                              titleWithAdress: viewModel.getTitle()))
     }
     
+    private func updateRightButtonVisibility() {
+        if let navigationController = self.navigationController {
+            let backButton = navigationController.viewControllers.count > 1
+            navigationItem.rightBarButtonItem?.isHidden = backButton
+        }
+    }
+    
     @objc private func dismissView() {
         self.dismiss(animated: false)
     }
@@ -108,7 +121,7 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
         case .map(mapX: let mapX, mapY: let mapY, titleWithAdress: let title):
             if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailMapTableViewCell", for: indexPath) as? DetailMapTableViewCell {
                 cell.setupCell(mapX: mapX, mapY: mapY, title: title)
-                    return cell
+                return cell
             }
         case .info(content: let content):
             if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailInfoTableViewCell", for: indexPath) as? DetailInfoTableViewCell {
@@ -121,29 +134,3 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     
 }
-
-/*
- image
- 
- info:
- "facltNm": 이름
- "intro": 설명
- "doNm": 도(ex: 경상북도)
- "sigunguNm": 시군구(Ex:군위군)
- 
- "addr1": 주소
- "addr2": 주소 상세
- 
- "featureNm": 특징
- "homepage": 홈페이지
- "sbrsCl": 부대시설
- "sbrsEtc": 부대시설 기타
- "tel": 전화
- "animalCmgCl": 애완동물 출입여부
- 
- map:
- "mapX": 경위
- "mapY": 위도
- "direction": 오시는길
- 
- */

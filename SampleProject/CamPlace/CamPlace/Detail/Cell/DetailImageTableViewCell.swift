@@ -9,10 +9,17 @@ import UIKit
 
 class DetailImageTableViewCell: UITableViewCell {
     
-    private var placeScrollView: UIScrollView = {
+    private lazy var placeScrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.delegate = self
+        
+        sv.alwaysBounceVertical = false
+        sv.showsHorizontalScrollIndicator = false
+        sv.showsVerticalScrollIndicator = false
+        sv.isScrollEnabled = true
         sv.isPagingEnabled = true
+        sv.bounces = false
         return sv
     }()
     
@@ -25,25 +32,25 @@ class DetailImageTableViewCell: UITableViewCell {
         pc.addTarget(self, action: #selector(pageChanged), for: .valueChanged)
         pc.layer.cornerRadius = 10
         pc.layer.masksToBounds = true
+        
         return pc
     }()
     
-    var imageList: [UIImage] = []
+    private var imageUrlList: [String] = []
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
         selectionStyle = .none
-        placeScrollView.delegate = self
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
-        placeScrollView.delegate = self
     }
     
     private func setupUI() {
+        contentView.backgroundColor = .white
         contentView.addSubview(placeScrollView)
         contentView.addSubview(pageControl)
         
@@ -61,31 +68,31 @@ class DetailImageTableViewCell: UITableViewCell {
     }
     
     func setupCell(imageUrls: [String]) {
-        imageList.removeAll()
+        imageUrlList.removeAll()
+        
         pageControl.numberOfPages = 0
         
         for subview in placeScrollView.subviews {
             subview.removeFromSuperview()
         }
         
-        imageUrls.forEach { url in
-            ImageLoader.loadImageFromUrl(url) { [weak self] image in
-                guard let self = self, let image = image else { return }
-                self.imageList.append(image)
-                
-                DispatchQueue.main.async {
-                    self.pageControl.numberOfPages = self.imageList.count
-                    self.setupImagesInScrollView()
-                }
-            }
+        imageUrls.forEach {
+            imageUrlList.append($0)
         }
+        
+        self.pageControl.numberOfPages = self.imageUrlList.count
+        self.setupImagesInScrollView()
+        
+        self.contentView.layoutIfNeeded()
+        placeScrollView.contentSize = CGSize(width: contentView.frame.width * CGFloat(imageUrlList.count), height: 300)
     }
     
     private func setupImagesInScrollView() {
-        placeScrollView.contentSize = CGSize(width: contentView.frame.width * CGFloat(imageList.count), height: 300)
+        placeScrollView.contentSize = CGSize(width: contentView.frame.width * CGFloat(imageUrlList.count), height: 300)
         
-        for (index, image) in imageList.enumerated() {
-            let imageView = UIImageView(image: image)
+        for (index, imageUrl) in imageUrlList.enumerated() {
+            let imageView = UIImageView()
+            imageView.loadImage(from: imageUrl)
             imageView.contentMode = .scaleAspectFit
             imageView.translatesAutoresizingMaskIntoConstraints = false
             placeScrollView.addSubview(imageView)
@@ -100,7 +107,7 @@ class DetailImageTableViewCell: UITableViewCell {
         }
     }
     
-    @objc func pageChanged() {
+    @objc private func pageChanged() {
         let page = pageControl.currentPage
         let offset = CGFloat(page) * contentView.frame.width
         placeScrollView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)

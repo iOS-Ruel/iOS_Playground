@@ -25,4 +25,15 @@ class MainMapViewModel {
             .assign(to: \.locationList, on: self)
             .store(in: &cancellables)
     }
+    
+    
+    
+    func getLocationContent(title: String) -> LocationBasedListModel? {
+        
+        if let firstIndex = locationList.firstIndex(where: { $0.title == title }) {
+            return locationList[firstIndex]
+        }
+        
+        return nil
+    }
 }

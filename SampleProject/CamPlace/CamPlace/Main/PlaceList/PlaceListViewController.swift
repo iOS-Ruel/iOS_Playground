@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class PlaceListViewController: UIViewController {
     @Published var locationList: [LocationBasedListModel]
-
+    private var cancellables = Set<AnyCancellable>()
+    
+    
     private lazy var listTableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -18,6 +21,7 @@ class PlaceListViewController: UIViewController {
         tv.separatorStyle = .none
         tv.rowHeight = UITableView.automaticDimension
         tv.estimatedRowHeight = 100
+        tv.backgroundColor = .white
         tv.register(PlaceListTableViewCell.self, forCellReuseIdentifier: "PlaceListTableViewCell")
         return tv
     }()
@@ -25,6 +29,7 @@ class PlaceListViewController: UIViewController {
     init(locationList: [LocationBasedListModel]) {
         self.locationList = locationList
         super.init(nibName: nil, bundle: nil)
+        bindTableView()
     }
     
     required init?(coder: NSCoder) {
@@ -35,11 +40,11 @@ class PlaceListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        view.backgroundColor = .blue
-        title = "목록"
+        setupNavi()
     }
     
     private func setupUI() {
+        view.backgroundColor = .white
         view.addSubview(listTableView)
         
         NSLayoutConstraint.activate([
@@ -50,6 +55,27 @@ class PlaceListViewController: UIViewController {
         ])
     }
     
+    private func setupNavi() {
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+        title = "목록"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark")?.withTintColor(.black, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(dismissView))
+    }
+    
+    
+    //TODO: - 굳이 combine을 써야할까?
+    private func bindTableView() {
+        $locationList
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.listTableView.reloadData()
+            }
+            .store(in: &cancellables)
+    }
+    
+    @objc private func dismissView() {
+        self.dismiss(animated: true)
+    }
     
     
 }
@@ -60,7 +86,8 @@ extension PlaceListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceListTableViewCell", for: indexPath) as? PlaceListTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceListTableViewCell", 
+                                                       for: indexPath) as? PlaceListTableViewCell else {
             return UITableViewCell()
         }
         

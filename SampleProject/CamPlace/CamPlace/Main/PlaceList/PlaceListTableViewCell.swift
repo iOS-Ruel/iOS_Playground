@@ -79,12 +79,6 @@ class PlaceListTableViewCell: UITableViewCell {
         setupUI()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
     func setupCell(content: LocationBasedListModel) {
         titleLabel.text = content.title
         
@@ -93,17 +87,25 @@ class PlaceListTableViewCell: UITableViewCell {
         
         addressLabel.text = content.subTitle
         
-        if let imageUrl = content.imageUrl {
-            ImageLoader.loadImageFromUrl(imageUrl, completion: {[weak self] image in
-                DispatchQueue.main.async {
-                    self?.placeImageView.image =  image
-                }
-            })
+        
+        if let imageUrl = content.imageUrl, imageUrl != ""{
+            placeImageView.loadImage(from: imageUrl)
+        } else {
+            placeImageView.image = UIImage(systemName: "questionmark")
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        infoLabel.text = nil
+        placeImageView.image = nil
+        placeImageView.image = UIImage(systemName: "questionmark") 
     }
     
     
     private func setupUI() {
+        contentView.backgroundColor = .white
         contentView.addSubview(mainView)
         mainView.addSubview(mainStackView)
         mainStackView.addArrangedSubview(placeImageView)
@@ -112,7 +114,6 @@ class PlaceListTableViewCell: UITableViewCell {
         contentStackView.addArrangedSubview(titleLabel)
         contentStackView.addArrangedSubview(infoLabel)
         contentStackView.addArrangedSubview(addressLabel)
-        
         
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -129,8 +130,6 @@ class PlaceListTableViewCell: UITableViewCell {
             placeImageView.heightAnchor.constraint(equalToConstant: 100),
             placeImageView.widthAnchor.constraint(equalToConstant: 100)
         ])
-        
-        
     }
     
 }

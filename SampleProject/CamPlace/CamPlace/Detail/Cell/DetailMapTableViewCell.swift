@@ -35,6 +35,7 @@ class DetailMapTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
+        contentView.backgroundColor = .white
         contentView.addSubview(mapView)
         
         NSLayoutConstraint.activate([
@@ -65,7 +66,7 @@ class DetailMapTableViewCell: UITableViewCell {
         mapView.setRegion(region, animated: true)
         
         let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate      
+        annotation.coordinate = coordinate
         annotation.title = title
         
         mapView.addAnnotation(annotation)
