@@ -29,11 +29,6 @@ class MainMapViewModel {
     
     
     func getLocationContent(title: String) -> LocationBasedListModel? {
-        
-        if let firstIndex = locationList.firstIndex(where: { $0.title == title }) {
-            return locationList[firstIndex]
-        }
-        
-        return nil
+        return locationList.first { $0.title == title }
     }
 }

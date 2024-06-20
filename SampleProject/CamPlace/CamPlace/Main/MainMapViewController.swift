@@ -131,7 +131,7 @@ class MainMapViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     
-    @objc func listButtonTapped() {
+    @objc private func listButtonTapped() {
         let locationList = viewModel.locationList
         let listVC = PlaceListViewController(locationList: locationList)
         let vc = UINavigationController(rootViewController: listVC)
@@ -149,7 +149,7 @@ class MainMapViewController: UIViewController {
         present(vc, animated: true)
     }
     
-    @objc func currentButtonTapped() {
+    @objc private func currentButtonTapped() {
         guard let coordinator = locationManager.location?.coordinate else {
             return
         }
@@ -274,14 +274,26 @@ extension MainMapViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         
+//        if let url = annotation.item?.imageUrl, !url.isEmpty {
+//            ImageLoader.loadImageFromUrl(url) { image in
+//                DispatchQueue.main.async {
+//                    let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
+//                    let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
+//                    annotationView?.image = circularImage
+//                }
+//            }
+//        } else {
+//            annotationView?.image = UIImage(systemName: "questionmark")?.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
+//        }
         if let url = annotation.item?.imageUrl, !url.isEmpty {
-            ImageLoader.loadImageFromUrl(url) { image in
-                DispatchQueue.main.async {
+            ImageLoader.loadImageFromUrl(url)
+                .receive(on: DispatchQueue.main)
+                .sink { image in
                     let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
                     let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
                     annotationView?.image = circularImage
                 }
-            }
+                .store(in: &cancellables)
         } else {
             annotationView?.image = UIImage(systemName: "questionmark")?.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
         }

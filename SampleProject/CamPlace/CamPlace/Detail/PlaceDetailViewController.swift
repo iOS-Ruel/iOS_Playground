@@ -74,24 +74,15 @@ class PlaceDetailViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.$imageList
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.updateCellType()
-                self?.detailTV.reloadData()
-            }
-            .store(in: &cancellables)
-    }
-    
-    private func updateCellType() {
-        cellType = []
-        cellType.append(.image(imageUrls: viewModel.getImages()))
-        cellType.append(.info(content: viewModel.getContent()))
-        cellType.append(.map(mapX: viewModel.getMapX(),
-                             mapY: viewModel.getMapY(),
-                             titleWithAdress: viewModel.getTitle()))
-    }
-    
+         viewModel.$cellType
+             .receive(on: RunLoop.main)
+             .sink { [weak self] cellTypes in
+                self?.cellType = cellTypes
+                 self?.detailTV.reloadData()
+             }
+             .store(in: &cancellables)
+     }
+
     private func updateRightButtonVisibility() {
         if let navigationController = self.navigationController {
             let backButton = navigationController.viewControllers.count > 1
