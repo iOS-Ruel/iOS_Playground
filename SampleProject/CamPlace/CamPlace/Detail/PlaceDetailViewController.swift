@@ -8,12 +8,6 @@
 import UIKit
 import Combine
 
-enum DetailCellType {
-    case image(imageUrls: [String])
-    case info(content: LocationBasedListModel)
-    case map(mapX: String, mapY: String, titleWithAdress: String)
-}
-
 class PlaceDetailViewController: UIViewController {
     private let viewModel: PlaceDetailViewModel
     private var cancellables = Set<AnyCancellable>()

@@ -8,6 +8,12 @@
 import Foundation
 import Combine
 
+enum DetailCellType {
+    case image(imageUrls: [String])
+    case info(content: LocationBasedListModel)
+    case map(mapX: String, mapY: String, titleWithAdress: String)
+}
+
 class PlaceDetailViewModel {
     private let content: LocationBasedListModel
     private let service = PlaceDetailService()
