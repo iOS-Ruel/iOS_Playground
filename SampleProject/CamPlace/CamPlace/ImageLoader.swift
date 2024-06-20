@@ -9,20 +9,20 @@ import UIKit
 import Combine
 
 struct ImageLoader {
-//    static func loadImageFromUrl(_ urlString: String, completion: @escaping (UIImage?) -> Void) {
-//        guard let url = URL(string: urlString) else {
-//            completion(UIImage(systemName: "questionmark"))
-//            return
-//        }
-//        
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            if let data = data, let image = UIImage(data: data) {
-//                completion(image)
-//            } else {
-//                completion(UIImage(systemName: "questionmark"))
-//            }
-//        }.resume()
-//    }
+    static func loadImageFromUrl(_ urlString: String, completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(UIImage(systemName: "questionmark"))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data, let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                completion(UIImage(systemName: "questionmark"))
+            }
+        }.resume()
+    }
     
     static func loadImageFromUrl(_ urlString: String) -> AnyPublisher<UIImage?, Never> {
          guard let url = URL(string: urlString) else {
