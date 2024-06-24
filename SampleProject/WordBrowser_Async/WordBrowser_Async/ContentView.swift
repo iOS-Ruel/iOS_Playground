@@ -22,7 +22,10 @@ struct SectionView: View {
                 Text("(No items match your filter criteria)")
             } else {
                 ForEach(words, id: \.self) { word in
-                    Text(word)
+                    NavigationLink(destination: WordDetailView(word: word)) {
+                        Text(word)
+                        
+                    }
                 }
             }
         }
