@@ -45,24 +45,18 @@ class CustomAnnotationView: MKMarkerAnnotationView {
         self.markerTintColor = .clear
         
         if let url = annotation.item?.imageUrl, !url.isEmpty {
-            ImageLoader.loadImageFromUrl(url) { image in
-                
-                DispatchQueue.main.async {
+            ImageLoader.loadImageFromUrl(url)
+                .map { image in
                     let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
                     let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
-                    self.image = circularImage
+                    
+                    return circularImage
                 }
-            }
-            
-            //            ImageLoader.loadImageFromUrl(url)
-            //                .receive(on: DispatchQueue.main)
-            //                .sink {[weak self] image in
-            //                    let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
-            //                    let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
-            //                    self?.image = circularImage
-            //                }
-            //                .store(in: &cancellables)
-            
+                .receive(on: DispatchQueue.main)
+                .sink {[weak self] image in
+                    self?.image = image
+                }
+                .store(in: &cancellables)
         } else {
             self.image = UIImage(systemName: "questionmark")?.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
         }
@@ -76,19 +70,13 @@ class CustomAnnotationView: MKMarkerAnnotationView {
         leftIconView.clipsToBounds = true
         
         if let url = annotation.item?.imageUrl, !url.isEmpty {
-            ImageLoader.loadImageFromUrl(url) { image in
-                DispatchQueue.main.async {
+            
+            ImageLoader.loadImageFromUrl(url)
+                .receive(on: DispatchQueue.main)
+                .sink { image in
                     leftIconView.image = image
                 }
-            }
-            //            ImageLoader.loadImageFromUrl(url)
-            //                .receive(on: DispatchQueue.main)
-            //                .sink {[weak self] image in
-            //                    let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
-            //                    let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
-            //                    self?.image = circularImage
-            //                }
-            //                .store(in: &cancellables)
+                .store(in: &cancellables)
         } else {
             leftIconView.image = UIImage(systemName: "questionmark")
         }
@@ -145,24 +133,19 @@ class CustomClusterAnnotationView: MKAnnotationView {
         for member in cluster.memberAnnotations {
             if let customAnnotation = member as? CustomAnnotation,
                let url = customAnnotation.item?.imageUrl, !url.isEmpty {
-                ImageLoader.loadImageFromUrl(url) { image in
-                    DispatchQueue.main.async {
+                
+                ImageLoader.loadImageFromUrl(url)
+                    .map { image in
                         let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
-                        let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0,
-                                                                        borderColor: .white)
-                        self.image = circularImage
+                        let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
+                        
+                        return circularImage
                     }
-                }
-                
-                //                ImageLoader.loadImageFromUrl(url)
-                //                    .receive(on: DispatchQueue.main)
-                //                    .sink {[weak self] image in
-                //                        let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
-                //                        let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
-                //                        self?.image = circularImage
-                //                    }
-                //                    .store(in: &cancellables)
-                
+                    .receive(on: DispatchQueue.main)
+                    .sink {[weak self] image in
+                        self?.image = image
+                    }
+                    .store(in: &cancellables)
                 break
             }
         }

@@ -66,7 +66,7 @@ class PlaceListViewController: UIViewController {
     //TODO: - 굳이 combine을 써야할까?
     private func bindTableView() {
         $locationList
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.listTableView.reloadData()
             }

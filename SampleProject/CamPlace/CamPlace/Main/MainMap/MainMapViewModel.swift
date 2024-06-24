@@ -22,8 +22,9 @@ class MainMapViewModel {
                 self?.errorMessage = error.localizedDescription
                  return Just([])
             }
-            .assign(to: \.locationList, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$locationList)
+//            .assign(to: \.locationList, on: self)
+//            .store(in: &cancellables)
     }
     
     

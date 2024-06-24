@@ -273,18 +273,7 @@ extension MainMapViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-        
-//        if let url = annotation.item?.imageUrl, !url.isEmpty {
-//            ImageLoader.loadImageFromUrl(url) { image in
-//                DispatchQueue.main.async {
-//                    let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
-//                    let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
-//                    annotationView?.image = circularImage
-//                }
-//            }
-//        } else {
-//            annotationView?.image = UIImage(systemName: "questionmark")?.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
-//        }
+  
         if let url = annotation.item?.imageUrl, !url.isEmpty {
             ImageLoader.loadImageFromUrl(url)
                 .receive(on: DispatchQueue.main)

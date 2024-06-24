@@ -1,8 +1,8 @@
 //
-//  MainMapViewService.swift
+//  APIService.swift
 //  CamPlace
 //
-//  Created by Chung Wussup on 6/15/24.
+//  Created by Chung Wussup on 6/24/24.
 //
 
 import Foundation
@@ -36,7 +36,7 @@ enum APIURL {
 
 class MainMapViewService {
     
-    func getLocationBasedList<T: BasedItem>(mapX: String, mapY: String, radius: String, 
+    func getLocationBasedList<T: BasedItem>(mapX: String, mapY: String, radius: String,
                                             type: T.Type) -> AnyPublisher<ApiResponse<T>, Error> {
         
         guard let apiKey = Bundle.main.apiKey else {
@@ -70,6 +70,7 @@ class MainMapViewService {
             return Fail(error: URLError(.badURL))
                 .eraseToAnyPublisher()
         }
+        
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap { (data, response) -> Data in
                 guard let httpResponse = response as? HTTPURLResponse,
@@ -85,34 +86,6 @@ class MainMapViewService {
                 return error
             }
             .eraseToAnyPublisher()
-//        return URLSession.shared.dataTaskPublisher(for: url)
-//                   .tryMap { (data, response) -> Data in
-//                       guard let httpResponse = response as? HTTPURLResponse,
-//                             httpResponse.statusCode == 200 else {
-//                           throw URLError(.badServerResponse)
-//                       }
-////                       print("Debug: Received Data - \(String(data: data, encoding: .utf8) ?? "")")
-//                       return data
-//                   }
-//                   .tryMap { data -> ApiResponse<T> in
-//                       // JSON 데이터 출력
-//                       if let jsonString = String(data: data, encoding: .utf8) {
-//                           print("Debug: JSON String - \(jsonString)")
-//                       }
-//                       
-//                       do {
-//                           let decodedData = try JSONDecoder().decode(ApiResponse<T>.self, from: data)
-//                           return decodedData
-//                       } catch let decodingError {
-//                           print("Debug: Decoding Error - \(decodingError)")
-//                           throw decodingError
-//                       }
-//                   }
-//                   .mapError { error in
-//                       print("Debug: Decoding Error - \(error.localizedDescription)")
-//                       return error
-//                   }
-//                   .eraseToAnyPublisher()
     }
     
     
