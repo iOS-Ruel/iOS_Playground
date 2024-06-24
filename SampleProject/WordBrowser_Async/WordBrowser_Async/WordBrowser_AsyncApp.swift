@@ -11,7 +11,10 @@ import SwiftUI
 struct WordBrowser_AsyncApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                ContentView()
+            }
+            
         }
     }
 }
