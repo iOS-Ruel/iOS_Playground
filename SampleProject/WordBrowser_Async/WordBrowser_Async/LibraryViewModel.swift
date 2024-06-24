@@ -48,6 +48,7 @@ class LibraryViewModel: ObservableObject {
     }
     
     private func fetchRandomWord() async -> Word {
+        print("\(#function) is on main thread Before await: \(Thread.isMainThread)")
         let request = buildURLRequest()
         
         do {
@@ -58,6 +59,7 @@ class LibraryViewModel: ObservableObject {
             }
             
             let word = try JSONDecoder().decode(Word.self, from: data)
+            print("\(#function) is on main thread After await: \(Thread.isMainThread)")
             print(word)
             return word
             
@@ -66,10 +68,12 @@ class LibraryViewModel: ObservableObject {
         }
     }
     
-    
+    @MainActor
     func refresh() async {
+        print("\(#function) is on main thread Before await: \(Thread.isMainThread)")
         let result = await fetchRandomWord()
         randomWord = result.word
+        print("\(#function) is on main thread After await: \(Thread.isMainThread)")
     }
     
     
