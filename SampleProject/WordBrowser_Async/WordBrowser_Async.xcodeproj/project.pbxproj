@@ -14,6 +14,8 @@
 		4114E9BA2C292E18009BBC9E /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4114E9B92C292E18009BBC9E /* LibraryViewModel.swift */; };
 		4114E9BC2C293600009BBC9E /* AddWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4114E9BB2C293600009BBC9E /* AddWordView.swift */; };
 		4114E9BE2C293DE7009BBC9E /* WordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4114E9BD2C293DE7009BBC9E /* WordAPI.swift */; };
+		4114E9C02C295B54009BBC9E /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4114E9BF2C295B54009BBC9E /* WordDetailView.swift */; };
+		4114E9C22C295B78009BBC9E /* WordDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4114E9C12C295B78009BBC9E /* WordDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		4114E9B92C292E18009BBC9E /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		4114E9BB2C293600009BBC9E /* AddWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordView.swift; sourceTree = "<group>"; };
 		4114E9BD2C293DE7009BBC9E /* WordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAPI.swift; sourceTree = "<group>"; };
+		4114E9BF2C295B54009BBC9E /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
+		4114E9C12C295B78009BBC9E /* WordDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				4114E9AB2C292950009BBC9E /* ContentView.swift */,
 				4114E9BD2C293DE7009BBC9E /* WordAPI.swift */,
 				4114E9BB2C293600009BBC9E /* AddWordView.swift */,
+				4114E9C12C295B78009BBC9E /* WordDetailViewModel.swift */,
+				4114E9BF2C295B54009BBC9E /* WordDetailView.swift */,
 				4114E9B92C292E18009BBC9E /* LibraryViewModel.swift */,
 				4114E9AD2C292952009BBC9E /* Assets.xcassets */,
 				4114E9AF2C292952009BBC9E /* Preview Content */,
@@ -153,7 +159,9 @@
 				4114E9BC2C293600009BBC9E /* AddWordView.swift in Sources */,
 				4114E9BA2C292E18009BBC9E /* LibraryViewModel.swift in Sources */,
 				4114E9AC2C292950009BBC9E /* ContentView.swift in Sources */,
+				4114E9C02C295B54009BBC9E /* WordDetailView.swift in Sources */,
 				4114E9AA2C292950009BBC9E /* WordBrowser_AsyncApp.swift in Sources */,
+				4114E9C22C295B78009BBC9E /* WordDetailViewModel.swift in Sources */,
 				4114E9BE2C293DE7009BBC9E /* WordAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
