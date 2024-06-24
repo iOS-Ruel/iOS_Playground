@@ -1,4 +1,4 @@
-//: [Previous](@previous)
+//: [Completion Handler](@previous)
 
 import Foundation
 

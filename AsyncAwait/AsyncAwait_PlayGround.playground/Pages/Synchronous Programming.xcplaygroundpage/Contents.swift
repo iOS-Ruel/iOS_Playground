@@ -52,3 +52,5 @@ let time = clock.measure {
 }
 
 print("Making this sandwich took \(time)")
+
+//: [Completion Handler](@next)
