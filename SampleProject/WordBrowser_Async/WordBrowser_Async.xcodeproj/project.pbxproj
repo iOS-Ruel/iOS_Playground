@@ -11,6 +11,7 @@
 		4114E9AC2C292950009BBC9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4114E9AB2C292950009BBC9E /* ContentView.swift */; };
 		4114E9AE2C292952009BBC9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4114E9AD2C292952009BBC9E /* Assets.xcassets */; };
 		4114E9B12C292952009BBC9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4114E9B02C292952009BBC9E /* Preview Assets.xcassets */; };
+		4114E9BA2C292E18009BBC9E /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4114E9B92C292E18009BBC9E /* LibraryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		4114E9B02C292952009BBC9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4114E9B72C2929A5009BBC9E /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		4114E9B82C292A08009BBC9E /* WordBrowser-Async-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WordBrowser-Async-Info.plist"; sourceTree = SOURCE_ROOT; };
+		4114E9B92C292E18009BBC9E /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				4114E9AB2C292950009BBC9E /* ContentView.swift */,
 				4114E9AD2C292952009BBC9E /* Assets.xcassets */,
 				4114E9AF2C292952009BBC9E /* Preview Content */,
+				4114E9B92C292E18009BBC9E /* LibraryViewModel.swift */,
 			);
 			path = WordBrowser_Async;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4114E9BA2C292E18009BBC9E /* LibraryViewModel.swift in Sources */,
 				4114E9AC2C292950009BBC9E /* ContentView.swift in Sources */,
 				4114E9AA2C292950009BBC9E /* WordBrowser_AsyncApp.swift in Sources */,
 			);

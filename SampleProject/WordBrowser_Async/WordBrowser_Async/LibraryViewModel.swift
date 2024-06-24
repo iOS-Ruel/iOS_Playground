@@ -1,0 +1,20 @@
+//
+//  LibraryViewModel.swift
+//  WordBrowser_Async
+//
+//  Created by Chung Wussup on 6/24/24.
+//
+
+import Foundation
+
+class LibraryViewModel: ObservableObject {
+    @Published var searchText = ""
+    @Published var randomWord = "partially"
+    @Published var tips: [String] = ["Swift", "authentication", "authorization"]
+    @Published var favorites: [String] = ["stunning", "brilliant", "marvleous"]
+    
+    @Published var filteredTips = [String]()
+    @Published var filteredFavorites = [String]()
+    
+    
+}
