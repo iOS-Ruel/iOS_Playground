@@ -37,7 +37,7 @@ struct ContentView: View {
     var body: some View {
         List {
             SectionView("Random Words", words: [viewModel.randomWord])
-            SectionView("Peter's Tops", words: viewModel.filteredTips)
+            SectionView("Peter's Tips", words: viewModel.filteredTips)
             SectionView("My favorite", words: viewModel.filteredFavorites)
         }
         .searchable(text: $viewModel.searchText)
@@ -56,6 +56,7 @@ struct ContentView: View {
             NavigationStack {
                 AddWordView { word in
                     print(word)
+                    viewModel.addFavorite(word)
                 }
             }
         }
