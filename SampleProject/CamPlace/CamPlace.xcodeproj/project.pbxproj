@@ -16,7 +16,6 @@
 		411B1A272C1D74EF00CAA9A7 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A262C1D74EF00CAA9A7 /* MainTabbarViewController.swift */; };
 		411B1A292C1D752A00CAA9A7 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A282C1D752A00CAA9A7 /* MainMapViewController.swift */; };
 		411B1A2B2C1D76E500CAA9A7 /* MainMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A2A2C1D76E500CAA9A7 /* MainMapViewModel.swift */; };
-		411B1A2D2C1D76EE00CAA9A7 /* MainMapViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A2C2C1D76EE00CAA9A7 /* MainMapViewService.swift */; };
 		411B1A2F2C1D773A00CAA9A7 /* BasedListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A2E2C1D773A00CAA9A7 /* BasedListModel.swift */; };
 		411B1A312C1D774400CAA9A7 /* LocationBasedListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A302C1D774400CAA9A7 /* LocationBasedListModel.swift */; };
 		411B1A342C1D775500CAA9A7 /* SearchListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A332C1D775500CAA9A7 /* SearchListModel.swift */; };
@@ -28,9 +27,10 @@
 		415AF2582C2081F300C07CEA /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF2572C2081F300C07CEA /* CustomAnnotation.swift */; };
 		415AF25B2C2086BB00C07CEA /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF25A2C2086BB00C07CEA /* Extension+UIImage.swift */; };
 		415AF25D2C2086CE00C07CEA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF25C2C2086CE00C07CEA /* ImageLoader.swift */; };
+		4184C6262C2B09B9008D19E9 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4184C6252C2B09B9008D19E9 /* APIError.swift */; };
+		4184C6282C2B09D8008D19E9 /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4184C6272C2B09D8008D19E9 /* APIURL.swift */; };
 		41BAA88F2C23D0CE001A51FB /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAA88E2C23D0CE001A51FB /* Extension+UIImageView.swift */; };
 		41BCB4342C228F3700E817E6 /* PlaceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCB4332C228F3700E817E6 /* PlaceDetailViewModel.swift */; };
-		41BCB4362C228F3C00E817E6 /* PlaceDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCB4352C228F3C00E817E6 /* PlaceDetailService.swift */; };
 		41BCB43C2C22DDD000E817E6 /* PlaceListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCB43B2C22DDD000E817E6 /* PlaceListTableViewCell.swift */; };
 		41BCB43F2C23234000E817E6 /* DetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCB43E2C23234000E817E6 /* DetailImageTableViewCell.swift */; };
 		41BCB4412C23234500E817E6 /* DetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCB4402C23234500E817E6 /* DetailInfoTableViewCell.swift */; };
@@ -50,7 +50,6 @@
 		411B1A262C1D74EF00CAA9A7 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
 		411B1A282C1D752A00CAA9A7 /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		411B1A2A2C1D76E500CAA9A7 /* MainMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewModel.swift; sourceTree = "<group>"; };
-		411B1A2C2C1D76EE00CAA9A7 /* MainMapViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewService.swift; sourceTree = "<group>"; };
 		411B1A2E2C1D773A00CAA9A7 /* BasedListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasedListModel.swift; sourceTree = "<group>"; };
 		411B1A302C1D774400CAA9A7 /* LocationBasedListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBasedListModel.swift; sourceTree = "<group>"; };
 		411B1A332C1D775500CAA9A7 /* SearchListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListModel.swift; sourceTree = "<group>"; };
@@ -63,9 +62,10 @@
 		415AF2572C2081F300C07CEA /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		415AF25A2C2086BB00C07CEA /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
 		415AF25C2C2086CE00C07CEA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		4184C6252C2B09B9008D19E9 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		4184C6272C2B09D8008D19E9 /* APIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURL.swift; sourceTree = "<group>"; };
 		41BAA88E2C23D0CE001A51FB /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
 		41BCB4332C228F3700E817E6 /* PlaceDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewModel.swift; sourceTree = "<group>"; };
-		41BCB4352C228F3C00E817E6 /* PlaceDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailService.swift; sourceTree = "<group>"; };
 		41BCB43B2C22DDD000E817E6 /* PlaceListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListTableViewCell.swift; sourceTree = "<group>"; };
 		41BCB43E2C23234000E817E6 /* DetailImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		41BCB4402C23234500E817E6 /* DetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,7 +95,6 @@
 		4114E9C42C299DF2009BBC9E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4114E9C62C29A829009BBC9E /* APIService.swift */,
 				415AF25C2C2086CE00C07CEA /* ImageLoader.swift */,
 			);
 			path = Common;
@@ -105,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				411B1A2A2C1D76E500CAA9A7 /* MainMapViewModel.swift */,
-				411B1A2C2C1D76EE00CAA9A7 /* MainMapViewService.swift */,
 				411B1A282C1D752A00CAA9A7 /* MainMapViewController.swift */,
 			);
 			path = MainMap;
@@ -138,6 +136,7 @@
 				4114E9C42C299DF2009BBC9E /* Common */,
 				415AF2592C20824F00C07CEA /* Extension */,
 				415AF2552C2081A400C07CEA /* Custom */,
+				4184C6292C2B0F84008D19E9 /* APIService */,
 				411B1A252C1D74E000CAA9A7 /* App */,
 				411B1A1C2C1D74C700CAA9A7 /* LaunchScreen.storyboard */,
 				411B1A1A2C1D74C700CAA9A7 /* Assets.xcassets */,
@@ -204,13 +203,22 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		4184C6292C2B0F84008D19E9 /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				4114E9C62C29A829009BBC9E /* APIService.swift */,
+				4184C6252C2B09B9008D19E9 /* APIError.swift */,
+				4184C6272C2B09D8008D19E9 /* APIURL.swift */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
 		41BCB4322C228F2D00E817E6 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
 				41BCB4442C23235500E817E6 /* Cell */,
 				41BFBA742C21E1E00014CF89 /* PlaceDetailViewController.swift */,
 				41BCB4332C228F3700E817E6 /* PlaceDetailViewModel.swift */,
-				41BCB4352C228F3C00E817E6 /* PlaceDetailService.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -308,11 +316,10 @@
 				411B1A382C1D776700CAA9A7 /* BasedSyncListModel.swift in Sources */,
 				41BFBA752C21E1E00014CF89 /* PlaceDetailViewController.swift in Sources */,
 				411B1A162C1D74C500CAA9A7 /* ViewController.swift in Sources */,
-				41BCB4362C228F3C00E817E6 /* PlaceDetailService.swift in Sources */,
 				411B1A3C2C1D809900CAA9A7 /* PlaceListViewController.swift in Sources */,
 				41BCB43F2C23234000E817E6 /* DetailImageTableViewCell.swift in Sources */,
 				4114E9C72C29A829009BBC9E /* APIService.swift in Sources */,
-				411B1A2D2C1D76EE00CAA9A7 /* MainMapViewService.swift in Sources */,
+				4184C6262C2B09B9008D19E9 /* APIError.swift in Sources */,
 				411B1A362C1D775D00CAA9A7 /* ImageListModel.swift in Sources */,
 				411B1A272C1D74EF00CAA9A7 /* MainTabbarViewController.swift in Sources */,
 				41BCB4412C23234500E817E6 /* DetailInfoTableViewCell.swift in Sources */,
@@ -324,6 +331,7 @@
 				411B1A2B2C1D76E500CAA9A7 /* MainMapViewModel.swift in Sources */,
 				411B1A122C1D74C500CAA9A7 /* AppDelegate.swift in Sources */,
 				411B1A3A2C1D798D00CAA9A7 /* MainResModel.swift in Sources */,
+				4184C6282C2B09D8008D19E9 /* APIURL.swift in Sources */,
 				415AF25D2C2086CE00C07CEA /* ImageLoader.swift in Sources */,
 				41BAA88F2C23D0CE001A51FB /* Extension+UIImageView.swift in Sources */,
 				411B1A142C1D74C500CAA9A7 /* SceneDelegate.swift in Sources */,

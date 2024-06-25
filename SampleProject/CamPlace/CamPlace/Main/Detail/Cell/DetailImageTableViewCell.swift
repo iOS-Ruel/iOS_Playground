@@ -84,11 +84,13 @@ class DetailImageTableViewCell: UITableViewCell {
         self.setupImagesInScrollView()
         
         self.contentView.layoutIfNeeded()
-        placeScrollView.contentSize = CGSize(width: contentView.frame.width * CGFloat(imageUrlList.count), height: 300)
+        placeScrollView.contentSize = CGSize(width: contentView.frame.width * CGFloat(imageUrlList.count), 
+                                             height: 300)
     }
     
     private func setupImagesInScrollView() {
-        placeScrollView.contentSize = CGSize(width: contentView.frame.width * CGFloat(imageUrlList.count), height: 300)
+        placeScrollView.contentSize = CGSize(width: contentView.frame.width * CGFloat(imageUrlList.count), 
+                                             height: 300)
         
         for (index, imageUrl) in imageUrlList.enumerated() {
             let imageView = UIImageView()

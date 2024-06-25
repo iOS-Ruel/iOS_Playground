@@ -195,7 +195,7 @@ extension MainMapViewController: MKMapViewDelegate {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
-    
+        
     }
     
     private func setRegion(coordinate: CLLocationCoordinate2D) {
@@ -246,9 +246,13 @@ extension MainMapViewController: MKMapViewDelegate {
     
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let cluster = annotation as? MKClusterAnnotation {
-            return dequeueClusterAnnotationView(for: cluster, on: mapView)
-        } else if let customAnnotation = annotation as? CustomAnnotation {
+        
+//        if let cluster = annotation as? MKClusterAnnotation {
+//            
+//            return dequeueClusterAnnotationView(for: cluster, on: mapView)
+//        } else if let customAnnotation = annotation as? CustomAnnotation {
+         if let customAnnotation = annotation as? CustomAnnotation {
+            
             return dequeueCustomAnnotationView(for: customAnnotation, on: mapView)
         }
         return nil
@@ -256,28 +260,33 @@ extension MainMapViewController: MKMapViewDelegate {
     
     private func dequeueClusterAnnotationView(for cluster: MKClusterAnnotation, on mapView: MKMapView) -> CustomClusterAnnotationView? {
         let identifier = "CustomClusterAnnotationView"
+        
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomClusterAnnotationView
-        if annotationView == nil {
+        
+        if (annotationView == nil) {
             annotationView = CustomClusterAnnotationView(annotation: cluster, reuseIdentifier: identifier)
-        } else {
-            annotationView?.annotation = cluster
         }
+//        else {
+//            annotationView?.annotation = cluster
+//        }
         return annotationView
     }
     
     private func dequeueCustomAnnotationView(for annotation: CustomAnnotation, on mapView: MKMapView) -> CustomAnnotationView? {
         let identifier = "CustomAnnotationView"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomAnnotationView
-        if annotationView == nil {
+        
+        if (annotationView == nil) {
             annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        } else {
-            annotationView?.annotation = annotation
-        }
-  
+        } 
+//        else {
+//            annotationView?.annotation = annotation
+//        }
+        
         if let url = annotation.item?.imageUrl, !url.isEmpty {
             ImageLoader.loadImageFromUrl(url)
                 .receive(on: DispatchQueue.main)
-                .sink { image in
+                .sink { [weak annotationView] image in
                     let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
                     let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
                     annotationView?.image = circularImage
@@ -286,7 +295,7 @@ extension MainMapViewController: MKMapViewDelegate {
         } else {
             annotationView?.image = UIImage(systemName: "questionmark")?.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
         }
-        annotationView?.clusteringIdentifier = "CustomAnnotation"
+        annotationView?.clusteringIdentifier = "CustomClusterAnnotationView"
         return annotationView
     }
 }

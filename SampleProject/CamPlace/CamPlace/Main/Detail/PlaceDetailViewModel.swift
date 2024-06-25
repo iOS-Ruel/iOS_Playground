@@ -16,7 +16,7 @@ enum DetailCellType {
 
 class PlaceDetailViewModel {
     private let content: LocationBasedListModel
-    private let service = PlaceDetailService()
+    private let service = APIService()
     
     @Published var imageList = [ImageListModel]()
     @Published var cellType: [DetailCellType] = []

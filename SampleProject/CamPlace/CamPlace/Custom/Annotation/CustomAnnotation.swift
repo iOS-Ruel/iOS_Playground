@@ -127,7 +127,6 @@ class CustomClusterAnnotationView: MKAnnotationView {
     }
     
     private func updateClusterAppearance(for cluster: MKClusterAnnotation) {
-        var annotationImage: UIImage? = nil
         self.displayPriority = .required
         
         for member in cluster.memberAnnotations {
@@ -147,12 +146,6 @@ class CustomClusterAnnotationView: MKAnnotationView {
                     }
                     .store(in: &cancellables)
                 break
-            }
-        }
-        
-        if annotationImage == nil {
-            DispatchQueue.main.async {
-                self.image = UIImage(systemName: "questionmark")?.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
             }
         }
     }
