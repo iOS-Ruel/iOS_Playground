@@ -31,17 +31,43 @@ enum APIURL {
             return baseURL + "/basedSyncList"
         }
     }
-    
 }
 
-class MainMapViewService {
+enum APIError: Error  {
+    case apiKeyError
+    case urlError
+    case stringURLError
+    case httpError
+    case decodeError
+}
+
+extension APIError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .apiKeyError:
+            return NSLocalizedString("Description of invalid API KEY", comment: "Invalid APIKEY")
+        case .urlError:
+            return NSLocalizedString("Description of invalid URL", comment: "Invalid URL")
+        case .stringURLError:
+            return NSLocalizedString("Description of invalid URL String", comment: "Invalid URL String")
+        case .httpError:
+            return NSLocalizedString("Description of invalid HTTP Code", comment: "Invalid HTTP State Code")
+        case .decodeError:
+            return NSLocalizedString("Description of invalid Decode", comment: "Invalid Decode")
+        }
+    }
+}
+
+
+class APIService {
     
     func getLocationBasedList<T: BasedItem>(mapX: String, mapY: String, radius: String,
-                                            type: T.Type) -> AnyPublisher<ApiResponse<T>, Error> {
+                                            type: T.Type) -> AnyPublisher<ApiResponse<T>, APIError> {
         
         guard let apiKey = Bundle.main.apiKey else {
             print("API 키를 로드하지 못했습니다.")
-            return Fail(error: URLError(.unknown))
+            print(APIError.apiKeyError.localizedDescription)
+            return Fail(error: .apiKeyError)
                 .eraseToAnyPublisher()
         }
         
@@ -59,7 +85,7 @@ class MainMapViewService {
         ]
         
         guard let url = urlComponents?.url else {
-            return Fail(error: URLError(.badURL))
+            return Fail(error: .urlError)
                 .eraseToAnyPublisher()
         }
         
@@ -67,7 +93,7 @@ class MainMapViewService {
         urlString = urlString.replacingOccurrences(of: "%25", with: "%")
         
         guard let url = URL(string:urlString) else {
-            return Fail(error: URLError(.badURL))
+            return Fail(error: .stringURLError)
                 .eraseToAnyPublisher()
         }
         
@@ -75,7 +101,7 @@ class MainMapViewService {
             .tryMap { (data, response) -> Data in
                 guard let httpResponse = response as? HTTPURLResponse,
                       httpResponse.statusCode == 200 else {
-                    throw URLError(.badServerResponse)
+                    throw APIError.httpError
                 }
 //                print("Debug: Received Data - \(String(data: data, encoding: .utf8) ?? "")")
                 return data
@@ -83,7 +109,7 @@ class MainMapViewService {
             .decode(type: ApiResponse<T>.self, decoder: JSONDecoder())
             .mapError { error in
                 print("Debug: Decoding Error - \(error.localizedDescription)")
-                return error
+                return APIError.decodeError
             }
             .eraseToAnyPublisher()
     }

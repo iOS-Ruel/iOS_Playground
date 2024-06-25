@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class MainMapViewModel {
-    private let service = MainMapViewService()
+    private let service = APIService()
     private var cancellables = Set<AnyCancellable>()
     @Published var locationList: [LocationBasedListModel] = []
     @Published var errorMessage: String?
