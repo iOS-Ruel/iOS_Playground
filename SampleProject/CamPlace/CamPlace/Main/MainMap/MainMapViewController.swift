@@ -247,12 +247,9 @@ extension MainMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-//        if let cluster = annotation as? MKClusterAnnotation {
-//            
-//            return dequeueClusterAnnotationView(for: cluster, on: mapView)
-//        } else if let customAnnotation = annotation as? CustomAnnotation {
-         if let customAnnotation = annotation as? CustomAnnotation {
-            
+        if let cluster = annotation as? MKClusterAnnotation {
+            return dequeueClusterAnnotationView(for: cluster, on: mapView)
+        } else if let customAnnotation = annotation as? CustomAnnotation {
             return dequeueCustomAnnotationView(for: customAnnotation, on: mapView)
         }
         return nil
@@ -295,7 +292,7 @@ extension MainMapViewController: MKMapViewDelegate {
         } else {
             annotationView?.image = UIImage(systemName: "questionmark")?.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
         }
-        annotationView?.clusteringIdentifier = "CustomClusterAnnotationView"
+//        annotationView?.clusteringIdentifier = "CustomAnnotation"
         return annotationView
     }
 }
