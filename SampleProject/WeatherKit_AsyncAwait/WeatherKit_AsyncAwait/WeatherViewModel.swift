@@ -58,12 +58,12 @@ class WeatherViewModel: ObservableObject {
         let now = Date()
         let calendar = Calendar.current
         
-        // 현재 시간의 정각 시점을 계산합니다.
+        // 현재 시간의 정각 시점을 계산
         let components = calendar.dateComponents([.year, .month, .day, .hour], from: now)
         let currentHour = components.hour!
         let startOfHour = calendar.date(bySettingHour: currentHour, minute: 0, second: 0, of: now)!
         
-        // 현재 시간보다 이전의 정각을 찾습니다.
+        // 현재 시간보다 이전의 정각
         let previousHour = startOfHour <= now ? startOfHour : calendar.date(byAdding: .hour, value: -1, to: startOfHour)!
         
         let oneDayAfter = calendar.date(byAdding: .hour, value: 24, to: previousHour)!
@@ -72,9 +72,9 @@ class WeatherViewModel: ObservableObject {
             return forecast.date >= previousHour && forecast.date <= oneDayAfter
         }
         
-        filteredForecast.forEach {
-            print($0)
-            print("====================================")
-        }
+//        filteredForecast.forEach {
+//            print($0)
+//            print("====================================")
+//        }
     }
 }

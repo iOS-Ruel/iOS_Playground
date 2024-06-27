@@ -11,7 +11,8 @@ import SwiftUI
 struct WeatherKit_AsyncAwaitApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            WeatherContentView()
         }
     }
 }
