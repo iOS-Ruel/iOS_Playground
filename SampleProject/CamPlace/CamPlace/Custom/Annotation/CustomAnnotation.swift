@@ -15,6 +15,9 @@ class CustomAnnotation: NSObject, MKAnnotation {
     var title: String?
     var subtitle: String?
     
+    deinit {
+        print("CustomAnnotation Deinit")
+    }
     
     init(coordinate: CLLocationCoordinate2D, item: BasedItem) {
         self.coordinate = coordinate
@@ -27,6 +30,9 @@ class CustomAnnotation: NSObject, MKAnnotation {
 
 class CustomAnnotationView: MKMarkerAnnotationView {
     private var cancellables = Set<AnyCancellable>()
+    deinit {
+        print("CustomAnnotationView Deinit")
+    }
     
     override var annotation: MKAnnotation? {
         willSet {
@@ -118,6 +124,10 @@ class CustomAnnotationView: MKMarkerAnnotationView {
 
 class CustomClusterAnnotationView: MKAnnotationView {
     private var cancellables = Set<AnyCancellable>()
+    
+    deinit {
+        print("CustomClusterAnnotationView Deinit")
+    }
     
     override var annotation: MKAnnotation? {
         willSet {

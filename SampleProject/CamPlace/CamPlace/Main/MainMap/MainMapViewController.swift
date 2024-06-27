@@ -104,8 +104,9 @@ class MainMapViewController: UIViewController {
     
     private func setupBindings() {
         viewModel.$locationList
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink {[weak self] lists in
+                print(lists.count)
                 self?.addPinsToMap(lists)
             }
             .store(in: &cancellables)
@@ -230,17 +231,17 @@ extension MainMapViewController: MKMapViewDelegate {
             let closestCoordinate = closestAnnotation.coordinate
             setRegion(coordinate: closestCoordinate)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                mapView.selectAnnotation(closestAnnotation, animated: true)
-            }
+            
+            mapView.selectAnnotation(closestAnnotation, animated: true)
+            
         } else {
             guard let coordinate = view.annotation?.coordinate else { return }
             setRegion(coordinate: coordinate)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                if let annotation = view.annotation {
-                    mapView.selectAnnotation(annotation, animated: true)
-                }
+            
+            if let annotation = view.annotation {
+                mapView.selectAnnotation(annotation, animated: true)
             }
+            
         }
     }
     
@@ -262,10 +263,9 @@ extension MainMapViewController: MKMapViewDelegate {
         
         if (annotationView == nil) {
             annotationView = CustomClusterAnnotationView(annotation: cluster, reuseIdentifier: identifier)
+        } else {
+            annotationView?.annotation = cluster
         }
-//        else {
-//            annotationView?.annotation = cluster
-//        }
         return annotationView
     }
     
@@ -275,10 +275,9 @@ extension MainMapViewController: MKMapViewDelegate {
         
         if (annotationView == nil) {
             annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        } 
-//        else {
-//            annotationView?.annotation = annotation
-//        }
+        } else {
+            annotationView?.annotation = annotation
+        }
         
         if let url = annotation.item?.imageUrl, !url.isEmpty {
             ImageLoader.loadImageFromUrl(url)
@@ -292,7 +291,7 @@ extension MainMapViewController: MKMapViewDelegate {
         } else {
             annotationView?.image = UIImage(systemName: "questionmark")?.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
         }
-//        annotationView?.clusteringIdentifier = "CustomAnnotation"
+        annotationView?.clusteringIdentifier = "CustomAnnotation"
         return annotationView
     }
 }

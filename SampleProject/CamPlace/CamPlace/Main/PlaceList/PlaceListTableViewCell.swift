@@ -8,7 +8,9 @@
 import UIKit
 
 class PlaceListTableViewCell: UITableViewCell {
-    
+    deinit {
+      print("PlaceListTableViewCell Deinit")
+    }
     private var mainView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
