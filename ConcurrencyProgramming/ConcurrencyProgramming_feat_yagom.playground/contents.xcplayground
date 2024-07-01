@@ -6,5 +6,6 @@
         <page name='MainSync'/>
         <page name='GlobalSync'/>
         <page name='DispatchWorkItem'/>
+        <page name='Queue'/>
     </pages>
 </playground>
