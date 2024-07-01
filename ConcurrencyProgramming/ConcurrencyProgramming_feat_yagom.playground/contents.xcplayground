@@ -8,5 +8,6 @@
         <page name='DispatchWorkItem'/>
         <page name='Queue'/>
         <page name='CompletionHandler'/>
+        <page name='AsyncAwait'/>
     </pages>
 </playground>
