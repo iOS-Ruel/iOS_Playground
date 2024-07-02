@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DisplayTextField: View {
-    @ObservedObject var creature: AnimalModel
+    @EnvironmentObject var creature: AnimalModel
     
     var body: some View {
         HStack {
