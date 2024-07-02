@@ -26,9 +26,9 @@ let blue = DispatchWorkItem {
 }
 
 // 1
-DispatchQueue.global().async(execute: yellow)
-DispatchQueue.global().sync(execute: blue)
-DispatchQueue.main.async(execute: red)
+//DispatchQueue.global().async(execute: yellow)
+//DispatchQueue.global().sync(execute: blue)
+//DispatchQueue.main.async(execute: red)
 // 2
 //DispatchQueue.global().sync(execute: yellow)
 //DispatchQueue.global().async(execute: blue)
@@ -38,8 +38,8 @@ DispatchQueue.main.async(execute: red)
 //DispatchQueue.global().async(execute: blue)
 //DispatchQueue.global().sync(execute: red)
 // 4
-//DispatchQueue.main.async(execute: yellow)
-//DispatchQueue.global().sync(execute: blue)
-//DispatchQueue.global().async(execute: red)
+DispatchQueue.main.async(execute: yellow)
+DispatchQueue.global().async(execute: blue)
+DispatchQueue.global().sync(execute: red)
 
 //: [Next](@next)
