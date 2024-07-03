@@ -7,7 +7,14 @@
 
 import SwiftUI
 
+enum ProductScope {
+    case fruit
+    case vegetable
+}
+
+
 struct ContentView: View {
+    @State private var scope: ProductScope = .fruit
     @State var searchText = ""
     
     let petArray = ["Cat", "Dog", "Fish", "Donkey", "Canary", "Camel", "Frog"]
@@ -22,11 +29,11 @@ struct ContentView: View {
                     prompt: "Look for a pet") {
             
             //제안하는 키워드가 있을때 사용
-            Text("Singing").searchCompletion("Canary")
-            Text("Croaking").searchCompletion("Frog")
-            Text("Grumpy").searchCompletion("Cat")
+            //            Text("Singing").searchCompletion("Canary")
+            //            Text("Croaking").searchCompletion("Frog")
+            //            Text("Grumpy").searchCompletion("Cat")
             
-            Divider()
+            //            Divider()
             //SearchText 가 비어있을 경우, hasPrefix는 true를 리턴
             //배열의 모든 요소가 출력됨
             ForEach(petArray.filter {
@@ -35,6 +42,10 @@ struct ContentView: View {
                 Text(name)
             }
         }
+                    .searchScopes($scope) {
+                        Text("Fruit").tag(ProductScope.fruit)
+                        Text("Vegetable").tag(ProductScope.vegetable)
+                    }
     }
 }
 
