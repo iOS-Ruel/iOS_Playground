@@ -17,6 +17,8 @@ struct ContentView: View {
             PetListView(animals: petArray)
         }
         .searchable(text: $searchText) {
+            //SearchText 가 비어있을 경우, hasPrefix는 true를 리턴
+            //배열의 모든 요소가 출력됨
             ForEach(petArray.filter {
                 $0.hasPrefix(searchText)
             }, id: \.self) { name in
