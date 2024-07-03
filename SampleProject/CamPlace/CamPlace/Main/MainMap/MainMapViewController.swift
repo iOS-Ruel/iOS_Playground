@@ -33,7 +33,7 @@ class MainMapViewController: UIViewController {
     }()
     
     private lazy var currentPlaceButton: UIButton = {
-        let button = createButton(title: "현재 위치에서 검색", image: nil, action: #selector(currentButtonTapped))
+        let button = createButton(title: "현재 위치로 이동", image: nil, action: #selector(currentButtonTapped))
         button.titleLabel?.font = .systemFont(ofSize: 12)
         return button
     }()

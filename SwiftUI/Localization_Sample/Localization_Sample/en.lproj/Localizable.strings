@@ -1,0 +1,11 @@
+/* 
+  Localizable-legacy.strings
+  Localization_Sample
+
+  Created by Chung Wussup on 7/3/24.
+  
+*/
+
+"greeting-label %@" = "Hello, %@";
+"button-label" = "Tap Me";
+"placeholder-label" = "Type here";
