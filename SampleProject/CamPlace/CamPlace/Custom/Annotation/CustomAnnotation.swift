@@ -30,8 +30,15 @@ class CustomAnnotation: NSObject, MKAnnotation {
 
 class CustomAnnotationView: MKMarkerAnnotationView {
     private var cancellables = Set<AnyCancellable>()
+    
     deinit {
         print("CustomAnnotationView Deinit")
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+    }
+    
+    override func prepareForReuse() {
+        print("CustomAnnotationView Prepare For Reuse")
     }
     
     override var annotation: MKAnnotation? {
@@ -123,7 +130,14 @@ class CustomAnnotationView: MKMarkerAnnotationView {
 }
 
 class CustomClusterAnnotationView: MKAnnotationView {
+    
     private var cancellables = Set<AnyCancellable>()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+    }
     
     deinit {
         print("CustomClusterAnnotationView Deinit")

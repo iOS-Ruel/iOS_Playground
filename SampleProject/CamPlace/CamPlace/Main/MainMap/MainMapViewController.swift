@@ -106,7 +106,7 @@ class MainMapViewController: UIViewController {
         viewModel.$locationList
             .receive(on: DispatchQueue.main)
             .sink {[weak self] lists in
-                print(lists.count)
+//                print(lists.count)
                 self?.addPinsToMap(lists)
             }
             .store(in: &cancellables)
@@ -188,6 +188,7 @@ extension MainMapViewController: CLLocationManagerDelegate {
 }
 
 extension MainMapViewController: MKMapViewDelegate {
+    //Annotaion CallOut Touch PushViewController
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if let title = view.annotation?.title, let placeName = title {
             if let content = viewModel.getLocationContent(title: placeName) {
@@ -200,40 +201,20 @@ extension MainMapViewController: MKMapViewDelegate {
     }
     
     private func setRegion(coordinate: CLLocationCoordinate2D) {
+        //center: 지도 중심 좌표
+        //lati, long Meters: 지도 중심 기준으로 위경도 1000미터 범위 영역 설정 ( 1Km x 1Km )
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        
+        //region을 기준으로 지도 업데이트
         mapView.setRegion(region, animated: true)
-    }
-    
-    private func closestAnnotation(to coordinate: CLLocationCoordinate2D, in annotations: [MKAnnotation]) -> MKAnnotation? {
-        var closestAnnotation: MKAnnotation?
-        var closestDistance: CLLocationDistance = CLLocationDistanceMax
-        
-        let targetLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        
-        for annotation in annotations {
-            let annotationLocation = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-            let distance = targetLocation.distance(from: annotationLocation)
-            
-            if distance < closestDistance {
-                closestDistance = distance
-                closestAnnotation = annotation
-            }
-        }
-        
-        return closestAnnotation
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let clusterAnnotation = view.annotation as? MKClusterAnnotation {
-            guard let closestAnnotation = closestAnnotation(to: clusterAnnotation.coordinate,
-                                                            in: clusterAnnotation.memberAnnotations) else { return }
-            
-            let closestCoordinate = closestAnnotation.coordinate
-            setRegion(coordinate: closestCoordinate)
-            
-            
-            mapView.selectAnnotation(closestAnnotation, animated: true)
-            
+            if let first = clusterAnnotation.memberAnnotations.first {
+                setRegion(coordinate: first.coordinate)
+                mapView.selectAnnotation(clusterAnnotation, animated: true)
+            }
         } else {
             guard let coordinate = view.annotation?.coordinate else { return }
             setRegion(coordinate: coordinate)
@@ -249,8 +230,10 @@ extension MainMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if let cluster = annotation as? MKClusterAnnotation {
+            //Cluste Annotation일 경우 Custom Cluster Annotation 반환
             return dequeueClusterAnnotationView(for: cluster, on: mapView)
         } else if let customAnnotation = annotation as? CustomAnnotation {
+            //Custom Annotation일 경우 Custom Annotation 반환
             return dequeueCustomAnnotationView(for: customAnnotation, on: mapView)
         }
         return nil
@@ -261,9 +244,11 @@ extension MainMapViewController: MKMapViewDelegate {
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomClusterAnnotationView
         
-        if (annotationView == nil) {
+        if annotationView == nil {
+            //AnnotationView가 없을 때 새로 생성
             annotationView = CustomClusterAnnotationView(annotation: cluster, reuseIdentifier: identifier)
         } else {
+            //이미 AnnotationView가 있으면 해당 Annotation 업데이트
             annotationView?.annotation = cluster
         }
         return annotationView
@@ -273,23 +258,12 @@ extension MainMapViewController: MKMapViewDelegate {
         let identifier = "CustomAnnotationView"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomAnnotationView
         
-        if (annotationView == nil) {
+        if annotationView == nil {
+            //AnnotationView가 없을 때 새로 생성
             annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         } else {
+            //이미 AnnotationView가 있으면 해당 Annotation 업데이트
             annotationView?.annotation = annotation
-        }
-        
-        if let url = annotation.item?.imageUrl, !url.isEmpty {
-            ImageLoader.loadImageFromUrl(url)
-                .receive(on: DispatchQueue.main)
-                .sink { [weak annotationView] image in
-                    let resizedImage = image?.resized(to: CGSize(width: 30, height: 30))
-                    let circularImage = resizedImage?.circularImage(withBorderWidth: 2.0, borderColor: .white)
-                    annotationView?.image = circularImage
-                }
-                .store(in: &cancellables)
-        } else {
-            annotationView?.image = UIImage(systemName: "questionmark")?.resized(to: CGSize(width: 30, height: 30))?.circularImage(withBorderWidth: 2.0, borderColor: .white)
         }
         annotationView?.clusteringIdentifier = "CustomAnnotation"
         return annotationView
