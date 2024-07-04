@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-
 protocol APIServiceProtocol {
     func getLocationBasedList<T: BasedItem>(mapX: String, mapY: String, radius: String, type: T.Type) -> AnyPublisher<ApiResponse<T>, APIError>
     func getLocationImageList<T: BasedItem>(contentId: String, type: T.Type) -> AnyPublisher<ApiResponse<T>, APIError>

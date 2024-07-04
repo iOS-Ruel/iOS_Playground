@@ -32,19 +32,16 @@ class CustomAnnotationView: MKMarkerAnnotationView {
     private var cancellables = Set<AnyCancellable>()
     
     deinit {
-        print("CustomAnnotationView Deinit")
+//        print("CustomAnnotationView Deinit")
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
     }
-    
-    override func prepareForReuse() {
-        print("CustomAnnotationView Prepare For Reuse")
-    }
+
     
     override var annotation: MKAnnotation? {
         willSet {
             guard let customAnnotation = newValue as? CustomAnnotation else { return }
-            clusteringIdentifier = "CustomAnnotation"
+            clusteringIdentifier = "CustomClusterAnnotationView"
             canShowCallout = true
             setupMarkerAppearance(for: customAnnotation)
             setupCallout(for: customAnnotation)
@@ -132,15 +129,17 @@ class CustomAnnotationView: MKMarkerAnnotationView {
 class CustomClusterAnnotationView: MKAnnotationView {
     
     private var cancellables = Set<AnyCancellable>()
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
+
+    deinit {
+        print("CustomClusterAnnotationView Deinit")
+        
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
     }
     
-    deinit {
-        print("CustomClusterAnnotationView Deinit")
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.image = nil
     }
     
     override var annotation: MKAnnotation? {
@@ -174,5 +173,3 @@ class CustomClusterAnnotationView: MKAnnotationView {
         }
     }
 }
-
-

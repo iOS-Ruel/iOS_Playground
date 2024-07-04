@@ -106,7 +106,6 @@ class MainMapViewController: UIViewController {
         viewModel.$locationList
             .receive(on: DispatchQueue.main)
             .sink {[weak self] lists in
-//                print(lists.count)
                 self?.addPinsToMap(lists)
             }
             .store(in: &cancellables)
@@ -154,6 +153,7 @@ class MainMapViewController: UIViewController {
         guard let coordinator = locationManager.location?.coordinate else {
             return
         }
+        
         setRegion(coordinate: coordinator)
     }
 }
@@ -163,9 +163,7 @@ extension MainMapViewController: CLLocationManagerDelegate {
         guard let location = locations.first else { return }
         
         if isFirstLocationUpdate {
-            viewModel.getLocationList(mapX: "\(location.coordinate.longitude)",
-                                      mapY: "\(location.coordinate.latitude)",
-                                      radius: "20000")
+
             setRegion(coordinate: location.coordinate)
             isFirstLocationUpdate = false
         }
@@ -200,11 +198,20 @@ extension MainMapViewController: MKMapViewDelegate {
         
     }
     
-    private func setRegion(coordinate: CLLocationCoordinate2D) {
+    private func setRegion(coordinate: CLLocationCoordinate2D, didSelect: Bool = false) {
+            
+        if !didSelect {
+            mapView.removeAnnotations(mapView.annotations)
+            
+            viewModel.getLocationList(mapX: "\(coordinate.longitude)",
+                                      mapY: "\(coordinate.latitude)",
+                                      radius: "20000")
+        }
+        
         //center: 지도 중심 좌표
         //lati, long Meters: 지도 중심 기준으로 위경도 1000미터 범위 영역 설정 ( 1Km x 1Km )
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-        
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
+
         //region을 기준으로 지도 업데이트
         mapView.setRegion(region, animated: true)
     }
@@ -212,12 +219,12 @@ extension MainMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let clusterAnnotation = view.annotation as? MKClusterAnnotation {
             if let first = clusterAnnotation.memberAnnotations.first {
-                setRegion(coordinate: first.coordinate)
+                setRegion(coordinate: first.coordinate, didSelect: true)
                 mapView.selectAnnotation(clusterAnnotation, animated: true)
             }
         } else {
             guard let coordinate = view.annotation?.coordinate else { return }
-            setRegion(coordinate: coordinate)
+            setRegion(coordinate: coordinate, didSelect: true)
             
             if let annotation = view.annotation {
                 mapView.selectAnnotation(annotation, animated: true)
@@ -242,30 +249,20 @@ extension MainMapViewController: MKMapViewDelegate {
     private func dequeueClusterAnnotationView(for cluster: MKClusterAnnotation, on mapView: MKMapView) -> CustomClusterAnnotationView? {
         let identifier = "CustomClusterAnnotationView"
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomClusterAnnotationView
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomClusterAnnotationView
+
+        annotationView?.annotation = cluster
         
-        if annotationView == nil {
-            //AnnotationView가 없을 때 새로 생성
-            annotationView = CustomClusterAnnotationView(annotation: cluster, reuseIdentifier: identifier)
-        } else {
-            //이미 AnnotationView가 있으면 해당 Annotation 업데이트
-            annotationView?.annotation = cluster
-        }
         return annotationView
     }
     
     private func dequeueCustomAnnotationView(for annotation: CustomAnnotation, on mapView: MKMapView) -> CustomAnnotationView? {
         let identifier = "CustomAnnotationView"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomAnnotationView
         
-        if annotationView == nil {
-            //AnnotationView가 없을 때 새로 생성
-            annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        } else {
-            //이미 AnnotationView가 있으면 해당 Annotation 업데이트
-            annotationView?.annotation = annotation
-        }
-        annotationView?.clusteringIdentifier = "CustomAnnotation"
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomAnnotationView
+        annotationView?.annotation = annotation
+        
         return annotationView
     }
+
 }
