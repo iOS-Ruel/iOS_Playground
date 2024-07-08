@@ -42,6 +42,7 @@
 		41EEE2C62C37B87400A37E22 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEE2C42C37B87400A37E22 /* Location+CoreDataProperties.swift */; };
 		41EEE2C82C37B8A000A37E22 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEE2C72C37B8A000A37E22 /* CoreDataManager.swift */; };
 		41EEE2CA2C37C9FF00A37E22 /* LocationFavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEE2C92C37C9FF00A37E22 /* LocationFavoriteViewModel.swift */; };
+		41EEE3B02C3C07F800A37E22 /* PlaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEE3AF2C3C07F800A37E22 /* PlaceListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		41EEE2C42C37B87400A37E22 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		41EEE2C72C37B8A000A37E22 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		41EEE2C92C37C9FF00A37E22 /* LocationFavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFavoriteViewModel.swift; sourceTree = "<group>"; };
+		41EEE3AF2C3C07F800A37E22 /* PlaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 			children = (
 				411B1A3B2C1D809900CAA9A7 /* PlaceListViewController.swift */,
 				41BCB43B2C22DDD000E817E6 /* PlaceListTableViewCell.swift */,
+				41EEE3AF2C3C07F800A37E22 /* PlaceListViewModel.swift */,
 			);
 			path = PlaceList;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				411B1A2F2C1D773A00CAA9A7 /* BasedListModel.swift in Sources */,
 				41EEE2C82C37B8A000A37E22 /* CoreDataManager.swift in Sources */,
 				411B1A312C1D774400CAA9A7 /* LocationBasedListModel.swift in Sources */,
+				41EEE3B02C3C07F800A37E22 /* PlaceListViewModel.swift in Sources */,
 				411B1A342C1D775500CAA9A7 /* SearchListModel.swift in Sources */,
 				41BCB4432C23234C00E817E6 /* DetailMapTableViewCell.swift in Sources */,
 				411B1A2B2C1D76E500CAA9A7 /* MainMapViewModel.swift in Sources */,

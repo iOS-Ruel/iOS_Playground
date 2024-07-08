@@ -9,9 +9,8 @@ import UIKit
 import Combine
 
 class PlaceListViewController: UIViewController {
-    @Published var locationList: [LocationBasedListModel]
     private var cancellables = Set<AnyCancellable>()
-    
+    private var viewModel: PlaceListViewModel
     
     private lazy var listTableView: UITableView = {
         let tv = UITableView()
@@ -26,8 +25,8 @@ class PlaceListViewController: UIViewController {
         return tv
     }()
     
-    init(locationList: [LocationBasedListModel]) {
-        self.locationList = locationList
+    init(viewModel: PlaceListViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         bindTableView()
     }
@@ -65,7 +64,7 @@ class PlaceListViewController: UIViewController {
     
     //TODO: - 굳이 combine을 써야할까?
     private func bindTableView() {
-        $locationList
+        viewModel.$locationList
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.listTableView.reloadData()
@@ -82,21 +81,24 @@ class PlaceListViewController: UIViewController {
 
 extension PlaceListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locationList.count
+        return viewModel.locationListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceListTableViewCell", 
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceListTableViewCell",
                                                        for: indexPath) as? PlaceListTableViewCell else {
             return UITableViewCell()
         }
         
-        cell.setupCell(content: locationList[indexPath.row])
+        let content = viewModel.getLocation(index: indexPath.row)
+        
+        cell.setupCell(content: content)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let content = locationList[indexPath.row]
+        let content = viewModel.getLocation(index: indexPath.row)
         let viewModel = PlaceDetailViewModel(content: content)
         let vc = PlaceDetailViewController(viewModel: viewModel)
         let naviController = UINavigationController(rootViewController: vc)

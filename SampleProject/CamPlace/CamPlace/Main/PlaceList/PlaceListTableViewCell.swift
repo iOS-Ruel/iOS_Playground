@@ -111,9 +111,11 @@ class PlaceListTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
         titleLabel.text = nil
         infoLabel.text = nil
-        placeImageView.image = nil
+        addressLabel.text = nil
         placeImageView.image = UIImage(systemName: "questionmark")
     }
     
@@ -150,32 +152,12 @@ class PlaceListTableViewCell: UITableViewCell {
         ])
     }
     
-//    @objc func didFavoriteButton() {
-//        if let locationContent = self.location {
-//            
-//            if CoreDataManager.shared.hasData(content: locationContent) {
-//                CoreDataManager.shared.deleteData(content: locationContent)
-//            } else {
-//                CoreDataManager.shared.createData(content: locationContent)
-//            }
-//            
-//            favoriteButtonSetup(content: locationContent)
-//        }
-//    }
-//    
-//    
-//    private func favoriteButtonSetup(content: LocationBasedListModel) {
-//        let favoriteImage = CoreDataManager.shared.hasData(content: content) ? UIImage(systemName: "star.fill")?.withRenderingMode(.alwaysOriginal) : UIImage(systemName: "star")?.withRenderingMode(.alwaysOriginal)
-//        
-//        DispatchQueue.main.async {
-//            self.favoriteButton.setImage(favoriteImage, for: .normal)
-//        }
-//    }
     @objc func didFavoriteButton() {
         guard let locationContent = self.location else { return }
         
         CoreDataManager.shared.hasData(content: locationContent)
-            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] hasData in
+            .sink(receiveCompletion: { _ in }, 
+                  receiveValue: { [weak self] hasData in
                 guard let self = self else { return }
                 
                 if hasData {
@@ -188,10 +170,11 @@ class PlaceListTableViewCell: UITableViewCell {
             })
             .store(in: &cancellables)
     }
-
+    
     private func favoriteButtonSetup(content: LocationBasedListModel) {
         CoreDataManager.shared.hasData(content: content)
-            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] hasData in
+            .sink(receiveCompletion: { _ in }, 
+                  receiveValue: { [weak self] hasData in
                 guard let self = self else { return }
                 
                 let favoriteImage = hasData ? UIImage(systemName: "star.fill")?.withRenderingMode(.alwaysOriginal) : UIImage(systemName: "star")?.withRenderingMode(.alwaysOriginal)

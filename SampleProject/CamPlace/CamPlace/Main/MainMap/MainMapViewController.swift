@@ -132,7 +132,8 @@ class MainMapViewController: UIViewController {
     
     @objc private func listButtonTapped() {
         let locationList = viewModel.locationList
-        let listVC = PlaceListViewController(locationList: locationList)
+        let listViewModel = PlaceListViewModel(locationList: locationList)
+        let listVC = PlaceListViewController(viewModel: listViewModel)
         let vc = UINavigationController(rootViewController: listVC)
         
         let detentIdentifier = UISheetPresentationController.Detent.Identifier("customDetent")
