@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 class PlaceListTableViewCell: UITableViewCell {
     deinit {
-      print("PlaceListTableViewCell Deinit")
+        print("PlaceListTableViewCell Deinit")
     }
     private var mainView: UIView = {
         let view = UIView()
@@ -68,7 +69,15 @@ class PlaceListTableViewCell: UITableViewCell {
         return label
     }()
     
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "star"), for: .normal)
+        button.addTarget(self, action: #selector(didFavoriteButton), for: .touchUpInside)
+        return button
+    }()
     
+    var location: LocationBasedListModel?
+    private var cancellables: Set<AnyCancellable> = []
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -81,7 +90,9 @@ class PlaceListTableViewCell: UITableViewCell {
         setupUI()
     }
     
+    
     func setupCell(content: LocationBasedListModel) {
+        self.location = content
         titleLabel.text = content.title
         
         infoLabel.isHidden = content.lineIntro == "" ? true : false
@@ -95,6 +106,7 @@ class PlaceListTableViewCell: UITableViewCell {
         } else {
             placeImageView.image = UIImage(systemName: "questionmark")
         }
+        favoriteButtonSetup(content: content)
     }
     
     override func prepareForReuse() {
@@ -102,7 +114,7 @@ class PlaceListTableViewCell: UITableViewCell {
         titleLabel.text = nil
         infoLabel.text = nil
         placeImageView.image = nil
-        placeImageView.image = UIImage(systemName: "questionmark") 
+        placeImageView.image = UIImage(systemName: "questionmark")
     }
     
     
@@ -112,6 +124,7 @@ class PlaceListTableViewCell: UITableViewCell {
         mainView.addSubview(mainStackView)
         mainStackView.addArrangedSubview(placeImageView)
         mainStackView.addArrangedSubview(contentStackView)
+        mainStackView.addArrangedSubview(favoriteButton)
         
         contentStackView.addArrangedSubview(titleLabel)
         contentStackView.addArrangedSubview(infoLabel)
@@ -130,8 +143,64 @@ class PlaceListTableViewCell: UITableViewCell {
             
             
             placeImageView.heightAnchor.constraint(equalToConstant: 100),
-            placeImageView.widthAnchor.constraint(equalToConstant: 100)
+            placeImageView.widthAnchor.constraint(equalToConstant: 100),
+            
+            favoriteButton.widthAnchor.constraint(equalToConstant: 40),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 40)
         ])
+    }
+    
+//    @objc func didFavoriteButton() {
+//        if let locationContent = self.location {
+//            
+//            if CoreDataManager.shared.hasData(content: locationContent) {
+//                CoreDataManager.shared.deleteData(content: locationContent)
+//            } else {
+//                CoreDataManager.shared.createData(content: locationContent)
+//            }
+//            
+//            favoriteButtonSetup(content: locationContent)
+//        }
+//    }
+//    
+//    
+//    private func favoriteButtonSetup(content: LocationBasedListModel) {
+//        let favoriteImage = CoreDataManager.shared.hasData(content: content) ? UIImage(systemName: "star.fill")?.withRenderingMode(.alwaysOriginal) : UIImage(systemName: "star")?.withRenderingMode(.alwaysOriginal)
+//        
+//        DispatchQueue.main.async {
+//            self.favoriteButton.setImage(favoriteImage, for: .normal)
+//        }
+//    }
+    @objc func didFavoriteButton() {
+        guard let locationContent = self.location else { return }
+        
+        CoreDataManager.shared.hasData(content: locationContent)
+            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] hasData in
+                guard let self = self else { return }
+                
+                if hasData {
+                    CoreDataManager.shared.deleteData(content: locationContent)
+                } else {
+                    CoreDataManager.shared.createData(content: locationContent)
+                }
+                
+                self.favoriteButtonSetup(content: locationContent)
+            })
+            .store(in: &cancellables)
+    }
+
+    private func favoriteButtonSetup(content: LocationBasedListModel) {
+        CoreDataManager.shared.hasData(content: content)
+            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] hasData in
+                guard let self = self else { return }
+                
+                let favoriteImage = hasData ? UIImage(systemName: "star.fill")?.withRenderingMode(.alwaysOriginal) : UIImage(systemName: "star")?.withRenderingMode(.alwaysOriginal)
+                
+                DispatchQueue.main.async {
+                    self.favoriteButton.setImage(favoriteImage, for: .normal)
+                }
+            })
+            .store(in: &cancellables)
     }
     
 }

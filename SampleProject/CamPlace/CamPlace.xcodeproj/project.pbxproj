@@ -36,6 +36,12 @@
 		41BCB4412C23234500E817E6 /* DetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCB4402C23234500E817E6 /* DetailInfoTableViewCell.swift */; };
 		41BCB4432C23234C00E817E6 /* DetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCB4422C23234C00E817E6 /* DetailMapTableViewCell.swift */; };
 		41BFBA752C21E1E00014CF89 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BFBA742C21E1E00014CF89 /* PlaceDetailViewController.swift */; };
+		41EEE2B72C37AE9100A37E22 /* CamplaceModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41EEE2B52C37AE9100A37E22 /* CamplaceModel.xcdatamodeld */; };
+		41EEE2C22C37B77F00A37E22 /* LocationFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEE2C12C37B77F00A37E22 /* LocationFavoriteViewController.swift */; };
+		41EEE2C52C37B87400A37E22 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEE2C32C37B87400A37E22 /* Location+CoreDataClass.swift */; };
+		41EEE2C62C37B87400A37E22 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEE2C42C37B87400A37E22 /* Location+CoreDataProperties.swift */; };
+		41EEE2C82C37B8A000A37E22 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEE2C72C37B8A000A37E22 /* CoreDataManager.swift */; };
+		41EEE2CA2C37C9FF00A37E22 /* LocationFavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EEE2C92C37C9FF00A37E22 /* LocationFavoriteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +77,12 @@
 		41BCB4402C23234500E817E6 /* DetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoTableViewCell.swift; sourceTree = "<group>"; };
 		41BCB4422C23234C00E817E6 /* DetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapTableViewCell.swift; sourceTree = "<group>"; };
 		41BFBA742C21E1E00014CF89 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		41EEE2B62C37AE9100A37E22 /* Camplace.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Camplace.xcdatamodel; sourceTree = "<group>"; };
+		41EEE2C12C37B77F00A37E22 /* LocationFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFavoriteViewController.swift; sourceTree = "<group>"; };
+		41EEE2C32C37B87400A37E22 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41EEE2C42C37B87400A37E22 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41EEE2C72C37B8A000A37E22 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		41EEE2C92C37C9FF00A37E22 /* LocationFavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFavoriteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +124,8 @@
 		411B1A052C1D74C500CAA9A7 = {
 			isa = PBXGroup;
 			children = (
+				41EEE2C32C37B87400A37E22 /* Location+CoreDataClass.swift */,
+				41EEE2C42C37B87400A37E22 /* Location+CoreDataProperties.swift */,
 				415AF2522C20669700C07CEA /* API_KEY.xcconfig */,
 				411B1A102C1D74C500CAA9A7 /* CamPlace */,
 				411B1A0F2C1D74C500CAA9A7 /* Products */,
@@ -129,6 +143,7 @@
 		411B1A102C1D74C500CAA9A7 /* CamPlace */ = {
 			isa = PBXGroup;
 			children = (
+				41EEE2C72C37B8A000A37E22 /* CoreDataManager.swift */,
 				411B1A152C1D74C500CAA9A7 /* ViewController.swift */,
 				4114E9C32C299DCA009BBC9E /* Tabbar */,
 				415AF2512C20665100C07CEA /* Main */,
@@ -141,6 +156,7 @@
 				411B1A1C2C1D74C700CAA9A7 /* LaunchScreen.storyboard */,
 				411B1A1A2C1D74C700CAA9A7 /* Assets.xcassets */,
 				411B1A1F2C1D74C700CAA9A7 /* Info.plist */,
+				41EEE2B52C37AE9100A37E22 /* CamplaceModel.xcdatamodeld */,
 			);
 			path = CamPlace;
 			sourceTree = "<group>";
@@ -170,6 +186,7 @@
 		415AF2512C20665100C07CEA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				41EEE2C02C37B76E00A37E22 /* Faovrite */,
 				4114E9C52C29A804009BBC9E /* MainMap */,
 				41BCB4322C228F2D00E817E6 /* Detail */,
 				41BCB43D2C22DDD900E817E6 /* PlaceList */,
@@ -240,6 +257,15 @@
 				41BCB4422C23234C00E817E6 /* DetailMapTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		41EEE2C02C37B76E00A37E22 /* Faovrite */ = {
+			isa = PBXGroup;
+			children = (
+				41EEE2C12C37B77F00A37E22 /* LocationFavoriteViewController.swift */,
+				41EEE2C92C37C9FF00A37E22 /* LocationFavoriteViewModel.swift */,
+			);
+			path = Faovrite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,24 +345,30 @@
 				411B1A3C2C1D809900CAA9A7 /* PlaceListViewController.swift in Sources */,
 				41BCB43F2C23234000E817E6 /* DetailImageTableViewCell.swift in Sources */,
 				4114E9C72C29A829009BBC9E /* APIService.swift in Sources */,
+				41EEE2B72C37AE9100A37E22 /* CamplaceModel.xcdatamodeld in Sources */,
 				4184C6262C2B09B9008D19E9 /* APIError.swift in Sources */,
 				411B1A362C1D775D00CAA9A7 /* ImageListModel.swift in Sources */,
 				411B1A272C1D74EF00CAA9A7 /* MainTabbarViewController.swift in Sources */,
 				41BCB4412C23234500E817E6 /* DetailInfoTableViewCell.swift in Sources */,
 				415AF2582C2081F300C07CEA /* CustomAnnotation.swift in Sources */,
 				411B1A2F2C1D773A00CAA9A7 /* BasedListModel.swift in Sources */,
+				41EEE2C82C37B8A000A37E22 /* CoreDataManager.swift in Sources */,
 				411B1A312C1D774400CAA9A7 /* LocationBasedListModel.swift in Sources */,
 				411B1A342C1D775500CAA9A7 /* SearchListModel.swift in Sources */,
 				41BCB4432C23234C00E817E6 /* DetailMapTableViewCell.swift in Sources */,
 				411B1A2B2C1D76E500CAA9A7 /* MainMapViewModel.swift in Sources */,
 				411B1A122C1D74C500CAA9A7 /* AppDelegate.swift in Sources */,
 				411B1A3A2C1D798D00CAA9A7 /* MainResModel.swift in Sources */,
+				41EEE2C52C37B87400A37E22 /* Location+CoreDataClass.swift in Sources */,
+				41EEE2CA2C37C9FF00A37E22 /* LocationFavoriteViewModel.swift in Sources */,
+				41EEE2C62C37B87400A37E22 /* Location+CoreDataProperties.swift in Sources */,
 				4184C6282C2B09D8008D19E9 /* APIURL.swift in Sources */,
 				415AF25D2C2086CE00C07CEA /* ImageLoader.swift in Sources */,
 				41BAA88F2C23D0CE001A51FB /* Extension+UIImageView.swift in Sources */,
 				411B1A142C1D74C500CAA9A7 /* SceneDelegate.swift in Sources */,
 				41BCB4342C228F3700E817E6 /* PlaceDetailViewModel.swift in Sources */,
 				415AF25B2C2086BB00C07CEA /* Extension+UIImage.swift in Sources */,
+				41EEE2C22C37B77F00A37E22 /* LocationFavoriteViewController.swift in Sources */,
 				411B1A292C1D752A00CAA9A7 /* MainMapViewController.swift in Sources */,
 				41BCB43C2C22DDD000E817E6 /* PlaceListTableViewCell.swift in Sources */,
 			);
@@ -559,6 +591,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		41EEE2B52C37AE9100A37E22 /* CamplaceModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				41EEE2B62C37AE9100A37E22 /* Camplace.xcdatamodel */,
+			);
+			currentVersion = 41EEE2B62C37AE9100A37E22 /* Camplace.xcdatamodel */;
+			path = CamplaceModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 411B1A062C1D74C500CAA9A7 /* Project object */;
 }

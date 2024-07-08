@@ -10,7 +10,6 @@ import MapKit
 import CoreLocation
 import Combine
 
-
 class MainMapViewController: UIViewController {
     let locationManager = CLLocationManager()
     private var cancellables = Set<AnyCancellable>()

@@ -19,11 +19,15 @@ class MainTabbarViewController: UITabBarController {
         let firstViewController = MainMapViewController()
         firstViewController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map"), tag: 0)
         
-        let secondViewController = ViewController()
-        secondViewController.tabBarItem = UITabBarItem(title: "Second", image: UIImage(systemName: "2.circle"), tag: 1)
+        let secondViewController = LocationFavoriteViewController()
+        secondViewController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "star"), tag: 1)
         
         tabBar.backgroundColor = .white
         
         self.viewControllers = [firstViewController, secondViewController]
     }
 }
+
+//#Preview {
+//    UINavigationController(rootViewController: MainTabbarViewController())
+//}

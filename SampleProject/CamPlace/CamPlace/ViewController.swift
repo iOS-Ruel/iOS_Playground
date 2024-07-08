@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
+    var persistentContainer: NSPersistentContainer? {
+         (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+     }
+    
     private lazy var listButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +37,10 @@ class ViewController: UIViewController {
             listButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getData()
     }
     
     @objc func listButotnTapped() {
@@ -66,5 +75,13 @@ class ViewController: UIViewController {
 //        present(listVC, animated: true)
     }
     
+    func getData() {
+      guard let context = self.persistentContainer?.viewContext else { return }
+
+      let request = Location.fetchRequest()
+        let location = try? context.fetch(request)
+
+      print(location)
+    }
 }
 
