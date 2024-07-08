@@ -18,24 +18,54 @@ struct ContentView: View {
     
     @State var message = ""
     @State var buttonStatus = true
+    @State var newColor: Color = .white
+    
     
     var body: some View {
-        VStack {
-            TextEditor(text: $message)
-                .frame(width: 300, height: 400)
-            Button(buttonStatus ? "Start recording" : "Stop Recording") {
-                buttonStatus.toggle()
-                
-                if buttonStatus {
-                    stopRecording()
-                } else {
-                    startRecording()
-                }
-            }
-        }
-        .padding()
+        //        VStack {
+        //            TextEditor(text: $message)
+        //                .frame(width: 300, height: 400)
+        //            Button(buttonStatus ? "Start recording" : "Stop Recording") {
+        //                buttonStatus.toggle()
+        //
+        //                if buttonStatus {
+        //                    stopRecording()
+        //                } else {
+        //                    startRecording()
+        //                }
+        //            }
+        //            .padding()
+        //            .background(buttonStatus ? Color.green : Color.red)
+        //        }
+        //        .padding()
+        VStack (spacing: 25) {
+            Button { startRecording()
+            } label: {
+                Text("Start recording") }
+            TextField("Spoken text appears here", text: $message)
+            Button {
+                message = ""
+                newColor = .white
+                stopRecording()
+            } label: {
+                Text("Stop recording")
+            } }.background(newColor)
     }
     
+    func checkSpokenCommand (commandString: String) {
+        switch commandString {
+            
+        case "보라":
+            newColor = .purple
+        case "초록":
+            newColor = .green
+        case "노랑":
+            newColor = .yellow
+        default:
+            newColor = .white
+        }
+    }
+     
     
     func startRecording() {
         message = "start recording"
@@ -66,6 +96,7 @@ struct ContentView: View {
             if let result = result {
                 let transcrinbedString = result.bestTranscription.formattedString
                 message = transcrinbedString
+                checkSpokenCommand(commandString: transcrinbedString)
             } else if let error = error {
                 print(error)
             }
