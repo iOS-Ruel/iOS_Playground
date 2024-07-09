@@ -21,10 +21,12 @@ class MainTabbarViewController: UITabBarController {
         
         let secondViewController = LocationFavoriteViewController()
         secondViewController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "star"), tag: 1)
+        let secondNavigationController = UINavigationController(rootViewController: secondViewController)
+        secondViewController.navigationItem.title = "즐겨찾기"
         
         tabBar.backgroundColor = .white
         
-        self.viewControllers = [firstViewController, secondViewController]
+        self.viewControllers = [firstViewController, secondNavigationController]
     }
 }
 

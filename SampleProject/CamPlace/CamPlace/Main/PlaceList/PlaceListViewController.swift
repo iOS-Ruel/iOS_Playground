@@ -10,9 +10,6 @@ import Combine
 
 class PlaceListViewController: UIViewController {
 
-    private var cancellables = Set<AnyCancellable>()
-    private var viewModel: PlaceListViewModel
-    
     private lazy var listTableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -35,6 +32,9 @@ class PlaceListViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private var cancellables = Set<AnyCancellable>()
+    private var viewModel: PlaceListViewModel
     
     
     override func viewDidLoad() {

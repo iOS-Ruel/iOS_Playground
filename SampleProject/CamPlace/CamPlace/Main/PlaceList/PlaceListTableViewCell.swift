@@ -84,9 +84,6 @@ class PlaceListTableViewCell: UITableViewCell {
     
     var location: LocationBasedListModel?
     private var cancellables: Set<AnyCancellable> = []
-    
-    //    weak var delegate: PlaceListTableViewCellDelegate?
-    
     private var viewModel: PlaceListProtocol?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

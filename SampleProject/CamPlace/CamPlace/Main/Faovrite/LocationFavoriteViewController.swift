@@ -9,8 +9,6 @@ import UIKit
 import Combine
 
 class LocationFavoriteViewController: UIViewController {
-    private let viewModel = LocationFavoriteViewModel()
-    private var cancellables: Set<AnyCancellable> = []
 
     private lazy var listTableView: UITableView = {
         let tv = UITableView()
@@ -25,6 +23,8 @@ class LocationFavoriteViewController: UIViewController {
         return tv
     }()
     
+    private let viewModel = LocationFavoriteViewModel()
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class LocationFavoriteViewController: UIViewController {
     }
     
     private func setupNavi() {
-        self.navigationController?.navigationBar.topItem?.title = "즐겨찾기"
+//        self.navigationController?.navigationBar.topItem?.title = "즐겨찾기"
     }
     
     private func bindData() {

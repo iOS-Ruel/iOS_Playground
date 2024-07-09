@@ -9,14 +9,14 @@ import CoreData
 import UIKit
 import Combine
 
-class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
+class CoreDataManager: NSObject {
     static let shared: CoreDataManager = CoreDataManager()
     
     private let context: NSManagedObjectContext
     private var cancellables: Set<AnyCancellable> = []
+    private var fetchedResultsController: NSFetchedResultsController<Location>!
     
     @Published var locations: [Location] = []
-    private var fetchedResultsController: NSFetchedResultsController<Location>!
     
     private override init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -118,8 +118,9 @@ class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
             }
         }
     }
-    
-    // NSFetchedResultsControllerDelegate methods
+}
+
+extension CoreDataManager: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         if let locations = controller.fetchedObjects as? [Location] {
             self.locations = locations

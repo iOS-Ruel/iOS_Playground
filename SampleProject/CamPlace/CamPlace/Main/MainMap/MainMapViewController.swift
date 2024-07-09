@@ -11,9 +11,6 @@ import CoreLocation
 import Combine
 
 class MainMapViewController: UIViewController {
-    let locationManager = CLLocationManager()
-    private var cancellables = Set<AnyCancellable>()
-    
     private let mapView: MKMapView = {
         let mv = MKMapView()
         mv.translatesAutoresizingMaskIntoConstraints = false
@@ -37,8 +34,10 @@ class MainMapViewController: UIViewController {
         return button
     }()
     
-    private var isFirstLocationUpdate = true
+    let locationManager = CLLocationManager()
+    private var cancellables = Set<AnyCancellable>()
     
+    private var isFirstLocationUpdate = true
     private let viewModel = MainMapViewModel()
     
     override func viewDidLoad() {

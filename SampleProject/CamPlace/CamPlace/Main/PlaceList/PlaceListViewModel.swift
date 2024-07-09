@@ -19,8 +19,10 @@ protocol PlaceListProtocol {
 
 
 class PlaceListViewModel: PlaceListProtocol {
-    @Published var locationList: [LocationBasedListModel]
+    
     private var cancellables = Set<AnyCancellable>()
+    
+    @Published var locationList: [LocationBasedListModel]
     
     init(locationList: [LocationBasedListModel]) {
         self.locationList = locationList

@@ -9,10 +9,10 @@ import Foundation
 import Combine
 
 class LocationFavoriteViewModel: PlaceListProtocol {
-    
+
+    private var cancellables: Set<AnyCancellable> = []
     
     @Published var locations: [Location] = []
-    private var cancellables: Set<AnyCancellable> = []
     
     init() {
         bindData()

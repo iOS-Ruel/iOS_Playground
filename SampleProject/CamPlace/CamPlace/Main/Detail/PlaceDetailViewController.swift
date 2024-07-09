@@ -9,13 +9,6 @@ import UIKit
 import Combine
 
 class PlaceDetailViewController: UIViewController {
-    private let viewModel: PlaceDetailViewModel
-    private var cancellables = Set<AnyCancellable>()
-    
-    
-    private var cellType: [DetailCellType] = []
-    
-    
     private lazy var detailTV: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +21,11 @@ class PlaceDetailViewController: UIViewController {
         tv.register(DetailInfoTableViewCell.self, forCellReuseIdentifier: "DetailInfoTableViewCell")
         return tv
     }()
+    
+    private let viewModel: PlaceDetailViewModel
+    private var cancellables = Set<AnyCancellable>()
+    
+    private var cellType: [DetailCellType] = []
     
     
     init(viewModel: PlaceDetailViewModel) {

@@ -10,7 +10,6 @@
 		4114E9C72C29A829009BBC9E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4114E9C62C29A829009BBC9E /* APIService.swift */; };
 		411B1A122C1D74C500CAA9A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A112C1D74C500CAA9A7 /* AppDelegate.swift */; };
 		411B1A142C1D74C500CAA9A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A132C1D74C500CAA9A7 /* SceneDelegate.swift */; };
-		411B1A162C1D74C500CAA9A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A152C1D74C500CAA9A7 /* ViewController.swift */; };
 		411B1A1B2C1D74C700CAA9A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 411B1A1A2C1D74C700CAA9A7 /* Assets.xcassets */; };
 		411B1A1E2C1D74C700CAA9A7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 411B1A1D2C1D74C700CAA9A7 /* Base */; };
 		411B1A272C1D74EF00CAA9A7 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B1A262C1D74EF00CAA9A7 /* MainTabbarViewController.swift */; };
@@ -50,7 +49,6 @@
 		411B1A0E2C1D74C500CAA9A7 /* CamPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		411B1A112C1D74C500CAA9A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		411B1A132C1D74C500CAA9A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		411B1A152C1D74C500CAA9A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		411B1A1A2C1D74C700CAA9A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		411B1A1D2C1D74C700CAA9A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		411B1A1F2C1D74C700CAA9A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				41EEE2C72C37B8A000A37E22 /* CoreDataManager.swift */,
-				411B1A152C1D74C500CAA9A7 /* ViewController.swift */,
 				4114E9C32C299DCA009BBC9E /* Tabbar */,
 				415AF2512C20665100C07CEA /* Main */,
 				411B1A322C1D774600CAA9A7 /* Model */,
@@ -344,7 +341,6 @@
 				415AF2542C2066D300C07CEA /* Extension+Bundle.swift in Sources */,
 				411B1A382C1D776700CAA9A7 /* BasedSyncListModel.swift in Sources */,
 				41BFBA752C21E1E00014CF89 /* PlaceDetailViewController.swift in Sources */,
-				411B1A162C1D74C500CAA9A7 /* ViewController.swift in Sources */,
 				411B1A3C2C1D809900CAA9A7 /* PlaceListViewController.swift in Sources */,
 				41BCB43F2C23234000E817E6 /* DetailImageTableViewCell.swift in Sources */,
 				4114E9C72C29A829009BBC9E /* APIService.swift in Sources */,
