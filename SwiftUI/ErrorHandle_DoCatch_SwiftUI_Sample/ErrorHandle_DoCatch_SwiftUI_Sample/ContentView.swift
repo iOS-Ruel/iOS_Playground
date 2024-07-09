@@ -40,24 +40,32 @@ struct ContentView: View {
     
     
     func divideFunction(numerator: Double, denominator: Double) {
-        do {
-            try checkMe(top: numerator, bottom: denominator)
+//        do {
+//            try checkMe(top: numerator, bottom: denominator)
+//            message = "Answer = \(numerator / denominator)"
+//        } catch MajorProblems.divideByZero{
+//            message = "Can't divide by zero"
+//        } catch MajorProblems.noNegativeNumberPlease {
+//            message = "No negative numbers, please"
+//        } catch {
+//            message = "Some other error occurred"
+//        }
+        
+        if let answer = try? checkMe(top: numerator, bottom: denominator) {
             message = "Answer = \(numerator / denominator)"
-        } catch MajorProblems.divideByZero{
-            message = "Can't divide by zero"
-        } catch MajorProblems.noNegativeNumberPlease {
-            message = "No negative numbers, please"
-        } catch {
+        } else {
             message = "Some other error occurred"
         }
     }
-    func checkMe(top: Double, bottom: Double) throws {
+    func checkMe(top: Double, bottom: Double) throws -> Double {
         guard bottom != 0 else {
             throw MajorProblems.divideByZero
         }
         guard top >= 0 && bottom > 0 else {
             throw MajorProblems.noNegativeNumberPlease
         }
+        
+        return top / bottom
     }
 
 }
