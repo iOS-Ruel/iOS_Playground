@@ -92,4 +92,4 @@ API_KEY.xcconfig
 iOSInjectionProject/
 *.xcconfig
 *.pdf
-*jpg
+*.jpg
