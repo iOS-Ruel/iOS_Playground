@@ -19,14 +19,6 @@ protocol PlaceListProtocol {
 
 
 class PlaceListViewModel: PlaceListProtocol {
-    func getLocation(index: Int) -> Location? {
-        return nil
-    }
-    
-    func doFavorite(locationContent: Location) -> AnyPublisher<Bool, Never>? {
-        return nil
-    }
-    
     @Published var locationList: [LocationBasedListModel]
     private var cancellables = Set<AnyCancellable>()
     
@@ -72,5 +64,15 @@ class PlaceListViewModel: PlaceListProtocol {
         .eraseToAnyPublisher()
         
     }
+    
+    func getLocation(index: Int) -> Location? {
+        return nil
+    }
+    
+    func doFavorite(locationContent: Location) -> AnyPublisher<Bool, Never>? {
+        return nil
+    }
+    
+    
     
 }
