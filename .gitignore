@@ -94,3 +94,5 @@ iOSInjectionProject/
 *.pdf
 *.jpg
 *.mlmodel
+.DS_Store
+API_KEY.swift
