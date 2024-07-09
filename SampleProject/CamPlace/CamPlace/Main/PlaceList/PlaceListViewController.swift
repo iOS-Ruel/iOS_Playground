@@ -9,6 +9,7 @@ import UIKit
 import Combine
 
 class PlaceListViewController: UIViewController {
+
     private var cancellables = Set<AnyCancellable>()
     private var viewModel: PlaceListViewModel
     
@@ -90,20 +91,23 @@ extension PlaceListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let content = viewModel.getLocation(index: indexPath.row)
+        guard let content = viewModel.getLocationModel(index: indexPath.row) else {
+            return UITableViewCell()
+        }
         
-        cell.setupCell(content: content)
+        cell.setupCell(viewModel: self.viewModel, content: content)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let content = viewModel.getLocation(index: indexPath.row)
-        let viewModel = PlaceDetailViewModel(content: content)
-        let vc = PlaceDetailViewController(viewModel: viewModel)
-        let naviController = UINavigationController(rootViewController: vc)
-        naviController.modalPresentationStyle = .fullScreen
-        self.present(naviController, animated: false)
+        if let content = viewModel.getLocationModel(index: indexPath.row) {
+            let viewModel = PlaceDetailViewModel(content: content)
+            let vc = PlaceDetailViewController(viewModel: viewModel)
+            let naviController = UINavigationController(rootViewController: vc)
+            naviController.modalPresentationStyle = .fullScreen
+            self.present(naviController, animated: false)
+        }
     }
     
     

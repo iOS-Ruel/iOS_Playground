@@ -8,7 +8,9 @@
 import Foundation
 import Combine
 
-class LocationFavoriteViewModel {
+class LocationFavoriteViewModel: PlaceListProtocol {
+    
+    
     @Published var locations: [Location] = []
     private var cancellables: Set<AnyCancellable> = []
     
@@ -23,4 +25,53 @@ class LocationFavoriteViewModel {
             }
             .store(in: &cancellables)
     }
+
+    
+    func doFavoriteModel(locationContent: LocationBasedListModel) -> AnyPublisher<Bool, Never>? {
+        Future<Bool, Never> { promise in
+            CoreDataManager.shared.hasData(content: locationContent)
+                .sink(receiveCompletion: { _ in },
+                      receiveValue: { hasData in
+                    if hasData {
+                        CoreDataManager.shared.deleteData(content: locationContent)
+                    } else {
+                        CoreDataManager.shared.createData(content: locationContent)
+                    }
+                    promise(.success(!hasData))
+                })
+                .store(in: &self.cancellables)
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func getLocation(index: Int) -> Location? {
+        return locations[index]
+    }
+    
+    func locationListCount() -> Int {
+        return locations.count
+    }
+
+    
+    func isFavorite(content: LocationBasedListModel) -> AnyPublisher<Bool, Never>? {
+        Future<Bool, Never> { promise in
+            
+            CoreDataManager.shared.hasData(content: content)
+                .sink(receiveCompletion: { _ in },
+                      receiveValue: { hasData in
+                    promise(.success(hasData))
+                })
+                .store(in: &self.cancellables)
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func getLocationModel(index: Int) -> LocationBasedListModel? {
+        return nil
+    }
+    
+    func doFavorite(locationContent: Location) -> AnyPublisher<Bool, Never>? {
+        return nil
+    }
+    
 }

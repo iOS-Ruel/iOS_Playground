@@ -8,10 +8,16 @@
 import UIKit
 import Combine
 
+//protocol PlaceListTableViewCellDelegate: AnyObject {
+//    func didFavoriteButton(content: LocationBasedListModel)
+//    func favoriteButtonSetup(content: LocationBasedListModel)
+//}
+
 class PlaceListTableViewCell: UITableViewCell {
     deinit {
         print("PlaceListTableViewCell Deinit")
     }
+    
     private var mainView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -71,13 +77,17 @@ class PlaceListTableViewCell: UITableViewCell {
     
     private lazy var favoriteButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "star"), for: .normal)
+        button.setImage(UIImage(systemName: "star")?.withRenderingMode(.alwaysOriginal) , for: .normal)
         button.addTarget(self, action: #selector(didFavoriteButton), for: .touchUpInside)
         return button
     }()
     
     var location: LocationBasedListModel?
     private var cancellables: Set<AnyCancellable> = []
+    
+    //    weak var delegate: PlaceListTableViewCellDelegate?
+    
+    private var viewModel: PlaceListProtocol?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -91,7 +101,8 @@ class PlaceListTableViewCell: UITableViewCell {
     }
     
     
-    func setupCell(content: LocationBasedListModel) {
+    func setupCell(viewModel: PlaceListProtocol, content: LocationBasedListModel) {
+        self.viewModel = viewModel
         self.location = content
         titleLabel.text = content.title
         
@@ -106,7 +117,8 @@ class PlaceListTableViewCell: UITableViewCell {
         } else {
             placeImageView.image = UIImage(systemName: "questionmark")
         }
-        favoriteButtonSetup(content: content)
+        
+        setupFavorite(content: content)
     }
     
     override func prepareForReuse() {
@@ -154,36 +166,29 @@ class PlaceListTableViewCell: UITableViewCell {
     
     @objc func didFavoriteButton() {
         guard let locationContent = self.location else { return }
+        viewModel?.doFavoriteModel(locationContent: locationContent)?
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isFavorite in
+                guard let self = self else { return }
+                self.favorteButtonSetup(isFavorite: isFavorite)
+                
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setupFavorite(content: LocationBasedListModel) {
+        viewModel?.isFavorite(content: content)?
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isFavorite in
+                guard let self = self else { return }
+                self.favorteButtonSetup(isFavorite: isFavorite)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func favorteButtonSetup(isFavorite: Bool) {
+        let favoriteImage = isFavorite ? UIImage(systemName: "star.fill")?.withRenderingMode(.alwaysOriginal) : UIImage(systemName: "star")?.withRenderingMode(.alwaysOriginal)
         
-        CoreDataManager.shared.hasData(content: locationContent)
-            .sink(receiveCompletion: { _ in }, 
-                  receiveValue: { [weak self] hasData in
-                guard let self = self else { return }
-                
-                if hasData {
-                    CoreDataManager.shared.deleteData(content: locationContent)
-                } else {
-                    CoreDataManager.shared.createData(content: locationContent)
-                }
-                
-                self.favoriteButtonSetup(content: locationContent)
-            })
-            .store(in: &cancellables)
+        self.favoriteButton.setImage(favoriteImage, for: .normal)
     }
-    
-    private func favoriteButtonSetup(content: LocationBasedListModel) {
-        CoreDataManager.shared.hasData(content: content)
-            .sink(receiveCompletion: { _ in }, 
-                  receiveValue: { [weak self] hasData in
-                guard let self = self else { return }
-                
-                let favoriteImage = hasData ? UIImage(systemName: "star.fill")?.withRenderingMode(.alwaysOriginal) : UIImage(systemName: "star")?.withRenderingMode(.alwaysOriginal)
-                
-                DispatchQueue.main.async {
-                    self.favoriteButton.setImage(favoriteImage, for: .normal)
-                }
-            })
-            .store(in: &cancellables)
-    }
-    
 }

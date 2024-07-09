@@ -8,7 +8,25 @@
 import Foundation
 import Combine
 
-class PlaceListViewModel {
+protocol PlaceListProtocol {
+    func locationListCount() -> Int
+    func getLocationModel(index: Int) -> LocationBasedListModel?
+    func doFavoriteModel(locationContent: LocationBasedListModel) -> AnyPublisher<Bool, Never>?
+    func getLocation(index: Int) -> Location?
+    func doFavorite(locationContent: Location) -> AnyPublisher<Bool, Never>?
+    func isFavorite(content: LocationBasedListModel) -> AnyPublisher<Bool, Never>?
+}
+
+
+class PlaceListViewModel: PlaceListProtocol {
+    func getLocation(index: Int) -> Location? {
+        return nil
+    }
+    
+    func doFavorite(locationContent: Location) -> AnyPublisher<Bool, Never>? {
+        return nil
+    }
+    
     @Published var locationList: [LocationBasedListModel]
     private var cancellables = Set<AnyCancellable>()
     
@@ -20,8 +38,39 @@ class PlaceListViewModel {
         return locationList.count
     }
     
-    func getLocation(index: Int) -> LocationBasedListModel {
+    func getLocationModel(index: Int) -> LocationBasedListModel? {
         return locationList[index]
+    }
+    
+    func doFavoriteModel(locationContent: LocationBasedListModel) -> AnyPublisher<Bool, Never>? {
+        Future<Bool, Never> { promise in
+            CoreDataManager.shared.hasData(content: locationContent)
+                .sink(receiveCompletion: { _ in },
+                      receiveValue: { hasData in
+                    if hasData {
+                        CoreDataManager.shared.deleteData(content: locationContent)
+                    } else {
+                        CoreDataManager.shared.createData(content: locationContent)
+                    }
+                    promise(.success(!hasData))
+                })
+                .store(in: &self.cancellables)
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func isFavorite(content: LocationBasedListModel) -> AnyPublisher<Bool, Never>? {
+        Future<Bool, Never> { promise in
+            
+            CoreDataManager.shared.hasData(content: content)
+                .sink(receiveCompletion: { _ in },
+                      receiveValue: { hasData in
+                    promise(.success(hasData))
+                })
+                .store(in: &self.cancellables)
+        }
+        .eraseToAnyPublisher()
+        
     }
     
 }

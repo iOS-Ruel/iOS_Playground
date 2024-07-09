@@ -61,7 +61,7 @@ class LocationFavoriteViewController: UIViewController {
 
 extension LocationFavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.locations.count
+        return viewModel.locationListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,7 +71,7 @@ extension LocationFavoriteViewController: UITableViewDelegate, UITableViewDataSo
         }
         
         let content: LocationBasedListModel = LocationBasedListModel(from: viewModel.locations[indexPath.row])
-        cell.setupCell(content: content)
+        cell.setupCell(viewModel: self.viewModel, content: content)
         return cell
     }
     
