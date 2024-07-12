@@ -2,8 +2,6 @@
 
 import Foundation
 
-import Foundation
-
 let red = DispatchWorkItem {
     for _ in 1...5 {
         print("🥵🥵🥵🥵🥵")
@@ -40,7 +38,10 @@ let blue = DispatchWorkItem {
 //DispatchQueue.global().sync(execute: red)
 // 4
 DispatchQueue.main.async(execute: yellow)
-DispatchQueue.global().async(execute: blue)
-DispatchQueue.global().sync(execute: red)
+DispatchQueue.global().sync(execute: blue)
+DispatchQueue.global().async(execute: red)
 
 //: [Next](@next)
+
+
+
