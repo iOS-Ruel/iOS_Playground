@@ -44,10 +44,6 @@ class LocationFavoriteViewModel: PlaceListProtocol {
         .eraseToAnyPublisher()
     }
     
-    func getLocation(index: Int) -> Location? {
-        return locations[index]
-    }
-    
     func locationListCount() -> Int {
         return locations.count
     }
@@ -67,6 +63,6 @@ class LocationFavoriteViewModel: PlaceListProtocol {
     }
     
     func getLocationModel(index: Int) -> LocationBasedListModel? {
-        return nil
+        return LocationBasedListModel(from: locations[index])
     }    
 }

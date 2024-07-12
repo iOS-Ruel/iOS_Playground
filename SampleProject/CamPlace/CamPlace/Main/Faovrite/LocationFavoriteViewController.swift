@@ -70,7 +70,10 @@ extension LocationFavoriteViewController: UITableViewDelegate, UITableViewDataSo
             return UITableViewCell()
         }
         
-        let content: LocationBasedListModel = LocationBasedListModel(from: viewModel.locations[indexPath.row])
+        guard let content: LocationBasedListModel = viewModel.getLocationModel(index: indexPath.row)  else {
+            return UITableViewCell()
+        }
+
         cell.setupCell(viewModel: self.viewModel, content: content)
         return cell
     }

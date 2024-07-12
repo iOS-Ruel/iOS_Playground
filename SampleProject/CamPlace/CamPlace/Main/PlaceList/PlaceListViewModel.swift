@@ -12,7 +12,6 @@ protocol PlaceListProtocol {
     func locationListCount() -> Int
     
     func getLocationModel(index: Int) -> LocationBasedListModel?
-    func getLocation(index: Int) -> Location?
     
     func isFavorite(content: LocationBasedListModel) -> AnyPublisher<Bool, Never>?
     func doFavoriteModel(locationContent: LocationBasedListModel) -> AnyPublisher<Bool, Never>?
@@ -68,7 +67,4 @@ class PlaceListViewModel: PlaceListProtocol {
         
     }
     
-    func getLocation(index: Int) -> Location? {
-        return nil
-    }
 }
