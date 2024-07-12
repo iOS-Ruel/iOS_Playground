@@ -26,6 +26,10 @@
 		415AF2582C2081F300C07CEA /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF2572C2081F300C07CEA /* CustomAnnotation.swift */; };
 		415AF25B2C2086BB00C07CEA /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF25A2C2086BB00C07CEA /* Extension+UIImage.swift */; };
 		415AF25D2C2086CE00C07CEA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AF25C2C2086CE00C07CEA /* ImageLoader.swift */; };
+		417DC6D22C418C35006DEFF6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417DC6D12C418C35006DEFF6 /* Coordinator.swift */; };
+		417DC6D42C418C61006DEFF6 /* MainMapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417DC6D32C418C61006DEFF6 /* MainMapViewCoordinator.swift */; };
+		417DC6D62C418D07006DEFF6 /* LocationFavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417DC6D52C418D07006DEFF6 /* LocationFavoriteCoordinator.swift */; };
+		417DC6D82C418D29006DEFF6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417DC6D72C418D29006DEFF6 /* AppCoordinator.swift */; };
 		4184C6262C2B09B9008D19E9 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4184C6252C2B09B9008D19E9 /* APIError.swift */; };
 		4184C6282C2B09D8008D19E9 /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4184C6272C2B09D8008D19E9 /* APIURL.swift */; };
 		41BAA88F2C23D0CE001A51FB /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAA88E2C23D0CE001A51FB /* Extension+UIImageView.swift */; };
@@ -67,6 +71,10 @@
 		415AF2572C2081F300C07CEA /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		415AF25A2C2086BB00C07CEA /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
 		415AF25C2C2086CE00C07CEA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		417DC6D12C418C35006DEFF6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		417DC6D32C418C61006DEFF6 /* MainMapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewCoordinator.swift; sourceTree = "<group>"; };
+		417DC6D52C418D07006DEFF6 /* LocationFavoriteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFavoriteCoordinator.swift; sourceTree = "<group>"; };
+		417DC6D72C418D29006DEFF6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		4184C6252C2B09B9008D19E9 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		4184C6272C2B09D8008D19E9 /* APIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURL.swift; sourceTree = "<group>"; };
 		41BAA88E2C23D0CE001A51FB /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
@@ -117,6 +125,7 @@
 			children = (
 				411B1A2A2C1D76E500CAA9A7 /* MainMapViewModel.swift */,
 				411B1A282C1D752A00CAA9A7 /* MainMapViewController.swift */,
+				417DC6D32C418C61006DEFF6 /* MainMapViewCoordinator.swift */,
 			);
 			path = MainMap;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 		411B1A102C1D74C500CAA9A7 /* CamPlace */ = {
 			isa = PBXGroup;
 			children = (
+				417DC6D02C418C23006DEFF6 /* Coordinator */,
 				41EEE2C72C37B8A000A37E22 /* CoreDataManager.swift */,
 				4114E9C32C299DCA009BBC9E /* Tabbar */,
 				415AF2512C20665100C07CEA /* Main */,
@@ -219,6 +229,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		417DC6D02C418C23006DEFF6 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				417DC6D12C418C35006DEFF6 /* Coordinator.swift */,
+				417DC6D72C418D29006DEFF6 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		4184C6292C2B0F84008D19E9 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +283,7 @@
 			children = (
 				41EEE2C12C37B77F00A37E22 /* LocationFavoriteViewController.swift */,
 				41EEE2C92C37C9FF00A37E22 /* LocationFavoriteViewModel.swift */,
+				417DC6D52C418D07006DEFF6 /* LocationFavoriteCoordinator.swift */,
 			);
 			path = Faovrite;
 			sourceTree = "<group>";
@@ -339,7 +359,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				415AF2542C2066D300C07CEA /* Extension+Bundle.swift in Sources */,
+				417DC6D82C418D29006DEFF6 /* AppCoordinator.swift in Sources */,
 				411B1A382C1D776700CAA9A7 /* BasedSyncListModel.swift in Sources */,
+				417DC6D42C418C61006DEFF6 /* MainMapViewCoordinator.swift in Sources */,
 				41BFBA752C21E1E00014CF89 /* PlaceDetailViewController.swift in Sources */,
 				411B1A3C2C1D809900CAA9A7 /* PlaceListViewController.swift in Sources */,
 				41BCB43F2C23234000E817E6 /* DetailImageTableViewCell.swift in Sources */,
@@ -348,6 +370,7 @@
 				4184C6262C2B09B9008D19E9 /* APIError.swift in Sources */,
 				411B1A362C1D775D00CAA9A7 /* ImageListModel.swift in Sources */,
 				411B1A272C1D74EF00CAA9A7 /* MainTabbarViewController.swift in Sources */,
+				417DC6D22C418C35006DEFF6 /* Coordinator.swift in Sources */,
 				41BCB4412C23234500E817E6 /* DetailInfoTableViewCell.swift in Sources */,
 				415AF2582C2081F300C07CEA /* CustomAnnotation.swift in Sources */,
 				411B1A2F2C1D773A00CAA9A7 /* BasedListModel.swift in Sources */,
@@ -363,6 +386,7 @@
 				41EEE2CA2C37C9FF00A37E22 /* LocationFavoriteViewModel.swift in Sources */,
 				41EEE2C62C37B87400A37E22 /* Location+CoreDataProperties.swift in Sources */,
 				4184C6282C2B09D8008D19E9 /* APIURL.swift in Sources */,
+				417DC6D62C418D07006DEFF6 /* LocationFavoriteCoordinator.swift in Sources */,
 				415AF25D2C2086CE00C07CEA /* ImageLoader.swift in Sources */,
 				41BAA88F2C23D0CE001A51FB /* Extension+UIImageView.swift in Sources */,
 				411B1A142C1D74C500CAA9A7 /* SceneDelegate.swift in Sources */,

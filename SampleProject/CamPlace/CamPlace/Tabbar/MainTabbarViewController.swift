@@ -8,10 +8,12 @@
 import UIKit
 
 class MainTabbarViewController: UITabBarController {
+    var coordinator: AppCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpTabbar()
+//        setUpTabbar()
+//        coordinator?.setupTabbarController()
     }
     
     

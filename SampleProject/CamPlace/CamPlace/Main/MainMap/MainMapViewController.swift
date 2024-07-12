@@ -10,6 +10,11 @@ import MapKit
 import CoreLocation
 import Combine
 
+protocol MainMapDelegate: AnyObject {
+    func pushDetialVC(content: LocationBasedListModel)
+    func presentLocationList(contents: [LocationBasedListModel])
+}
+
 class MainMapViewController: UIViewController {
     private let mapView: MKMapView = {
         let mv = MKMapView()
@@ -39,6 +44,8 @@ class MainMapViewController: UIViewController {
     
     private var isFirstLocationUpdate = true
     private let viewModel = MainMapViewModel()
+    
+    weak var delegate: MainMapDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,21 +138,8 @@ class MainMapViewController: UIViewController {
     
     @objc private func listButtonTapped() {
         let locationList = viewModel.locationList
-        let listViewModel = PlaceListViewModel(locationList: locationList)
-        let listVC = PlaceListViewController(viewModel: listViewModel)
-        let vc = UINavigationController(rootViewController: listVC)
+        delegate?.presentLocationList(contents: locationList)
         
-        let detentIdentifier = UISheetPresentationController.Detent.Identifier("customDetent")
-        let customDetent = UISheetPresentationController.Detent.custom(identifier: detentIdentifier) { _ in
-            let screenHeight = UIScreen.main.bounds.height
-            return screenHeight * 0.878912
-        }
-        
-        if let sheet = vc.sheetPresentationController {
-            sheet.detents = [customDetent]
-            sheet.preferredCornerRadius = 30
-        }
-        present(vc, animated: true)
     }
     
     @objc private func currentButtonTapped() {
@@ -189,9 +183,9 @@ extension MainMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if let title = view.annotation?.title, let placeName = title {
             if let content = viewModel.getLocationContent(title: placeName) {
-                let viewModel = PlaceDetailViewModel(content: content)
-                let vc = PlaceDetailViewController(viewModel: viewModel)
-                self.navigationController?.pushViewController(vc, animated: true)
+                
+                delegate?.pushDetialVC(content: content)
+                
             }
         }
         
