@@ -10,11 +10,12 @@ import Combine
 
 protocol PlaceListProtocol {
     func locationListCount() -> Int
+    
     func getLocationModel(index: Int) -> LocationBasedListModel?
-    func doFavoriteModel(locationContent: LocationBasedListModel) -> AnyPublisher<Bool, Never>?
     func getLocation(index: Int) -> Location?
-    func doFavorite(locationContent: Location) -> AnyPublisher<Bool, Never>?
+    
     func isFavorite(content: LocationBasedListModel) -> AnyPublisher<Bool, Never>?
+    func doFavoriteModel(locationContent: LocationBasedListModel) -> AnyPublisher<Bool, Never>?
 }
 
 
@@ -70,11 +71,4 @@ class PlaceListViewModel: PlaceListProtocol {
     func getLocation(index: Int) -> Location? {
         return nil
     }
-    
-    func doFavorite(locationContent: Location) -> AnyPublisher<Bool, Never>? {
-        return nil
-    }
-    
-    
-    
 }

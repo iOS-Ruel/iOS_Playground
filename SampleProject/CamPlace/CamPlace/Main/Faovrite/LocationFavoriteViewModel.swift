@@ -68,10 +68,5 @@ class LocationFavoriteViewModel: PlaceListProtocol {
     
     func getLocationModel(index: Int) -> LocationBasedListModel? {
         return nil
-    }
-    
-    func doFavorite(locationContent: Location) -> AnyPublisher<Bool, Never>? {
-        return nil
-    }
-    
+    }    
 }
