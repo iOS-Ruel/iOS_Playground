@@ -41,7 +41,7 @@ final class AppTests: XCTestCase {
         
         
         for (studentName, gpa) in studentRecords {
-            try await app.test(.GET, "student/\(studentName)") { res in
+            try await app.test(.GET, "student/\(studentName)") { res async in
                 XCTAssertEqual(res.status, .ok)
                 XCTAssertEqual(res.body.string, "The student \(studentName)'s GPA is \(gpa)")
                 
