@@ -6,11 +6,20 @@
 //
 
 import Vapor
+import Fluent
 
-
-struct Entity:  Content {
+final class Entity: Model, Content {
+    static let schema: String = "entries"
+    
+    init() {}
+    
+    @ID(key: .id)
     var id: UUID?
+    
+    @Field(key: "Title")
     var title: String
+    
+    @Field(key: "content")
     var content: String
     
     init(id: UUID? = nil , title: String, content: String) {
@@ -20,3 +29,5 @@ struct Entity:  Content {
     }
     
 }
+
+extension Entity: @unchecked Sendable {}
