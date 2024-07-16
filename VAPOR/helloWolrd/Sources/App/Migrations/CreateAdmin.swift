@@ -1,22 +1,23 @@
 //
-//  CreateEntry.swift
-//
+//  File.swift
+//  
 //
 //  Created by Chung Wussup on 7/16/24.
 //
 
 import Fluent
 
-struct CreateEntry: Migration {
+struct CreateAdmin: Migration {
     func prepare(on database: any FluentKit.Database) -> NIOCore.EventLoopFuture<Void> {
-        return database.schema("entries")
+        return database.schema("admins")
             .id()
-            .field("title", .string, .required)
-            .field("content", .string, .required)
+            .field("name", .string, .required)
+            .field("password_hash", .string, .required)
+            .unique(on: "name")
             .create()
     }
     
     func revert(on database: any FluentKit.Database) -> NIOCore.EventLoopFuture<Void> {
-        return database.schema("entries").delete()
+        return database.schema("admins").delete()
     }
 }

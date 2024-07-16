@@ -8,9 +8,6 @@
 import Vapor
 import Leaf
 
-import Vapor
-import Leaf
-
 struct CreateEntryData: Content {
     let title: String
     let content: String
