@@ -1,4 +1,3 @@
-
 #extend("base"):
     #export("content"):
         <h1>Journal Entries</h1>
