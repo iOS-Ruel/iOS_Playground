@@ -8,7 +8,7 @@
 import Vapor
 import Fluent
 
-final class Entity: Model, Content {
+final class Entry: Model, Content {
     static let schema: String = "entries"
     
     init() {}
@@ -30,4 +30,4 @@ final class Entity: Model, Content {
     
 }
 
-extension Entity: @unchecked Sendable {}
+extension Entry: @unchecked Sendable {}
