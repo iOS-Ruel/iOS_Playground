@@ -16,7 +16,7 @@ final class Entry: Model, Content {
     @ID(key: .id)
     var id: UUID?
     
-    @Field(key: "Title")
+    @Field(key: "title")
     var title: String
     
     @Field(key: "content")
@@ -27,7 +27,6 @@ final class Entry: Model, Content {
         self.title = title
         self.content = content
     }
-    
 }
 
 extension Entry: @unchecked Sendable {}
