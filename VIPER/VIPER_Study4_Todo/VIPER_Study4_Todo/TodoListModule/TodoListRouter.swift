@@ -26,10 +26,14 @@ class TodoListRouter: TodoListRouterProtocol {
         
     }
     
-    func presentTodoDetailScreen(from view: any TodoListViewProtocol, for todo: TodoItem) {
-        //현재 Detail View는 없음
-        print("presentTodoDetailScreen")
-
+    func presentTodoDetailScreen(from view: any TodoListViewProtocol, for todo: TodoItem) {        
+        let detailVC = TodoDetailRouter.createTodoDetailRouterModule(with: todo)
+        
+        guard let view = view as? UIViewController else {
+            fatalError("Invalid View Protocol Type")
+        }
+        
+        view.navigationController?.pushViewController(detailVC, animated: true)
     }
     
 }
