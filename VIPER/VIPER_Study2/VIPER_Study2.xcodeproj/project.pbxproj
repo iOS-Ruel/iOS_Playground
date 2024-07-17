@@ -7,31 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411672AF2C46C444001E7F2E /* CandyViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411672AE2C46C444001E7F2E /* CandyViewRouter.swift */; };
+		411672B12C46C4C4001E7F2E /* CandyViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411672B02C46C4C4001E7F2E /* CandyViewInteractor.swift */; };
+		411672B32C46C4CE001E7F2E /* CandyViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411672B22C46C4CE001E7F2E /* CandyViewPresenter.swift */; };
+		416CDBB32C46BB3100F13A8F /* CandyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416CDBB22C46BB3100F13A8F /* CandyViewController.swift */; };
+		416CDBB62C46C33800F13A8F /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416CDBB52C46C33800F13A8F /* MainRouter.swift */; };
 		4185A0F22C008C070012437E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4185A0F12C008C070012437E /* AppDelegate.swift */; };
 		4185A0F42C008C070012437E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4185A0F32C008C070012437E /* SceneDelegate.swift */; };
-		4185A0F62C008C070012437E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4185A0F52C008C070012437E /* ViewController.swift */; };
-		4185A0F92C008C070012437E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4185A0F82C008C070012437E /* Base */; };
 		4185A0FB2C008C080012437E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4185A0FA2C008C080012437E /* Assets.xcassets */; };
 		4185A0FE2C008C080012437E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4185A0FD2C008C080012437E /* Base */; };
 		4185A1062C008D590012437E /* CandyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4185A1052C008D590012437E /* CandyEntity.swift */; };
-		4185A1082C008D900012437E /* CandyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4185A1072C008D900012437E /* CandyInteractor.swift */; };
-		4185A10A2C008DC10012437E /* CandyAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4185A1092C008DC10012437E /* CandyAPIWorker.swift */; };
-		4185A10C2C008DE90012437E /* CandyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4185A10B2C008DE90012437E /* CandyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		411672AE2C46C444001E7F2E /* CandyViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyViewRouter.swift; sourceTree = "<group>"; };
+		411672B02C46C4C4001E7F2E /* CandyViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyViewInteractor.swift; sourceTree = "<group>"; };
+		411672B22C46C4CE001E7F2E /* CandyViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyViewPresenter.swift; sourceTree = "<group>"; };
+		416CDBB22C46BB3100F13A8F /* CandyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyViewController.swift; sourceTree = "<group>"; };
+		416CDBB52C46C33800F13A8F /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		4185A0EE2C008C070012437E /* VIPER_Study2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPER_Study2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4185A0F12C008C070012437E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4185A0F32C008C070012437E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4185A0F52C008C070012437E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4185A0F82C008C070012437E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4185A0FA2C008C080012437E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4185A0FD2C008C080012437E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4185A0FF2C008C080012437E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4185A1052C008D590012437E /* CandyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyEntity.swift; sourceTree = "<group>"; };
-		4185A1072C008D900012437E /* CandyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyInteractor.swift; sourceTree = "<group>"; };
-		4185A1092C008DC10012437E /* CandyAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyAPIWorker.swift; sourceTree = "<group>"; };
-		4185A10B2C008DE90012437E /* CandyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +45,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		416CDBB42C46BC0E00F13A8F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				416CDBB52C46C33800F13A8F /* MainRouter.swift */,
+				4185A0F12C008C070012437E /* AppDelegate.swift */,
+				4185A0F32C008C070012437E /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		4185A0E52C008C070012437E = {
 			isa = PBXGroup;
 			children = (
@@ -64,17 +74,15 @@
 		4185A0F02C008C070012437E /* VIPER_Study2 */ = {
 			isa = PBXGroup;
 			children = (
-				4185A0F12C008C070012437E /* AppDelegate.swift */,
-				4185A0F32C008C070012437E /* SceneDelegate.swift */,
-				4185A0F52C008C070012437E /* ViewController.swift */,
-				4185A0F72C008C070012437E /* Main.storyboard */,
 				4185A0FA2C008C080012437E /* Assets.xcassets */,
 				4185A0FC2C008C080012437E /* LaunchScreen.storyboard */,
 				4185A0FF2C008C080012437E /* Info.plist */,
+				416CDBB42C46BC0E00F13A8F /* App */,
+				416CDBB22C46BB3100F13A8F /* CandyViewController.swift */,
+				411672B02C46C4C4001E7F2E /* CandyViewInteractor.swift */,
+				411672B22C46C4CE001E7F2E /* CandyViewPresenter.swift */,
 				4185A1052C008D590012437E /* CandyEntity.swift */,
-				4185A1072C008D900012437E /* CandyInteractor.swift */,
-				4185A1092C008DC10012437E /* CandyAPIWorker.swift */,
-				4185A10B2C008DE90012437E /* CandyView.swift */,
+				411672AE2C46C444001E7F2E /* CandyViewRouter.swift */,
 			);
 			path = VIPER_Study2;
 			sourceTree = "<group>";
@@ -139,7 +147,6 @@
 			files = (
 				4185A0FB2C008C080012437E /* Assets.xcassets in Resources */,
 				4185A0FE2C008C080012437E /* Base in Resources */,
-				4185A0F92C008C070012437E /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,27 +157,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4185A10C2C008DE90012437E /* CandyView.swift in Sources */,
+				411672B12C46C4C4001E7F2E /* CandyViewInteractor.swift in Sources */,
+				416CDBB62C46C33800F13A8F /* MainRouter.swift in Sources */,
+				416CDBB32C46BB3100F13A8F /* CandyViewController.swift in Sources */,
 				4185A1062C008D590012437E /* CandyEntity.swift in Sources */,
-				4185A0F62C008C070012437E /* ViewController.swift in Sources */,
-				4185A1082C008D900012437E /* CandyInteractor.swift in Sources */,
 				4185A0F22C008C070012437E /* AppDelegate.swift in Sources */,
-				4185A10A2C008DC10012437E /* CandyAPIWorker.swift in Sources */,
+				411672B32C46C4CE001E7F2E /* CandyViewPresenter.swift in Sources */,
 				4185A0F42C008C070012437E /* SceneDelegate.swift in Sources */,
+				411672AF2C46C444001E7F2E /* CandyViewRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4185A0F72C008C070012437E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4185A0F82C008C070012437E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4185A0FC2C008C080012437E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -313,7 +313,6 @@
 				INFOPLIST_FILE = VIPER_Study2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -341,7 +340,6 @@
 				INFOPLIST_FILE = VIPER_Study2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

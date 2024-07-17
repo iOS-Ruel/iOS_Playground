@@ -28,7 +28,7 @@ class PokeListView: UIViewController, PokeListViewInterface {
         tv.delegate = self
         tv.dataSource = self
         tv.register(PokeListTVCell.self, forCellReuseIdentifier: "PokeListTVCell")
-        
+        tv.backgroundColor = .white
         return tv
     }()
     

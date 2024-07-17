@@ -40,7 +40,7 @@ class PokeListTVCell: UITableViewCell {
     private func setupUI() {
         self.contentView.addSubview(nameLabel)
         self.contentView.addSubview(urlLabel)
-        
+        self.backgroundColor = .white
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
