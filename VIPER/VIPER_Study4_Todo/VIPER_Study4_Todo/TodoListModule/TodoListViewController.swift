@@ -27,6 +27,9 @@ class TodoListViewController: UITableViewController {
     }
     
     private func setupView() {
+        title = "VIPER Todo List"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addTapped))
+        
         tableView.tableFooterView = UIView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
@@ -60,7 +63,9 @@ extension TodoListViewController {
         }
     }
     
-    @IBAction func addTapped(_ sender: Any) {
+    
+    @objc
+    func addTapped() {
         let alertController = UIAlertController(title: "Add Todo Item",
                                                 message: "Enter title and content",
                                                 preferredStyle: .alert)
