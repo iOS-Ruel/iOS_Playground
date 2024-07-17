@@ -22,6 +22,7 @@
 		4108FFDF2C479F9A007FD612 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFDE2C479F9A007FD612 /* TodoListViewController.swift */; };
 		4108FFE12C47A6EE007FD612 /* TodoListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFE02C47A6EE007FD612 /* TodoListPresenter.swift */; };
 		4108FFE32C47AAF9007FD612 /* TodoListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFE22C47AAF9007FD612 /* TodoListInteractor.swift */; };
+		4108FFE52C47AE9E007FD612 /* TodoListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFE42C47AE9E007FD612 /* TodoListRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		4108FFDE2C479F9A007FD612 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		4108FFE02C47A6EE007FD612 /* TodoListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListPresenter.swift; sourceTree = "<group>"; };
 		4108FFE22C47AAF9007FD612 /* TodoListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListInteractor.swift; sourceTree = "<group>"; };
+		4108FFE42C47AE9E007FD612 /* TodoListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				4108FFDE2C479F9A007FD612 /* TodoListViewController.swift */,
 				4108FFE02C47A6EE007FD612 /* TodoListPresenter.swift */,
 				4108FFE22C47AAF9007FD612 /* TodoListInteractor.swift */,
+				4108FFE42C47AE9E007FD612 /* TodoListRouter.swift */,
 			);
 			path = TodoListModule;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				4108FFA22C4796BC007FD612 /* AppDelegate.swift in Sources */,
 				4108FFE12C47A6EE007FD612 /* TodoListPresenter.swift in Sources */,
 				4108FFDD2C479AFF007FD612 /* TodoProtocols.swift in Sources */,
+				4108FFE52C47AE9E007FD612 /* TodoListRouter.swift in Sources */,
 				4108FFD82C479A23007FD612 /* TodoItem.swift in Sources */,
 				4108FFE32C47AAF9007FD612 /* TodoListInteractor.swift in Sources */,
 				4108FFA42C4796BC007FD612 /* SceneDelegate.swift in Sources */,

@@ -19,7 +19,6 @@ class TodoListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupView()
     }
     
@@ -29,6 +28,7 @@ class TodoListViewController: UITableViewController {
     
     private func setupView() {
         tableView.tableFooterView = UIView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
 }
