@@ -33,7 +33,7 @@ protocol TodoListPresenterProtocol: AnyObject {
 
 //Presenter <--> Interactor
 protocol TodoListInteractorInputProtocol: AnyObject {
-    var presenter: TodoListInteractorInputProtocol? { get set }
+    var presenter: TodoListInteractorOutputProtocol? { get set }
     
     
     //Presenter -> Interactor
