@@ -13,6 +13,7 @@ class TodoDetailRouter: TodoDetailRouterProtocol {
         
         let presenter: TodoDetailPresenter & TodoDetailInteractorOutputProtocol = TodoDetailPresenter()
         detailVC.presenter = presenter
+        presenter.view = detailVC
 
         let interactor: TodoDetailInteractorInputProtocol = TodoDetailInteractor()
         interactor.todoItem = todo

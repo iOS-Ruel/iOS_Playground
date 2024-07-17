@@ -27,6 +27,7 @@ class TodoListViewController: UITableViewController {
     }
     
     private func setupView() {
+        self.view.backgroundColor = .white
         title = "VIPER Todo List"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addTapped))
         
@@ -46,7 +47,6 @@ extension TodoListViewController {
         let todo = todos[indexPath.row]
         cell.textLabel?.text = todo.title
         cell.detailTextLabel?.text = todo.content
-        
         return cell
     }
     
