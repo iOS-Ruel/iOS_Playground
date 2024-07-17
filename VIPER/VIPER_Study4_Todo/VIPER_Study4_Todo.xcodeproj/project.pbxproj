@@ -122,11 +122,8 @@
 				4108FFE62C47B3CA007FD612 /* TodoDetailModule */,
 				4108FFDB2C479ACD007FD612 /* TodoListModule */,
 				4108FFD62C4799BC007FD612 /* Entities */,
-				4108FFA12C4796BC007FD612 /* AppDelegate.swift */,
-				4108FFA32C4796BC007FD612 /* SceneDelegate.swift */,
-				4108FFAA2C4796BD007FD612 /* Assets.xcassets */,
-				4108FFAC2C4796BD007FD612 /* LaunchScreen.storyboard */,
-				4108FFAF2C4796BD007FD612 /* Info.plist */,
+				41EEC06A2C48014600152A88 /* App */,
+				41EEC06B2C48016400152A88 /* Resource */,
 			);
 			path = VIPER_Study4_Todo;
 			sourceTree = "<group>";
@@ -179,6 +176,25 @@
 				41EEC0682C47F39C00152A88 /* TodoDetailRouter.swift */,
 			);
 			path = TodoDetailModule;
+			sourceTree = "<group>";
+		};
+		41EEC06A2C48014600152A88 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4108FFA12C4796BC007FD612 /* AppDelegate.swift */,
+				4108FFA32C4796BC007FD612 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		41EEC06B2C48016400152A88 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4108FFAA2C4796BD007FD612 /* Assets.xcassets */,
+				4108FFAC2C4796BD007FD612 /* LaunchScreen.storyboard */,
+				4108FFAF2C4796BD007FD612 /* Info.plist */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
