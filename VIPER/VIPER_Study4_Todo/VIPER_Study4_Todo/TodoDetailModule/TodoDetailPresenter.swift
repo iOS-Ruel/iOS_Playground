@@ -10,7 +10,7 @@ import Foundation
 class TodoDetailPresenter: TodoDetailPresenterProtocol {
     weak var view: TodoDetailViewProtocol?
     var interactor: TodoDetailInteractorInputProtocol?
-    var router: TodoListRouter?
+    var router: TodoDetailRouter?
     
     func viewDidLoad() {
         if let todoItem = interactor?.todoItem {
@@ -32,7 +32,7 @@ class TodoDetailPresenter: TodoDetailPresenterProtocol {
 extension TodoDetailPresenter: TodoDetailInteractorOutputProtocol {
     func didDeleteTodo() {
         if let view = view {
-            //router?.navigateBackToListViewController(from: view)
+            //router?.navigationBackToListViewController(from: view)
         }
     }
     
