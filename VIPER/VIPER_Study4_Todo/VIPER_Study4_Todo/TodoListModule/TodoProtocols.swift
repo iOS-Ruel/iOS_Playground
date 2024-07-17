@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+//Presenter <---> View
 protocol TodoListViewProtocol: AnyObject {
     var preseter: TodoListPresenterProtocol { get set }
     
@@ -30,6 +30,8 @@ protocol TodoListPresenterProtocol: AnyObject {
 }
 
 
+
+//Presenter <--> Interactor
 protocol TodoListInteractorInputProtocol: AnyObject {
     var presenter: TodoListInteractorInputProtocol? { get set }
     
@@ -49,6 +51,7 @@ protocol TodoListInteractorOutputProtocol: AnyObject {
 }
 
 
+// Presenter <---> Rounter
 protocol TodoListRouterProtocol: AnyObject {
     static func createTodoListModule() -> UIViewController
     
