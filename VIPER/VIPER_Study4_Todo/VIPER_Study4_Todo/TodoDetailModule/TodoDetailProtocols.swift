@@ -18,7 +18,7 @@ protocol TodoDetailViewProtocol: AnyObject {
 protocol TodoDetailPresenterProtocol: AnyObject {
     var view: TodoDetailViewProtocol? { get set }
     var interactor: TodoDetailInteractorInputProtocol? { get set }
-    var router: TodoDetailRouter? { get set }
+    var router: TodoDetailRouterProtocol? { get set }
     
     //View -> Presenter
     func viewDidLoad()
