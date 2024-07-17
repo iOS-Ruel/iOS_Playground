@@ -18,6 +18,7 @@
 		4108FFC52C4796BD007FD612 /* VIPER_Study4_TodoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFC42C4796BD007FD612 /* VIPER_Study4_TodoUITestsLaunchTests.swift */; };
 		4108FFD82C479A23007FD612 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFD72C479A23007FD612 /* TodoItem.swift */; };
 		4108FFDA2C479A31007FD612 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFD92C479A31007FD612 /* TodoStore.swift */; };
+		4108FFDD2C479AFF007FD612 /* TodoProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFDC2C479AFF007FD612 /* TodoProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		4108FFC42C4796BD007FD612 /* VIPER_Study4_TodoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPER_Study4_TodoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4108FFD72C479A23007FD612 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		4108FFD92C479A31007FD612 /* TodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
+		4108FFDC2C479AFF007FD612 /* TodoProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		4108FFA02C4796BC007FD612 /* VIPER_Study4_Todo */ = {
 			isa = PBXGroup;
 			children = (
+				4108FFDB2C479ACD007FD612 /* TodoListModule */,
 				4108FFD62C4799BC007FD612 /* Entities */,
 				4108FFA12C4796BC007FD612 /* AppDelegate.swift */,
 				4108FFA32C4796BC007FD612 /* SceneDelegate.swift */,
@@ -139,6 +142,14 @@
 				4108FFD92C479A31007FD612 /* TodoStore.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		4108FFDB2C479ACD007FD612 /* TodoListModule */ = {
+			isa = PBXGroup;
+			children = (
+				4108FFDC2C479AFF007FD612 /* TodoProtocols.swift */,
+			);
+			path = TodoListModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 				4108FFA62C4796BC007FD612 /* ViewController.swift in Sources */,
 				4108FFDA2C479A31007FD612 /* TodoStore.swift in Sources */,
 				4108FFA22C4796BC007FD612 /* AppDelegate.swift in Sources */,
+				4108FFDD2C479AFF007FD612 /* TodoProtocols.swift in Sources */,
 				4108FFD82C479A23007FD612 /* TodoItem.swift in Sources */,
 				4108FFA42C4796BC007FD612 /* SceneDelegate.swift in Sources */,
 			);
