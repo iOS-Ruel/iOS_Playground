@@ -4,6 +4,7 @@
 //
 //  Created by Chung Wussup on 7/16/24.
 //
+
 import Vapor
 
 struct LoginRequest: Content {
@@ -37,6 +38,7 @@ struct PublicRoutes: RouteCollection {
                     let passwordMatches = try admin.verify(password: user.password)
                     if passwordMatches {
                         req.auth.login(admin)
+                        req.session.authenticate(admin)
                         return req.eventLoop.future(req.redirect(to: "/dashboard"))
                     } else {
                         return req.eventLoop.future(req.redirect(to: "/login?error=invalidpassword"))
