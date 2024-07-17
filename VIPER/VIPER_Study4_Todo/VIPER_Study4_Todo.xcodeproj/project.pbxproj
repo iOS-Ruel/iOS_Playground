@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		4108FFA22C4796BC007FD612 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFA12C4796BC007FD612 /* AppDelegate.swift */; };
 		4108FFA42C4796BC007FD612 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFA32C4796BC007FD612 /* SceneDelegate.swift */; };
-		4108FFA62C4796BC007FD612 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFA52C4796BC007FD612 /* ViewController.swift */; };
-		4108FFA92C4796BC007FD612 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4108FFA82C4796BC007FD612 /* Base */; };
 		4108FFAB2C4796BD007FD612 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4108FFAA2C4796BD007FD612 /* Assets.xcassets */; };
 		4108FFAE2C4796BD007FD612 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4108FFAD2C4796BD007FD612 /* Base */; };
 		4108FFB92C4796BD007FD612 /* VIPER_Study4_TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFB82C4796BD007FD612 /* VIPER_Study4_TodoTests.swift */; };
@@ -46,8 +44,6 @@
 		4108FF9E2C4796BC007FD612 /* VIPER_Study4_Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPER_Study4_Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4108FFA12C4796BC007FD612 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4108FFA32C4796BC007FD612 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4108FFA52C4796BC007FD612 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4108FFA82C4796BC007FD612 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4108FFAA2C4796BD007FD612 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4108FFAD2C4796BD007FD612 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4108FFAF2C4796BD007FD612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,8 +113,6 @@
 				4108FFD62C4799BC007FD612 /* Entities */,
 				4108FFA12C4796BC007FD612 /* AppDelegate.swift */,
 				4108FFA32C4796BC007FD612 /* SceneDelegate.swift */,
-				4108FFA52C4796BC007FD612 /* ViewController.swift */,
-				4108FFA72C4796BC007FD612 /* Main.storyboard */,
 				4108FFAA2C4796BD007FD612 /* Assets.xcassets */,
 				4108FFAC2C4796BD007FD612 /* LaunchScreen.storyboard */,
 				4108FFAF2C4796BD007FD612 /* Info.plist */,
@@ -270,7 +264,6 @@
 			files = (
 				4108FFAB2C4796BD007FD612 /* Assets.xcassets in Resources */,
 				4108FFAE2C4796BD007FD612 /* Base in Resources */,
-				4108FFA92C4796BC007FD612 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +288,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4108FFA62C4796BC007FD612 /* ViewController.swift in Sources */,
 				4108FFDF2C479F9A007FD612 /* TodoListViewController.swift in Sources */,
 				4108FFDA2C479A31007FD612 /* TodoStore.swift in Sources */,
 				4108FFA22C4796BC007FD612 /* AppDelegate.swift in Sources */,
@@ -341,14 +333,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4108FFA72C4796BC007FD612 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4108FFA82C4796BC007FD612 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4108FFAC2C4796BD007FD612 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -491,7 +475,6 @@
 				INFOPLIST_FILE = VIPER_Study4_Todo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -519,7 +502,6 @@
 				INFOPLIST_FILE = VIPER_Study4_Todo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
