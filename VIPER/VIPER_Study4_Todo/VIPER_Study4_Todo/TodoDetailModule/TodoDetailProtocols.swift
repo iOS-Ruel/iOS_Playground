@@ -29,7 +29,7 @@ protocol TodoDetailPresenterProtocol: AnyObject {
 
 //Presenter <--> Interactor
 protocol TodoDetailInteractorInputProtocol: AnyObject {
-    var presenter: TodoDetailPresenterProtocol? { get set }
+    var presenter: TodoDetailInteractorOutputProtocol? { get set }
     var todoItem: TodoItem? { get set }
    
     //Presenter -> Interactor
