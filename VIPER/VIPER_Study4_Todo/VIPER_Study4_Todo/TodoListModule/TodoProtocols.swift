@@ -9,7 +9,7 @@ import UIKit
 
 //Presenter <---> View
 protocol TodoListViewProtocol: AnyObject {
-    var preseter: TodoListPresenterProtocol { get set }
+    var presenter: TodoListPresenterProtocol? { get set }
     
     //Presenter -> View
     func showTodos(_ todos: [TodoItem])
