@@ -19,6 +19,7 @@
 		4108FFD82C479A23007FD612 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFD72C479A23007FD612 /* TodoItem.swift */; };
 		4108FFDA2C479A31007FD612 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFD92C479A31007FD612 /* TodoStore.swift */; };
 		4108FFDD2C479AFF007FD612 /* TodoProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFDC2C479AFF007FD612 /* TodoProtocols.swift */; };
+		4108FFDF2C479F9A007FD612 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108FFDE2C479F9A007FD612 /* TodoListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		4108FFD72C479A23007FD612 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		4108FFD92C479A31007FD612 /* TodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
 		4108FFDC2C479AFF007FD612 /* TodoProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoProtocols.swift; sourceTree = "<group>"; };
+		4108FFDE2C479F9A007FD612 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				4108FFDC2C479AFF007FD612 /* TodoProtocols.swift */,
+				4108FFDE2C479F9A007FD612 /* TodoListViewController.swift */,
 			);
 			path = TodoListModule;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4108FFA62C4796BC007FD612 /* ViewController.swift in Sources */,
+				4108FFDF2C479F9A007FD612 /* TodoListViewController.swift in Sources */,
 				4108FFDA2C479A31007FD612 /* TodoStore.swift in Sources */,
 				4108FFA22C4796BC007FD612 /* AppDelegate.swift in Sources */,
 				4108FFDD2C479AFF007FD612 /* TodoProtocols.swift in Sources */,
