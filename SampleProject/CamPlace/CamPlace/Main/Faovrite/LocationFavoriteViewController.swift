@@ -52,7 +52,7 @@ class LocationFavoriteViewController: UIViewController {
     }
     
     private func setupNavi() {
-//        self.navigationController?.navigationBar.topItem?.title = "즐겨찾기"
+        self.navigationController?.topViewController?.title = "즐겨찾기"
     }
     
     private func bindData() {

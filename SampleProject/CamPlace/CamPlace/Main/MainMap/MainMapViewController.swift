@@ -58,6 +58,7 @@ class MainMapViewController: UIViewController {
         setupUI()
         setupLocationManager()
         setupBindings()
+        self.navigationController?.topViewController?.title = ""
     }
     
     private func setUpMapView() {

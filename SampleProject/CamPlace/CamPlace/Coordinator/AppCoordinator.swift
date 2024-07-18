@@ -18,14 +18,13 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        self.window?.rootViewController = setupTabbarController()
+        self.window?.rootViewController =  setupTabbarController()
     }
     
     
     func setupTabbarController() -> UITabBarController {
         
-        let tabbarController = MainTabbarViewController()
-        
+        let tabbarController = UITabBarController()
         let firstItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map"), tag: 0)
         let secondItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "star"), tag: 1)
         
@@ -37,13 +36,13 @@ class AppCoordinator: Coordinator {
         mainMapVC.tabBarItem = firstItem
         
         
-        
         let secondViewCoordinator = LocationFavoriteCoordinator()
         secondViewCoordinator.parentCoordinator = self
         childCoordinator.append(secondViewCoordinator)
         
         let locationFavoritVC = secondViewCoordinator.startPush()
         locationFavoritVC.tabBarItem = secondItem
+        
         
         tabbarController.viewControllers = [mainMapVC, locationFavoritVC]
         
