@@ -8,6 +8,10 @@
 import UIKit
 import Combine
 
+protocol LocationFavoriteDelegate: AnyObject {
+    func pushDetialVC(content: LocationBasedListModel)
+}
+
 class LocationFavoriteViewController: UIViewController {
 
     private lazy var listTableView: UITableView = {
@@ -25,6 +29,8 @@ class LocationFavoriteViewController: UIViewController {
     
     private let viewModel = LocationFavoriteViewModel()
     private var cancellables: Set<AnyCancellable> = []
+    
+    weak var delegate: LocationFavoriteDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +52,7 @@ class LocationFavoriteViewController: UIViewController {
     }
     
     private func setupNavi() {
-//        self.navigationController?.navigationBar.topItem?.title = "즐겨찾기"
+        self.navigationController?.navigationBar.topItem?.title = "즐겨찾기"
     }
     
     private func bindData() {
@@ -80,8 +86,8 @@ extension LocationFavoriteViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let content: LocationBasedListModel = LocationBasedListModel(from: viewModel.locations[indexPath.row])
-        let viewModel = PlaceDetailViewModel(content: content)
-        let vc = PlaceDetailViewController(viewModel: viewModel)
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        delegate?.pushDetialVC(content: content)
+
     }
 }
