@@ -1,0 +1,82 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXFileReference section */
+		41476CC12C4A98C2004A2711 /* Example1.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example1.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CC22C4A9DCA004A2711 /* Example2.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example2.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CC32C4AA0D9004A2711 /* Exampe3.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Exampe3.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CC42C4AA3D5004A2711 /* Example4.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example4.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CC52C4AA5EF004A2711 /* Example5.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example5.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		41476CBA2C4A98A8004A2711 = {
+			isa = PBXGroup;
+			children = (
+				41476CC52C4AA5EF004A2711 /* Example5.playground */,
+				41476CC42C4AA3D5004A2711 /* Example4.playground */,
+				41476CC32C4AA0D9004A2711 /* Exampe3.playground */,
+				41476CC22C4A9DCA004A2711 /* Example2.playground */,
+				41476CC12C4A98C2004A2711 /* Example1.playground */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		41476CBB2C4A98A8004A2711 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1540;
+			};
+			buildConfigurationList = 41476CBE2C4A98A8004A2711 /* Build configuration list for PBXProject "Async_Await_Example_Project" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 41476CBA2C4A98A8004A2711;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		41476CBF2C4A98A8004A2711 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		41476CC02C4A98A8004A2711 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		41476CBE2C4A98A8004A2711 /* Build configuration list for PBXProject "Async_Await_Example_Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41476CBF2C4A98A8004A2711 /* Debug */,
+				41476CC02C4A98A8004A2711 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 41476CBB2C4A98A8004A2711 /* Project object */;
+}
