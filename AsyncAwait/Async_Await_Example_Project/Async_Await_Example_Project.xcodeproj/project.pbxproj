@@ -9,18 +9,24 @@
 /* Begin PBXFileReference section */
 		41476CC12C4A98C2004A2711 /* Example1.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example1.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		41476CC22C4A9DCA004A2711 /* Example2.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example2.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		41476CC32C4AA0D9004A2711 /* Exampe3.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Exampe3.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CC32C4AA0D9004A2711 /* Example3.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example3.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		41476CC42C4AA3D5004A2711 /* Example4.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example4.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		41476CC52C4AA5EF004A2711 /* Example5.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example5.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CC62C4AAC7B004A2711 /* Example6.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example6.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CC82C4AB252004A2711 /* Example7.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example7.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CC92C4AB572004A2711 /* Example8.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example8.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		41476CBA2C4A98A8004A2711 = {
 			isa = PBXGroup;
 			children = (
+				41476CC92C4AB572004A2711 /* Example8.playground */,
+				41476CC82C4AB252004A2711 /* Example7.playground */,
+				41476CC62C4AAC7B004A2711 /* Example6.playground */,
 				41476CC52C4AA5EF004A2711 /* Example5.playground */,
 				41476CC42C4AA3D5004A2711 /* Example4.playground */,
-				41476CC32C4AA0D9004A2711 /* Exampe3.playground */,
+				41476CC32C4AA0D9004A2711 /* Example3.playground */,
 				41476CC22C4A9DCA004A2711 /* Example2.playground */,
 				41476CC12C4A98C2004A2711 /* Example1.playground */,
 			);
