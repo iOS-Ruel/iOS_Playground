@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MediaPlay_HLS_m3u8" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="streaming url" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5rg-Gu-Vhp">
+                                <rect key="frame" x="16" y="69" width="297.33333333333331" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGc-RD-WfZ">
+                                <rect key="frame" x="323.33333333333331" y="69" width="53.666666666666686" height="34.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53.670000000000002" id="An7-ll-zac"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="검색"/>
+                                <connections>
+                                    <action selector="searchTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hSB-jN-OIo"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="46" translatesAutoresizingMaskIntoConstraints="NO" id="2vR-gw-RUw">
+                                <rect key="frame" x="16" y="112.99999999999999" width="361" height="34.333333333333329"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pi-ae-0cn">
+                                        <rect key="frame" x="0.0" y="0.0" width="157.66666666666666" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="play.fill" catalog="system" title="    play"/>
+                                        <connections>
+                                            <action selector="playButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oO8-ID-rGC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XA8-l3-JnB">
+                                        <rect key="frame" x="203.66666666666663" y="0.0" width="157.33333333333337" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="stop.fill" catalog="system" title="    Stop"/>
+                                        <connections>
+                                            <action selector="stopButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ChL-bY-ee1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRY-Qb-W49" customClass="PlayerView" customModule="MediaPlay_HLS_m3u8" customModuleProvider="target">
+                                <rect key="frame" x="16" y="157.33333333333337" width="361" height="361"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IRY-Qb-W49" secondAttribute="height" multiplier="1:1" id="Lbh-Bs-KsJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IRY-Qb-W49" secondAttribute="trailing" constant="16" id="4nY-3h-Ufd"/>
+                            <constraint firstItem="2vR-gw-RUw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="5Xv-Sq-xTM"/>
+                            <constraint firstItem="5rg-Gu-Vhp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Rxu-Bh-vHU"/>
+                            <constraint firstItem="2vR-gw-RUw" firstAttribute="top" secondItem="5rg-Gu-Vhp" secondAttribute="bottom" constant="10" id="TQX-jT-byg"/>
+                            <constraint firstItem="MGc-RD-WfZ" firstAttribute="leading" secondItem="5rg-Gu-Vhp" secondAttribute="trailing" constant="10" id="fdb-i2-dBk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2vR-gw-RUw" secondAttribute="trailing" constant="16" id="kO7-UB-F4C"/>
+                            <constraint firstItem="5rg-Gu-Vhp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="n50-M1-TsG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MGc-RD-WfZ" secondAttribute="trailing" constant="16" id="oUc-ns-wbe"/>
+                            <constraint firstItem="IRY-Qb-W49" firstAttribute="top" secondItem="2vR-gw-RUw" secondAttribute="bottom" constant="10" id="pCt-5y-0d1"/>
+                            <constraint firstItem="IRY-Qb-W49" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qqA-xI-lvJ"/>
+                            <constraint firstItem="MGc-RD-WfZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="ttE-ei-1Qp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playerView" destination="IRY-Qb-W49" id="KOC-RQ-X7Q"/>
+                        <outlet property="urlTextField" destination="5rg-Gu-Vhp" id="9LD-L3-cBI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="play.fill" catalog="system" width="117" height="128"/>
+        <image name="stop.fill" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
