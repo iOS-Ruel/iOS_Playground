@@ -15,12 +15,31 @@
 		41476CC62C4AAC7B004A2711 /* Example6.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example6.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		41476CC82C4AB252004A2711 /* Example7.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example7.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		41476CC92C4AB572004A2711 /* Example8.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example8.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CCA2C4B6900004A2711 /* Example9.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example9.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CCB2C4B6CAE004A2711 /* Example10.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example10.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41476CCC2C4B6DE9004A2711 /* Example11.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example11.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41AC8CDF2C4B70D70012D930 /* Example12.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example12.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41AC8CE02C4B72FE0012D930 /* Example13.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example13.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41AC8CE12C4B75760012D930 /* Example14.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example14.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41AC8CE22C4B79350012D930 /* Example0.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example0.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41AC8CE32C4B79A20012D930 /* Example15.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example15.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41AC8CE42C4B7B540012D930 /* Example16.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example16.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		41AC8CE52C4B7B9C0012D930 /* Example17.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example17.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		41476CBA2C4A98A8004A2711 = {
 			isa = PBXGroup;
 			children = (
+				41AC8CE52C4B7B9C0012D930 /* Example17.playground */,
+				41AC8CE42C4B7B540012D930 /* Example16.playground */,
+				41AC8CE32C4B79A20012D930 /* Example15.playground */,
+				41AC8CE12C4B75760012D930 /* Example14.playground */,
+				41AC8CE02C4B72FE0012D930 /* Example13.playground */,
+				41AC8CDF2C4B70D70012D930 /* Example12.playground */,
+				41476CCC2C4B6DE9004A2711 /* Example11.playground */,
+				41476CCB2C4B6CAE004A2711 /* Example10.playground */,
+				41476CCA2C4B6900004A2711 /* Example9.playground */,
 				41476CC92C4AB572004A2711 /* Example8.playground */,
 				41476CC82C4AB252004A2711 /* Example7.playground */,
 				41476CC62C4AAC7B004A2711 /* Example6.playground */,
@@ -29,6 +48,7 @@
 				41476CC32C4AA0D9004A2711 /* Example3.playground */,
 				41476CC22C4A9DCA004A2711 /* Example2.playground */,
 				41476CC12C4A98C2004A2711 /* Example1.playground */,
+				41AC8CE22C4B79350012D930 /* Example0.playground */,
 			);
 			sourceTree = "<group>";
 		};
