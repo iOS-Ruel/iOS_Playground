@@ -10,7 +10,7 @@ import AVKit
 
 class PlayerView: UIView {
     
-    private var playTimeLabel: UILabel = {
+    private let playTimeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "00:00"
@@ -19,7 +19,7 @@ class PlayerView: UIView {
         return label
     }()
     
-    private var totalPlayTimeLabel: UILabel = {
+    private let totalPlayTimeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "00:00"
@@ -28,7 +28,7 @@ class PlayerView: UIView {
         return label
     }()
     
-    private var playerSiderView: UIView = {
+    private let playerSliderView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .lightGray
@@ -36,21 +36,24 @@ class PlayerView: UIView {
         return view
     }()
     
-    private var playerPlaySiderView: UIView = {
+    private lazy var playerPlaySliderView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .red
         view.layer.cornerRadius = 2
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        view.addGestureRecognizer(panGesture)
         return view
     }()
     
     var playerLayer: AVPlayerLayer {
-        layer as! AVPlayerLayer
+        return layer as! AVPlayerLayer
     }
     
     var player: AVPlayer? {
         get {
-            playerLayer.player
+            return playerLayer.player
         }
         set {
             playerLayer.player = newValue
@@ -65,16 +68,8 @@ class PlayerView: UIView {
         return player?.currentItem?.duration.seconds ?? 0
     }
     
-    var duration: CMTime {
-        return player?.currentItem?.duration ?? CMTime(seconds: 1, preferredTimescale: 1)
-    }
-    
-    var currentItem: AVPlayerItem? {
-        return player?.currentItem
-    }
-    
     private var playerPlaySiderWidthConstraint: NSLayoutConstraint!
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupPlayerView()
@@ -86,43 +81,40 @@ class PlayerView: UIView {
     }
     
     override class var layerClass: AnyClass {
-        AVPlayerLayer.self
+        return AVPlayerLayer.self
     }
     
-    
-    func setupPlayerView() {
-        self.backgroundColor = .black
-        [playerSiderView, playTimeLabel, totalPlayTimeLabel].forEach {
-            addSubview($0)
-        }
+    private func setupPlayerView() {
+        backgroundColor = .black
+        [playerSliderView, playTimeLabel, totalPlayTimeLabel].forEach { addSubview($0) }
         
-        playerSiderView.addSubview(playerPlaySiderView)
+        playerSliderView.addSubview(playerPlaySliderView)
         
-        playerPlaySiderWidthConstraint = playerPlaySiderView.widthAnchor.constraint(equalToConstant: 0)
+        playerPlaySiderWidthConstraint = playerPlaySliderView.widthAnchor.constraint(equalToConstant: 0)
         
         NSLayoutConstraint.activate([
-            playerSiderView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            playerSiderView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            playerSiderView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
-            playerSiderView.heightAnchor.constraint(equalToConstant: 5),
+            playerSliderView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            playerSliderView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            playerSliderView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            playerSliderView.heightAnchor.constraint(equalToConstant: 5),
             
             totalPlayTimeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            totalPlayTimeLabel.bottomAnchor.constraint(equalTo: playerSiderView.topAnchor, constant: -10),
-
-            playTimeLabel.trailingAnchor.constraint(equalTo: totalPlayTimeLabel.leadingAnchor),
-            playTimeLabel.bottomAnchor.constraint(equalTo: playerSiderView.topAnchor, constant: -10),
+            totalPlayTimeLabel.bottomAnchor.constraint(equalTo: playerSliderView.topAnchor, constant: -10),
+            
+            playTimeLabel.trailingAnchor.constraint(equalTo: totalPlayTimeLabel.leadingAnchor, constant: -8),
+            playTimeLabel.bottomAnchor.constraint(equalTo: playerSliderView.topAnchor, constant: -10),
             playTimeLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor,constant: 16),
             
-            playerPlaySiderView.leadingAnchor.constraint(equalTo: playerSiderView.leadingAnchor),
-            playerPlaySiderView.topAnchor.constraint(equalTo: playerSiderView.topAnchor),
-            playerPlaySiderView.bottomAnchor.constraint(equalTo: playerSiderView.bottomAnchor),
+            playerPlaySliderView.leadingAnchor.constraint(equalTo: playerSliderView.leadingAnchor),
+            playerPlaySliderView.topAnchor.constraint(equalTo: playerSliderView.topAnchor),
+            playerPlaySliderView.bottomAnchor.constraint(equalTo: playerSliderView.bottomAnchor),
             playerPlaySiderWidthConstraint
         ])
     }
     
-    
     func updatePlayTimeLabel(with time: String) {
         playTimeLabel.text = time
+        layoutIfNeeded()
     }
     
     func updateTotalPlayTimeLabel(with time: String) {
@@ -136,7 +128,23 @@ class PlayerView: UIView {
         }
         
         let progress = currentTime / totalTime
-        playerPlaySiderWidthConstraint.constant = CGFloat(progress) * playerSiderView.frame.width
+        playerPlaySiderWidthConstraint.constant = CGFloat(progress) * playerSliderView.frame.width
         layoutIfNeeded()
+    }
+    
+    @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        let location = gesture.location(in: playerPlaySliderView)
+        let totalWidth = playerSliderView.frame.width
+        let progress = min(max(location.x / totalWidth, 0), 1)
+        
+        switch gesture.state {
+        case .began, .changed :
+            updateSlider(currentTime: Double(progress) * totalDurationTime, totalTime: totalDurationTime)
+        case .ended:
+            let seekTime = CMTime(seconds: Double(progress) * totalDurationTime, preferredTimescale: 600)
+            player?.seek(to: seekTime, toleranceBefore: .zero, toleranceAfter: .zero)
+        default:
+            break
+        }
     }
 }
