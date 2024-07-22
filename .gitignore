@@ -96,3 +96,4 @@ iOSInjectionProject/
 *.mlmodel
 .DS_Store
 API_KEY.swift
+*.plist
