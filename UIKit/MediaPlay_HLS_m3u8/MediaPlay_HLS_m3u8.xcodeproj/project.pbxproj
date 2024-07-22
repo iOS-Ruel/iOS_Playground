@@ -104,11 +104,11 @@
 				41B67A6E2C4BD3690076E545 /* AppDelegate.swift */,
 				41B67A702C4BD3690076E545 /* SceneDelegate.swift */,
 				41B67A722C4BD3690076E545 /* ViewController.swift */,
+				41B67A9E2C4BD48B0076E545 /* PlayerView.swift */,
 				41B67A742C4BD3690076E545 /* Main.storyboard */,
 				41B67A772C4BD36A0076E545 /* Assets.xcassets */,
 				41B67A792C4BD36A0076E545 /* LaunchScreen.storyboard */,
 				41B67A7C2C4BD36A0076E545 /* Info.plist */,
-				41B67A9E2C4BD48B0076E545 /* PlayerView.swift */,
 			);
 			path = MediaPlay_HLS_m3u8;
 			sourceTree = "<group>";

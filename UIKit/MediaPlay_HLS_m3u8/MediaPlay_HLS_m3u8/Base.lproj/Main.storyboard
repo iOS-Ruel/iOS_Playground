@@ -32,27 +32,6 @@
                                     <action selector="searchTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hSB-jN-OIo"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="46" translatesAutoresizingMaskIntoConstraints="NO" id="2vR-gw-RUw">
-                                <rect key="frame" x="16" y="112.99999999999999" width="361" height="34.333333333333329"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pi-ae-0cn">
-                                        <rect key="frame" x="0.0" y="0.0" width="157.66666666666666" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="play.fill" catalog="system" title="    play"/>
-                                        <connections>
-                                            <action selector="playButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oO8-ID-rGC"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XA8-l3-JnB">
-                                        <rect key="frame" x="203.66666666666663" y="0.0" width="157.33333333333337" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="stop.fill" catalog="system" title="    Stop"/>
-                                        <connections>
-                                            <action selector="stopButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ChL-bY-ee1"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRY-Qb-W49" customClass="PlayerView" customModule="MediaPlay_HLS_m3u8" customModuleProvider="target">
                                 <rect key="frame" x="16" y="157.33333333333337" width="361" height="361"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -65,16 +44,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IRY-Qb-W49" secondAttribute="trailing" constant="16" id="4nY-3h-Ufd"/>
-                            <constraint firstItem="2vR-gw-RUw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="5Xv-Sq-xTM"/>
                             <constraint firstItem="5rg-Gu-Vhp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Rxu-Bh-vHU"/>
-                            <constraint firstItem="2vR-gw-RUw" firstAttribute="top" secondItem="5rg-Gu-Vhp" secondAttribute="bottom" constant="10" id="TQX-jT-byg"/>
                             <constraint firstItem="MGc-RD-WfZ" firstAttribute="leading" secondItem="5rg-Gu-Vhp" secondAttribute="trailing" constant="10" id="fdb-i2-dBk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2vR-gw-RUw" secondAttribute="trailing" constant="16" id="kO7-UB-F4C"/>
                             <constraint firstItem="5rg-Gu-Vhp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="n50-M1-TsG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MGc-RD-WfZ" secondAttribute="trailing" constant="16" id="oUc-ns-wbe"/>
-                            <constraint firstItem="IRY-Qb-W49" firstAttribute="top" secondItem="2vR-gw-RUw" secondAttribute="bottom" constant="10" id="pCt-5y-0d1"/>
                             <constraint firstItem="IRY-Qb-W49" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qqA-xI-lvJ"/>
                             <constraint firstItem="MGc-RD-WfZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="ttE-ei-1Qp"/>
+                            <constraint firstItem="IRY-Qb-W49" firstAttribute="top" secondItem="MGc-RD-WfZ" secondAttribute="bottom" constant="54" id="xGy-3C-ykP"/>
                         </constraints>
                     </view>
                     <connections>
@@ -88,8 +64,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="play.fill" catalog="system" width="117" height="128"/>
-        <image name="stop.fill" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
