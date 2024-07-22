@@ -9,6 +9,10 @@ import SwiftUI
 
 struct DetailsView: View {
     var note: Note
+    @State private var presentAlert = false
+    @State private var titleText = ""
+    
+    @ObservedObject var viewModel: NoteViewModel
     
     var body: some View {
         NavigationStack {
@@ -21,10 +25,36 @@ struct DetailsView: View {
                 }
             }
             .navigationTitle("Details")
+            .toolbar {
+                ToolbarItemGroup(placement: .confirmationAction) {
+                    Button {
+                        presentAlert.toggle()
+                    } label: {
+                        Text("Edit")
+                            .bold()
+                    }
+                    .alert("Note", isPresented: $presentAlert, actions:  {
+                        TextField("\(note.title ?? "")", text: $titleText)
+                        Button("Update", action: {
+                            viewModel.updateData(title: titleText, id: note.id ?? "")
+                            presentAlert = false
+                            titleText = ""
+                        })
+                        
+                        Button("Cancel", role: .cancel, action: {
+                            presentAlert = false
+                            titleText = ""
+                        })
+                    }, message: {
+                        Text("Write your new note")
+                    })
+                    
+                }
+            }
         }
     }
 }
 
 #Preview {
-    DetailsView(note: Note(title: "안니영"))
+    DetailsView(note: Note(title: "안니영"), viewModel: NoteViewModel())
 }
