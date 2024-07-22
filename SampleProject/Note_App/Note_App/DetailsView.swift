@@ -12,7 +12,7 @@ struct DetailsView: View {
     @State private var presentAlert = false
     @State private var titleText = ""
     
-    @ObservedObject var viewModel: NoteViewModel
+    @EnvironmentObject var viewModel: NoteViewModel
     
     var body: some View {
         NavigationStack {
@@ -56,5 +56,6 @@ struct DetailsView: View {
 }
 
 #Preview {
-    DetailsView(note: Note(title: "안니영"), viewModel: NoteViewModel())
+    DetailsView(note: Note(title: "안니영"))
+        .environmentObject(NoteViewModel())
 }
