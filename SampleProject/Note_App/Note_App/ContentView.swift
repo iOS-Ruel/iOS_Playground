@@ -23,6 +23,9 @@ struct ContentView: View {
                         }
                     }
                 }
+                .onDelete(perform: { indexSet in
+                    viewModel.deleteData(at: indexSet)
+                })
             }
             .onAppear {
                 viewModel.fetchData()

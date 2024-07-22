@@ -37,8 +37,19 @@ class NoteViewModel: ObservableObject {
             if let error = error {
                 print(error.localizedDescription)
             }
-            
         }
-        
+    }
+    
+    func deleteData(at indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let note = notes[index]
+            databaseReference.document(note.id ?? "").delete { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    print("Note with ID \(note.id ?? "") deleted")
+                }
+            }
+        }
     }
 }
