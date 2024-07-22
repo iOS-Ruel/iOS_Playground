@@ -10,6 +10,8 @@
 		410590D32C4DEDAF000888FB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 410590D22C4DEDAF000888FB /* FirebaseAuth */; };
 		410590D52C4DEDAF000888FB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 410590D42C4DEDAF000888FB /* FirebaseFirestore */; };
 		410590D72C4DEDAF000888FB /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 410590D62C4DEDAF000888FB /* FirebaseFirestoreSwift */; };
+		410590D92C4DF8AE000888FB /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410590D82C4DF8AE000888FB /* Note.swift */; };
+		410590DB2C4DF8F7000888FB /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410590DA2C4DF8F7000888FB /* NoteViewModel.swift */; };
 		418C2DB62C4DE891008C92F4 /* Note_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418C2DB52C4DE891008C92F4 /* Note_AppApp.swift */; };
 		418C2DB82C4DE891008C92F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418C2DB72C4DE891008C92F4 /* ContentView.swift */; };
 		418C2DBA2C4DE892008C92F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418C2DB92C4DE892008C92F4 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		410590D82C4DF8AE000888FB /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		410590DA2C4DF8F7000888FB /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		418C2DB22C4DE891008C92F4 /* Note_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		418C2DB52C4DE891008C92F4 /* Note_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note_AppApp.swift; sourceTree = "<group>"; };
 		418C2DB72C4DE891008C92F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,7 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				418C2DC32C4DEB44008C92F4 /* GoogleService-Info.plist */,
+				410590D82C4DF8AE000888FB /* Note.swift */,
 				418C2DB52C4DE891008C92F4 /* Note_AppApp.swift */,
+				410590DA2C4DF8F7000888FB /* NoteViewModel.swift */,
 				418C2DB72C4DE891008C92F4 /* ContentView.swift */,
 				418C2DB92C4DE892008C92F4 /* Assets.xcassets */,
 				418C2DBB2C4DE892008C92F4 /* Preview Content */,
@@ -155,8 +161,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				410590DB2C4DF8F7000888FB /* NoteViewModel.swift in Sources */,
 				418C2DB82C4DE891008C92F4 /* ContentView.swift in Sources */,
 				418C2DB62C4DE891008C92F4 /* Note_AppApp.swift in Sources */,
+				410590D92C4DF8AE000888FB /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
