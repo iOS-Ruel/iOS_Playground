@@ -31,4 +31,14 @@ class NoteViewModel: ObservableObject {
             }
         }
     }
+    
+    func updateData(title: String, id: String) {
+        databaseReference.document(id).updateData(["title": title]) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+    }
 }
