@@ -19,6 +19,19 @@ class AuthViewModel: ObservableObject {
      3자가 주고 받을때 탈취 위험이 있기 때문에 Nonce Number라는 난수를 설정함
      즉, 인증 과정을 위한 임의의 랜덤 난수
      */
+    func listenToAuthState() {
+        Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            self?.user = user
+        }
+    }
+    
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError{
+            print("Error signing out: %@", signOutError)
+        }
+    }
     
     
     //MARK: - Sign In With Apple Methods

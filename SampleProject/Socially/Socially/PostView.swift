@@ -10,6 +10,7 @@ import SwiftUI
 struct PostView: View {
     @EnvironmentObject private var viewMoel: PostViewModel
 
+    
     @State private var description = ""
     
     var body: some View {
@@ -32,6 +33,7 @@ struct PostView: View {
                 }
             }
         }
+      
     }
 }
 
