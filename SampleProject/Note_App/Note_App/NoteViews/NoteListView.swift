@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct NoteListView: View {
+    
+    @EnvironmentObject private var authModel: AuthViewModel
     @State private var showSheet = false
     @State private var postDetent = PresentationDetent.medium
     @StateObject private var viewModel = NoteViewModel()
@@ -33,6 +35,14 @@ struct ContentView: View {
             }
             .navigationTitle("Notes")
             .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        authModel.signOut()
+                    } label: {
+                        Text("Sign out")
+                    }
+                }
+                
                 ToolbarItemGroup(placement: .bottomBar) {
                     Text(" \(viewModel.notes.count) notes ")
                     Spacer()
@@ -53,5 +63,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    NoteListView()
 }

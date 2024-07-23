@@ -14,8 +14,12 @@
 		410590DB2C4DF8F7000888FB /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410590DA2C4DF8F7000888FB /* NoteViewModel.swift */; };
 		410590DD2C4DFC0D000888FB /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410590DC2C4DFC0D000888FB /* FormView.swift */; };
 		410590DF2C4E2182000888FB /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410590DE2C4E2182000888FB /* DetailsView.swift */; };
-		418C2DB62C4DE891008C92F4 /* Note_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418C2DB52C4DE891008C92F4 /* Note_AppApp.swift */; };
-		418C2DB82C4DE891008C92F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418C2DB72C4DE891008C92F4 /* ContentView.swift */; };
+		4130554B2C4F2CAD00BB5284 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130554A2C4F2CAD00BB5284 /* AuthViewModel.swift */; };
+		4130554F2C4F2E2900BB5284 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130554E2C4F2E2900BB5284 /* HolderView.swift */; };
+		413055512C4F2E8B00BB5284 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413055502C4F2E8B00BB5284 /* SignUpView.swift */; };
+		413055532C4F41F000BB5284 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413055522C4F41F000BB5284 /* ResetPasswordView.swift */; };
+		418C2DB62C4DE891008C92F4 /* Note_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418C2DB52C4DE891008C92F4 /* Note_App.swift */; };
+		418C2DB82C4DE891008C92F4 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418C2DB72C4DE891008C92F4 /* NoteListView.swift */; };
 		418C2DBA2C4DE892008C92F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418C2DB92C4DE892008C92F4 /* Assets.xcassets */; };
 		418C2DBD2C4DE892008C92F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418C2DBC2C4DE892008C92F4 /* Preview Assets.xcassets */; };
 		418C2DC42C4DEB44008C92F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418C2DC32C4DEB44008C92F4 /* GoogleService-Info.plist */; };
@@ -26,9 +30,13 @@
 		410590DA2C4DF8F7000888FB /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		410590DC2C4DFC0D000888FB /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		410590DE2C4E2182000888FB /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		4130554A2C4F2CAD00BB5284 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		4130554E2C4F2E2900BB5284 /* HolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
+		413055502C4F2E8B00BB5284 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		413055522C4F41F000BB5284 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		418C2DB22C4DE891008C92F4 /* Note_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		418C2DB52C4DE891008C92F4 /* Note_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note_AppApp.swift; sourceTree = "<group>"; };
-		418C2DB72C4DE891008C92F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		418C2DB52C4DE891008C92F4 /* Note_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note_App.swift; sourceTree = "<group>"; };
+		418C2DB72C4DE891008C92F4 /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U0010NoteListView.swift"; sourceTree = "<group>"; };
 		418C2DB92C4DE892008C92F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		418C2DBC2C4DE892008C92F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		418C2DC32C4DEB44008C92F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -48,6 +56,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		413055542C4F66C600BB5284 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4130554A2C4F2CAD00BB5284 /* AuthViewModel.swift */,
+				410590DA2C4DF8F7000888FB /* NoteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		413055552C4F66D000BB5284 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				410590D82C4DF8AE000888FB /* Note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		413055562C4F66DF00BB5284 /* AuthViews */ = {
+			isa = PBXGroup;
+			children = (
+				413055502C4F2E8B00BB5284 /* SignUpView.swift */,
+				413055522C4F41F000BB5284 /* ResetPasswordView.swift */,
+			);
+			path = AuthViews;
+			sourceTree = "<group>";
+		};
+		413055572C4F673700BB5284 /* NoteViews */ = {
+			isa = PBXGroup;
+			children = (
+				4130554E2C4F2E2900BB5284 /* HolderView.swift */,
+				418C2DB72C4DE891008C92F4 /* NoteListView.swift */,
+				410590DE2C4E2182000888FB /* DetailsView.swift */,
+				410590DC2C4DFC0D000888FB /* FormView.swift */,
+			);
+			path = NoteViews;
+			sourceTree = "<group>";
+		};
 		418C2DA92C4DE891008C92F4 = {
 			isa = PBXGroup;
 			children = (
@@ -68,14 +113,13 @@
 			isa = PBXGroup;
 			children = (
 				418C2DC32C4DEB44008C92F4 /* GoogleService-Info.plist */,
-				410590D82C4DF8AE000888FB /* Note.swift */,
-				418C2DB52C4DE891008C92F4 /* Note_AppApp.swift */,
-				410590DA2C4DF8F7000888FB /* NoteViewModel.swift */,
-				418C2DB72C4DE891008C92F4 /* ContentView.swift */,
-				410590DC2C4DFC0D000888FB /* FormView.swift */,
+				418C2DB52C4DE891008C92F4 /* Note_App.swift */,
+				413055552C4F66D000BB5284 /* Models */,
+				413055542C4F66C600BB5284 /* ViewModel */,
+				413055562C4F66DF00BB5284 /* AuthViews */,
+				413055572C4F673700BB5284 /* NoteViews */,
 				418C2DB92C4DE892008C92F4 /* Assets.xcassets */,
 				418C2DBB2C4DE892008C92F4 /* Preview Content */,
-				410590DE2C4E2182000888FB /* DetailsView.swift */,
 			);
 			path = Note_App;
 			sourceTree = "<group>";
@@ -168,10 +212,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				410590DB2C4DF8F7000888FB /* NoteViewModel.swift in Sources */,
-				418C2DB82C4DE891008C92F4 /* ContentView.swift in Sources */,
+				418C2DB82C4DE891008C92F4 /* NoteListView.swift in Sources */,
 				410590DD2C4DFC0D000888FB /* FormView.swift in Sources */,
-				418C2DB62C4DE891008C92F4 /* Note_AppApp.swift in Sources */,
+				4130554B2C4F2CAD00BB5284 /* AuthViewModel.swift in Sources */,
+				4130554F2C4F2E2900BB5284 /* HolderView.swift in Sources */,
+				418C2DB62C4DE891008C92F4 /* Note_App.swift in Sources */,
 				410590D92C4DF8AE000888FB /* Note.swift in Sources */,
+				413055532C4F41F000BB5284 /* ResetPasswordView.swift in Sources */,
+				413055512C4F2E8B00BB5284 /* SignUpView.swift in Sources */,
 				410590DF2C4E2182000888FB /* DetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
