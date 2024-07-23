@@ -16,6 +16,8 @@
 		41EAC84C2C4F69C6004925EE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 41EAC84B2C4F69C6004925EE /* FirebaseFirestore */; };
 		41EAC84E2C4F69C6004925EE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 41EAC84D2C4F69C6004925EE /* FirebaseFirestoreSwift */; };
 		41EAC8502C4F69C6004925EE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 41EAC84F2C4F69C6004925EE /* FirebaseStorage */; };
+		41EAC8522C4F6AEF004925EE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAC8512C4F6AEF004925EE /* Post.swift */; };
+		41EAC8542C4F6C8A004925EE /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAC8532C4F6C8A004925EE /* PostViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		41EAC83C2C4F6936004925EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41EAC83F2C4F6936004925EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		41EAC8462C4F695E004925EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		41EAC8512C4F6AEF004925EE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		41EAC8532C4F6C8A004925EE /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +68,10 @@
 				41EAC8462C4F695E004925EE /* GoogleService-Info.plist */,
 				41EAC8382C4F6935004925EE /* SociallyApp.swift */,
 				41EAC83A2C4F6935004925EE /* ContentView.swift */,
+				41EAC8532C4F6C8A004925EE /* PostViewModel.swift */,
 				41EAC83C2C4F6936004925EE /* Assets.xcassets */,
 				41EAC83E2C4F6936004925EE /* Preview Content */,
+				41EAC8512C4F6AEF004925EE /* Post.swift */,
 			);
 			path = Socially;
 			sourceTree = "<group>";
@@ -158,6 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41EAC8542C4F6C8A004925EE /* PostViewModel.swift in Sources */,
+				41EAC8522C4F6AEF004925EE /* Post.swift in Sources */,
 				41EAC83B2C4F6935004925EE /* ContentView.swift in Sources */,
 				41EAC8392C4F6935004925EE /* SociallyApp.swift in Sources */,
 			);
