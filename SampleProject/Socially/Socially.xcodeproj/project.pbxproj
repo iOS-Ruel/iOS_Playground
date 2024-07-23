@@ -19,6 +19,8 @@
 		41EAC8522C4F6AEF004925EE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAC8512C4F6AEF004925EE /* Post.swift */; };
 		41EAC8542C4F6C8A004925EE /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAC8532C4F6C8A004925EE /* PostViewModel.swift */; };
 		41EAC8582C4F78DC004925EE /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAC8572C4F78DC004925EE /* FeedView.swift */; };
+		41EAC85B2C4F805C004925EE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAC85A2C4F805C004925EE /* AuthViewModel.swift */; };
+		41EAC85D2C4F81BB004925EE /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAC85C2C4F81BB004925EE /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,9 @@
 		41EAC8512C4F6AEF004925EE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		41EAC8532C4F6C8A004925EE /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		41EAC8572C4F78DC004925EE /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		41EAC8592C4F7F66004925EE /* Socially.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Socially.entitlements; sourceTree = "<group>"; };
+		41EAC85A2C4F805C004925EE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		41EAC85C2C4F81BB004925EE /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,14 +72,17 @@
 		41EAC8372C4F6935004925EE /* Socially */ = {
 			isa = PBXGroup;
 			children = (
+				41EAC8592C4F7F66004925EE /* Socially.entitlements */,
 				41EAC8462C4F695E004925EE /* GoogleService-Info.plist */,
 				41EAC8382C4F6935004925EE /* SociallyApp.swift */,
 				41EAC83A2C4F6935004925EE /* PostView.swift */,
 				41EAC8512C4F6AEF004925EE /* Post.swift */,
 				41EAC8572C4F78DC004925EE /* FeedView.swift */,
+				41EAC85C2C4F81BB004925EE /* SignUpView.swift */,
 				41EAC8532C4F6C8A004925EE /* PostViewModel.swift */,
 				41EAC83C2C4F6936004925EE /* Assets.xcassets */,
 				41EAC83E2C4F6936004925EE /* Preview Content */,
+				41EAC85A2C4F805C004925EE /* AuthViewModel.swift */,
 			);
 			path = Socially;
 			sourceTree = "<group>";
@@ -169,6 +177,8 @@
 			files = (
 				41EAC8582C4F78DC004925EE /* FeedView.swift in Sources */,
 				41EAC8542C4F6C8A004925EE /* PostViewModel.swift in Sources */,
+				41EAC85B2C4F805C004925EE /* AuthViewModel.swift in Sources */,
+				41EAC85D2C4F81BB004925EE /* SignUpView.swift in Sources */,
 				41EAC8522C4F6AEF004925EE /* Post.swift in Sources */,
 				41EAC83B2C4F6935004925EE /* PostView.swift in Sources */,
 				41EAC8392C4F6935004925EE /* SociallyApp.swift in Sources */,
@@ -302,6 +312,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Socially/Socially.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Socially/Preview Content\"";
@@ -331,6 +342,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Socially/Socially.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Socially/Preview Content\"";
