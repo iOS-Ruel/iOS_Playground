@@ -33,7 +33,7 @@ class PostViewModel: ObservableObject {
                 self.databaseReference.addDocument(data: [
                     "description": description,
                     "datePublished": datePublished,
-                    "imageUrl": downloadUrl.absoluteString
+                    "imageURL": downloadUrl.absoluteString
                 ]) { error in
                     completion(error)
                 }
