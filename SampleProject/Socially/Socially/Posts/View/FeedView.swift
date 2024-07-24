@@ -9,7 +9,11 @@ import SwiftUI
 import FirebaseFirestoreSwift
 
 struct FeedView: View {
-    @FirestoreQuery(collectionPath: "Posts") var posts: [Post]
+    @FirestoreQuery(
+            collectionPath: "Posts",
+            predicates: [.order(by: "datePublished", descending: true)]
+        ) var posts: [Post]
+    
     @EnvironmentObject private var authModel: AuthViewModel
     
     @State var showingPost = false
