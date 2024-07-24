@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestoreSwift
+import FirebaseAnalyticsSwift
 
 struct FeedView: View {
     @FirestoreQuery(
@@ -70,6 +71,7 @@ struct FeedView: View {
             }
             
         }
+        .analyticsScreen(name: "FeedView")
         
     }
 }

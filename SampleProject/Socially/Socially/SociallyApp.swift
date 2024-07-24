@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseAnalytics
+import FirebaseAnalyticsSwift
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
