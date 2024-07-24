@@ -25,22 +25,22 @@ struct SociallyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //            Group {
-            //                if authModel.user == nil {
-            //                    SignUpView()
-            //                } else {
-            //                    FeedView()
-            //                        .environmentObject(PostViewModel())
-            //                }
-            //            }
-            //            .environmentObject(authModel)
-            //            .onAppear {
-            //                authModel.listenToAuthState()
-            //            }
-//            ProfileView()
-//                .environmentObject(authModel)
-            FeedView()
-                .environmentObject(PostViewModel())
+            TabView {
+                if authModel.user != nil {
+                    FeedView()
+                        .tabItem {
+                            Image(systemName: "text.bubble")
+                            Text("Feed")
+                        }
+                }
+                ProfileView()
+                    .tabItem {
+                        Image(systemName: "person.crop.circle")
+                        Text("Account")
+                    }
+            }
+            .environmentObject(authModel)
+            .environmentObject(PostViewModel())
         }
     }
 }
