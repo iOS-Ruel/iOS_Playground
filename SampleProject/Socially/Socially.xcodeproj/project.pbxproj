@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410B5FF72C5080380084B308 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B5FF62C5080380084B308 /* ProfileView.swift */; };
 		41EAC8392C4F6935004925EE /* SociallyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAC8382C4F6935004925EE /* SociallyApp.swift */; };
 		41EAC83B2C4F6935004925EE /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAC83A2C4F6935004925EE /* PostView.swift */; };
 		41EAC83D2C4F6936004925EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41EAC83C2C4F6936004925EE /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		410B5FF62C5080380084B308 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		41EAC8352C4F6935004925EE /* Socially.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socially.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41EAC8382C4F6935004925EE /* SociallyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallyApp.swift; sourceTree = "<group>"; };
 		41EAC83A2C4F6935004925EE /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				41EAC8382C4F6935004925EE /* SociallyApp.swift */,
 				41EAC83A2C4F6935004925EE /* PostView.swift */,
 				41EAC8512C4F6AEF004925EE /* Post.swift */,
+				410B5FF62C5080380084B308 /* ProfileView.swift */,
 				41EAC8572C4F78DC004925EE /* FeedView.swift */,
 				41EAC85C2C4F81BB004925EE /* SignUpView.swift */,
 				41EAC8532C4F6C8A004925EE /* PostViewModel.swift */,
@@ -175,6 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				410B5FF72C5080380084B308 /* ProfileView.swift in Sources */,
 				41EAC8582C4F78DC004925EE /* FeedView.swift in Sources */,
 				41EAC8542C4F6C8A004925EE /* PostViewModel.swift in Sources */,
 				41EAC85B2C4F805C004925EE /* AuthViewModel.swift in Sources */,
