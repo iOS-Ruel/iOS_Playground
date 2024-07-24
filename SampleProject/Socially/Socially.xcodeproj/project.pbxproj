@@ -55,6 +55,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		410B5FF82C5092170084B308 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				410B5FFD2C50927A0084B308 /* View */,
+				410B5FFE2C5092830084B308 /* ViewModel */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		410B5FF92C50922C0084B308 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				410B5FFC2C5092500084B308 /* View */,
+				410B5FFB2C50924B0084B308 /* Model */,
+				410B5FFA2C5092460084B308 /* ViewModel */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		410B5FFA2C5092460084B308 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				41EAC8532C4F6C8A004925EE /* PostViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		410B5FFB2C50924B0084B308 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				41EAC8512C4F6AEF004925EE /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		410B5FFC2C5092500084B308 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				41EAC83A2C4F6935004925EE /* PostView.swift */,
+				41EAC8572C4F78DC004925EE /* FeedView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		410B5FFD2C50927A0084B308 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				410B5FF62C5080380084B308 /* ProfileView.swift */,
+				41EAC85C2C4F81BB004925EE /* SignUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		410B5FFE2C5092830084B308 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				41EAC85A2C4F805C004925EE /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		41EAC82C2C4F6935004925EE = {
 			isa = PBXGroup;
 			children = (
@@ -77,15 +138,10 @@
 				41EAC8592C4F7F66004925EE /* Socially.entitlements */,
 				41EAC8462C4F695E004925EE /* GoogleService-Info.plist */,
 				41EAC8382C4F6935004925EE /* SociallyApp.swift */,
-				41EAC83A2C4F6935004925EE /* PostView.swift */,
-				41EAC8512C4F6AEF004925EE /* Post.swift */,
-				410B5FF62C5080380084B308 /* ProfileView.swift */,
-				41EAC8572C4F78DC004925EE /* FeedView.swift */,
-				41EAC85C2C4F81BB004925EE /* SignUpView.swift */,
-				41EAC8532C4F6C8A004925EE /* PostViewModel.swift */,
+				410B5FF92C50922C0084B308 /* Posts */,
+				410B5FF82C5092170084B308 /* Accounts */,
 				41EAC83C2C4F6936004925EE /* Assets.xcassets */,
 				41EAC83E2C4F6936004925EE /* Preview Content */,
-				41EAC85A2C4F805C004925EE /* AuthViewModel.swift */,
 			);
 			path = Socially;
 			sourceTree = "<group>";
