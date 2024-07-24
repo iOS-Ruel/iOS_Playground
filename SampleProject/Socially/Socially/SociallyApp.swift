@@ -7,7 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
-
+import FirebaseAnalytics
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -41,6 +41,9 @@ struct SociallyApp: App {
             }
             .environmentObject(authModel)
             .environmentObject(PostViewModel())
+            .onAppear {
+                Analytics.logEvent("launch_app", parameters: nil)
+            }
         }
     }
 }
