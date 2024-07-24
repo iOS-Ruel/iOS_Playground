@@ -39,7 +39,7 @@ struct SociallyApp: App {
             //            }
 //            ProfileView()
 //                .environmentObject(authModel)
-            PostView()
+            FeedView()
                 .environmentObject(PostViewModel())
         }
     }

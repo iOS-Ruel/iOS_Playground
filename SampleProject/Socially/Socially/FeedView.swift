@@ -16,11 +16,26 @@ struct FeedView: View {
         NavigationStack {
             List(posts) { post in
                 VStack(alignment: .leading) {
-                    VStack {
-                        Text(post.description ?? "" )
+                    AsyncImage(url: URL(string: post.imageURL ?? "")) { phase in
+                        switch phase {
+                        case .empty:
+                            EmptyView()
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .frame(width: 300, height: 200)
+                        case .failure:
+                            Image(systemName: "photo")
+                        @unknown default:
+                            EmptyView()
+                        }
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text(post.description ?? "")
                             .font(.headline)
-                            .padding(12)
-                        Text("Published on the \(post.dataPublished?.formatted() ?? "")")
+                            .padding([.bottom, .top], 6)
+                        Text("Published on the \(post.datePublished?.formatted() ?? "")")
                             .font(.caption)
                     }
                 }
@@ -36,7 +51,9 @@ struct FeedView: View {
                     }
                 }
             }
+            
         }
+        
     }
 }
 
