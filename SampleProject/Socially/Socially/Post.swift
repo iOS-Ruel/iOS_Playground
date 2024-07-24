@@ -14,5 +14,5 @@ struct Post: Identifiable, Decodable {
     var description: String?
     var imageURL: String?
     
-    @ServerTimestamp var dataPublished: Date?
+    @ServerTimestamp var datePublished: Date?
 }
