@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseAuth
 import AuthenticationServices
+import FirebaseStorage
 import CryptoKit
 import FirebaseFirestore
 
@@ -19,6 +20,9 @@ class AuthViewModel: ObservableObject {
      3자가 주고 받을때 탈취 위험이 있기 때문에 Nonce Number라는 난수를 설정함
      즉, 인증 과정을 위한 임의의 랜덤 난수
      */
+    
+    
+    
     func listenToAuthState() {
         Auth.auth().addStateDidChangeListener { [weak self] _, user in
             self?.user = user
@@ -32,6 +36,33 @@ class AuthViewModel: ObservableObject {
             print("Error signing out: %@", signOutError)
         }
     }
+    
+    // MARK: - Profile Image
+    func uploadProfileImage(_ image: Data) {
+        let storageReference = Storage.storage().reference().child("\(UUID().uuidString)")
+        storageReference.putData(image, metadata: nil) { metaData, error in
+            if let error = error {
+                return
+            }
+            
+            storageReference.downloadURL { url, error in
+                if let imageURL = url, let user = Auth.auth().currentUser {
+                    let changeRequest = user.createProfileChangeRequest()
+                    changeRequest.photoURL = imageURL
+                    
+                    changeRequest.commitChanges() { error in
+                        if let error = error {
+                            print("profile image upload error")
+                            return
+                        }
+                        self.user = Auth.auth().currentUser
+                    }
+                }
+            }
+            
+        }
+    }
+    
     
     
     //MARK: - Sign In With Apple Methods
