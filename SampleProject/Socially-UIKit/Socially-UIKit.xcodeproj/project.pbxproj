@@ -13,6 +13,7 @@
 		41CC25002C51D6340088432E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 41CC24FF2C51D6340088432E /* Base */; };
 		41CC25022C51D6350088432E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41CC25012C51D6350088432E /* Assets.xcassets */; };
 		41CC25052C51D6350088432E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 41CC25042C51D6350088432E /* Base */; };
+		EA6DE7718EFF84565E70EFEE /* Pods_Socially_UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723259F1BB3766B319987ACD /* Pods_Socially_UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		41CC25012C51D6350088432E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41CC25042C51D6350088432E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41CC25062C51D6350088432E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		531B0E43A9049158C87A9E99 /* Pods-Socially-UIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Socially-UIKit.release.xcconfig"; path = "Target Support Files/Pods-Socially-UIKit/Pods-Socially-UIKit.release.xcconfig"; sourceTree = "<group>"; };
+		723259F1BB3766B319987ACD /* Pods_Socially_UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Socially_UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9455F485C13B09AFBC3142E9 /* Pods-Socially-UIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Socially-UIKit.debug.xcconfig"; path = "Target Support Files/Pods-Socially-UIKit/Pods-Socially-UIKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA6DE7718EFF84565E70EFEE /* Pods_Socially_UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				41CC24F72C51D6340088432E /* Socially-UIKit */,
 				41CC24F62C51D6340088432E /* Products */,
+				AF81EF9A3271EF5F7E4F9776 /* Pods */,
+				44521052D0021507C9E6E52E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = "Socially-UIKit";
 			sourceTree = "<group>";
 		};
+		44521052D0021507C9E6E52E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				723259F1BB3766B319987ACD /* Pods_Socially_UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF81EF9A3271EF5F7E4F9776 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9455F485C13B09AFBC3142E9 /* Pods-Socially-UIKit.debug.xcconfig */,
+				531B0E43A9049158C87A9E99 /* Pods-Socially-UIKit.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41CC25092C51D6350088432E /* Build configuration list for PBXNativeTarget "Socially-UIKit" */;
 			buildPhases = (
+				193706D272A24FFA5EA2D2D2 /* [CP] Check Pods Manifest.lock */,
 				41CC24F12C51D6340088432E /* Sources */,
 				41CC24F22C51D6340088432E /* Frameworks */,
 				41CC24F32C51D6340088432E /* Resources */,
+				91949577372872DC84278592 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		193706D272A24FFA5EA2D2D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Socially-UIKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91949577372872DC84278592 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Socially-UIKit/Pods-Socially-UIKit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Socially-UIKit/Pods-Socially-UIKit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Socially-UIKit/Pods-Socially-UIKit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		41CC24F12C51D6340088432E /* Sources */ = {
@@ -287,6 +356,7 @@
 		};
 		41CC250A2C51D6350088432E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9455F485C13B09AFBC3142E9 /* Pods-Socially-UIKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -315,6 +385,7 @@
 		};
 		41CC250B2C51D6350088432E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 531B0E43A9049158C87A9E99 /* Pods-Socially-UIKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
