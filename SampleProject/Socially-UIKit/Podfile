@@ -11,6 +11,6 @@ target 'Socially-UIKit' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'FirebaseStorage'
-  
+  pod 'SDWebImage'
 
 end
