@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import Kingfisher
 
 class ViewController: UIViewController {
     enum Section{
@@ -28,24 +29,38 @@ class ViewController: UIViewController {
         configureTableView()
         configureDataSource()
         startListeningToFirestore()
+        
+        
+        let barItem = UIBarButtonItem(systemItem: .add,primaryAction: UIAction { [weak self] action in
+            let newPostViewController = NewPostViewController()
+            let navigationController = UINavigationController(rootViewController: newPostViewController)
+            if let sheet = navigationController.sheetPresentationController {
+                sheet.detents = [.medium(), .large()]
+                sheet.prefersGrabberVisible = true
+                sheet.preferredCornerRadius = 20
+            }
+            
+            self?.present(navigationController, animated: true)
+            
+        })
+        
+        navigationItem.rightBarButtonItem = barItem
     }
     
     func configureTableView() {
         tableView = UITableView(frame: view.bounds, style: .plain)
         view.addSubview(tableView)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "postCell")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "postCell")
         tableView.rowHeight = 280
     }
     
     func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<Section, Post>(tableView: tableView) { (tableView, indexPath, item) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "postCell")
-            var config = cell?.defaultContentConfiguration()
-            config?.text = item.description
-            
-            cell?.contentConfiguration = config
-            
-            return cell
+            if let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: "postCell") as? PostTableViewCell {
+                cell.configureCell(with: item)
+                return cell
+            }
+            return UITableViewCell()
         }
     }
     

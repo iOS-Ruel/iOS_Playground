@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4166CEE92C51EA5A00CA7531 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4166CEE82C51EA5A00CA7531 /* Post.swift */; };
 		4166CEEB2C51EB0C00CA7531 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4166CEEA2C51EB0C00CA7531 /* GoogleService-Info.plist */; };
+		4166CEED2C521CC800CA7531 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4166CEEC2C521CC800CA7531 /* PostTableViewCell.swift */; };
+		4166CEEF2C5225C500CA7531 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4166CEEE2C5225C500CA7531 /* NewPostViewController.swift */; };
 		41CC24F92C51D6340088432E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CC24F82C51D6340088432E /* AppDelegate.swift */; };
 		41CC24FB2C51D6340088432E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CC24FA2C51D6340088432E /* SceneDelegate.swift */; };
 		41CC24FD2C51D6340088432E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CC24FC2C51D6340088432E /* ViewController.swift */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		4166CEE82C51EA5A00CA7531 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4166CEEA2C51EB0C00CA7531 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Socially/Socially/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4166CEEC2C521CC800CA7531 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		4166CEEE2C5225C500CA7531 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		41CC24F52C51D6340088432E /* Socially-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Socially-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CC24F82C51D6340088432E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41CC24FA2C51D6340088432E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 				4166CEE82C51EA5A00CA7531 /* Post.swift */,
 				41CC25062C51D6350088432E /* Info.plist */,
 				4166CEEA2C51EB0C00CA7531 /* GoogleService-Info.plist */,
+				4166CEEC2C521CC800CA7531 /* PostTableViewCell.swift */,
+				4166CEEE2C5225C500CA7531 /* NewPostViewController.swift */,
 			);
 			path = "Socially-UIKit";
 			sourceTree = "<group>";
@@ -215,8 +221,10 @@
 			files = (
 				41CC24FD2C51D6340088432E /* ViewController.swift in Sources */,
 				41CC24F92C51D6340088432E /* AppDelegate.swift in Sources */,
+				4166CEED2C521CC800CA7531 /* PostTableViewCell.swift in Sources */,
 				41CC24FB2C51D6340088432E /* SceneDelegate.swift in Sources */,
 				4166CEE92C51EA5A00CA7531 /* Post.swift in Sources */,
+				4166CEEF2C5225C500CA7531 /* NewPostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
