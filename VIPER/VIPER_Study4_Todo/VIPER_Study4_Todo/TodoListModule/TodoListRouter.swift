@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//Coordinator
 class TodoListRouter: TodoListRouterProtocol {
     
     static func createTodoListModule() -> UIViewController {
@@ -17,9 +17,11 @@ class TodoListRouter: TodoListRouterProtocol {
         let router = TodoListRouter()
         
         todoListViewController.presenter = presenter
+        
         presenter.view = todoListViewController
         presenter.interactor = interactor
         presenter.router = router
+        
         interactor.presenter = presenter
         
         return navController

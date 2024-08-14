@@ -7,6 +7,7 @@
 
 import Foundation
 
+//ViewModel
 class TodoListInteractor: TodoListInteractorInputProtocol {
     weak var presenter: TodoListInteractorOutputProtocol?
     var todoStore = TodoStore.shared

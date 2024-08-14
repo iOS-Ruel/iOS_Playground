@@ -89,6 +89,8 @@ class MainMapViewController: UIViewController {
             currentPlaceButton.widthAnchor.constraint(equalToConstant: 120),
             currentPlaceButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         ])
+        listButton.isHidden = true
+        currentPlaceButton.isHidden = true
     }
     
     private func createButton(title: String, image: String?, action: Selector) -> UIButton {
