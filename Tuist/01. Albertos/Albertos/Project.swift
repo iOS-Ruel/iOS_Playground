@@ -1,13 +1,13 @@
 import ProjectDescription
 
 let project = Project(
-    name: "Albertos",
+    name: "Core",
     targets: [
         .target(
-            name: "Albertos",
+            name: "Core",
             destinations: .iOS,
             product: .app,
-            bundleId: "io.tuist.Albertos",
+            bundleId: "io.tuist.",
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [
@@ -16,24 +16,19 @@ let project = Project(
                     ],
                 ]
             ),
-            sources: ["Albertos/Sources/**"],
-            resources: ["Albertos/Resources/**"],
-            dependencies: [
-                .project(target: "HippoPayments",
-                         path: .path("HippoPayments"),
-                         condition: .none
-                )
-            ]
+            sources: ["Core/Sources/**"],
+            resources: ["Core/Resources/**"],
+            dependencies: []
         ),
         .target(
-            name: "AlbertosTests",
+            name: "CoreTests",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "io.tuist.AlbertosTests",
+            bundleId: "io.tuist.Tests",
             infoPlist: .default,
-            sources: ["Albertos/Tests/**"],
+            sources: ["Core/Tests/**"],
             resources: [],
-            dependencies: [.target(name: "Albertos")]
+            dependencies: [.target(name: "Core")]
         ),
     ]
 )
